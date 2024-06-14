@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://4fui5v13ebcj"]
+
+[ext_resource type="Script" path="res://gun_part.gd" id="1_c3nxo"]
+[ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
+[ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="3_h56yo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mt8u5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1f5bd"]
+material = ExtResource("2_fnslv")
+top_radius = 0.1
+bottom_radius = 0.15
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_jmg8q"]
+material = ExtResource("2_fnslv")
+radius = 0.15
+height = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_kai1l"]
+material = ExtResource("3_h56yo")
+size = Vector3(0.3, 0.5, 0.3)
+
+[node name="GunPart" type="Node3D"]
+script = ExtResource("1_c3nxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mt8u5")
+
+[node name="Barrel" type="Node3D" parent="."]
+
+[node name="Cylinder" type="MeshInstance3D" parent="Barrel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
+mesh = SubResource("CylinderMesh_1f5bd")
+skeleton = NodePath("../..")
+
+[node name="Sphere" type="MeshInstance3D" parent="Barrel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_jmg8q")
+skeleton = NodePath("../..")
+
+[node name="End" type="Node3D" parent="Barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_kai1l")

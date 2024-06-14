@@ -16,3 +16,7 @@ static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = 
 # Point is global
 static func get_point_velocity(body: RigidBody3D, point: Vector3) -> Vector3:
 	return body.linear_velocity + body.angular_velocity.cross(point - body.global_transform.origin)
+
+
+static func get_ticks_sec() -> float:
+	return Time.get_ticks_msec() / 1000.0

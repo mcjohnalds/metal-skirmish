@@ -1,19 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhjl4ne7kf1gk"]
+[gd_scene load_steps=8 format=3 uid="uid://dhjl4ne7kf1gk"]
 
 [ext_resource type="Script" path="res://wheel_part.gd" id="1_rc5js"]
 [ext_resource type="PackedScene" uid="uid://cww4rrqoq5fmb" path="res://arrow.tscn" id="2_5re37"]
+[ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_rty61"]
+[ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="3_ihea4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lj6dk"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3u0c"]
-albedo_color = Color(0.344076, 0.344076, 0.344076, 1)
-metallic = 0.99
-roughness = 0.5
-
 [sub_resource type="BoxMesh" id="BoxMesh_b3fel"]
-material = SubResource("StandardMaterial3D_f3u0c")
+material = ExtResource("2_rty61")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cl5m4"]
+material = ExtResource("3_ihea4")
 height = 0.05
 
 [node name="WheelPart" type="Node3D"]
