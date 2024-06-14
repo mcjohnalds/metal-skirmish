@@ -1,0 +1,9 @@
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://7cgcov13neb2"]
+
+[ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://terrain_noise.tres" id="1_pyx7c"]
+
+[resource]
+generate_mipmaps = false
+seamless = true
+as_normal_map = true
+noise = ExtResource("1_pyx7c")
