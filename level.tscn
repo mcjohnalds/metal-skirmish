@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=24 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_dfxqw"]
 [ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://armor_part.tscn" id="1_o2iq1"]
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://wheel_part.tscn" id="3_r4wk5"]
+[ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://crosshair.svg" id="4_6exi3"]
 
 [sub_resource type="Curve" id="Curve_6nyqf"]
 _data = [Vector2(0, 0.72), 0.0, 0.0, 0, 0, Vector2(0.24735, 0.651429), 0.0, 0.0, 0, 0, Vector2(0.4947, 0.226508), 0.0, 0.0, 0, 0, Vector2(1, 0.178498), 0.0, 0.0, 0, 0]
@@ -132,6 +133,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 [node name="WheelPart4" parent="Player" instance=ExtResource("3_r4wk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 2.5)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -11)
+
 [node name="Ground" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
@@ -199,5 +206,19 @@ suspension_max_force = 10000.0
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_ynxln")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.297515, 0.579515, -0.758714, 0, 0.794701, 0.607002, 0.954717, 0.180592, -0.236436, -21.1898, 15.0118, -4.28678)
+[node name="Crosshair" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("4_6exi3")
+expand_mode = 1

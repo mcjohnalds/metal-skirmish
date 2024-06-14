@@ -7,22 +7,25 @@ extends Node3D
 @export var wheel_reverse_curve: Curve
 @export var tmp: Curve
 @onready var player: RigidBody3D = $Player
-@onready var camera: Camera3D = $Camera3D
+@onready var camera_pivot: Node3D = $Player/CameraPivot
 var wheel_parts: Array[WheelPart] = []
 var spring_rest_distance := 0.7
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	# Engine.time_scale = 0.5
-	# Engine.physics_ticks_per_second = 5
+	var part_count := 0
+	var part_position_sum := Vector3.ZERO
 	for child: Node in player.get_children():
+		var is_part := false
 		if child is ArmorPart:
+			is_part = true
 			var part := child as ArmorPart
 			var so := player.create_shape_owner(part.collision_shape)
 			player.shape_owner_add_shape(so, part.collision_shape.shape)
 			player.shape_owner_set_transform(so, part.transform)
-		if child is WheelPart:
+		elif child is WheelPart:
+			is_part = true
 			var part := child as WheelPart
 			var so := player.create_shape_owner(part.collision_shape)
 			player.shape_owner_add_shape(so, part.collision_shape.shape)
@@ -41,13 +44,14 @@ func _ready() -> void:
 			part.traction = is_front
 			part.steering = is_front
 			part.front = is_front
-		player.center_of_mass += child.position / player.get_child_count()
+		if is_part:
+			part_position_sum += child.position
+			part_count += 1
+	player.center_of_mass = part_position_sum / part_count
 	player.center_of_mass.y -= 0.5
 
 
 func _physics_process(delta: float) -> void:
-	camera.look_at(player.global_position + player.center_of_mass)
-
 	for part: WheelPart in wheel_parts:
 		var collider := part.ray_cast.get_collider()
 		part.wheel.position.y = part.ray_cast.position.y - spring_rest_distance
@@ -126,3 +130,10 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
+	if event is InputEventMouseMotion:
+		var sensitivity := 0.002
+		var motion := event as InputEventMouseMotion
+		camera_pivot.rotation.y -= motion.relative.x * sensitivity
+		camera_pivot.rotation.x += motion.relative.y * sensitivity / 2.0
+		var camera := camera_pivot.get_child(0)
+		camera.rotation.x -= motion.relative.y * sensitivity / 2.0

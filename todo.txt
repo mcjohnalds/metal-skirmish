@@ -1,0 +1,6 @@
+Todo:
+
+- Mouse sensitivity slider
+- Smooth camera movement
+
+Ideas:
