@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cww4rrqoq5fmb"]
+
+[ext_resource type="Script" path="res://arrow.gd" id="1_0edhr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n6p8"]
+resource_local_to_scene = true
+no_depth_test = true
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xxpp5"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a3we6"]
+top_radius = 0.0
+bottom_radius = 0.04
+height = 0.2
+
+[node name="Arrow" type="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_0edhr")
+vector = Vector3(0, 0, 1)
+
+[node name="Line" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, -6.55675e-09, 0.4)
+sorting_offset = 10000.0
+material_override = SubResource("StandardMaterial3D_6n6p8")
+mesh = SubResource("CylinderMesh_xxpp5")
+
+[node name="Tip" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, -5.02681e-08, 0.9)
+sorting_offset = 10000.0
+material_override = SubResource("StandardMaterial3D_6n6p8")
+mesh = SubResource("CylinderMesh_a3we6")

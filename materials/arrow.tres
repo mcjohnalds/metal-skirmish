@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvaepgbn18h4k"]
+
+[resource]
+resource_local_to_scene = true
+no_depth_test = true
+shading_mode = 0
