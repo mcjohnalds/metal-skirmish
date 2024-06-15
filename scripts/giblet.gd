@@ -9,7 +9,7 @@ func _ready() -> void:
 	angular_velocity += rand_vector3(0.3 * TAU)
 	linear_velocity += rand_vector3(5.0) * Vector3(1.0, 0.0, 1.0)
 	linear_velocity.y += randf_range(5.0, 10.0)
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(10.0).timeout
 	collision_layer = 0
 	collision_mask = 0
 	sleeping = false

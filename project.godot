@@ -52,10 +52,9 @@ move_right={
 
 [layer_names]
 
-3d_physics/layer_1="main"
+3d_physics/layer_1="vehicle"
 3d_physics/layer_2="ground"
-3d_physics/layer_3="part giblet"
-3d_physics/layer_4="frame giblet"
+3d_physics/layer_3="giblet"
 
 [physics]
 

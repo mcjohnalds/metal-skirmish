@@ -6,8 +6,12 @@ extends Node3D
 var view_pitch := 0.0
 
 
+func _ready() -> void:
+	aim.target_position = Vector3(0.0, 0.0, -Global.MAX_AIM_RANGE)
+
+
 func _process(_delta: float) -> void:
-	g.aim_debug_sphere.global_position = g.camera_pivot.aim.get_collision_point()
+	g.level.aim_debug_sphere.global_position = aim.get_collision_point()
 
 
 func _input(event: InputEvent) -> void:

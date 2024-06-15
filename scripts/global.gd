@@ -1,25 +1,16 @@
 class_name Global
 extends Node
 
+const MAX_AIM_RANGE := 100
 
-var player: Vehicle:
+var level: Level:
 	get:
-		return get_tree().get_first_node_in_group("player")
-
-
-var ground: Node3D:
-	get:
-		return get_tree().get_first_node_in_group("ground")
+		return get_tree().get_first_node_in_group("level")
 
 
 var camera_pivot: Node3D:
 	get:
 		return get_tree().get_first_node_in_group("camera pivot")
-
-
-var aim_debug_sphere: Node3D:
-	get:
-		return get_tree().get_first_node_in_group("aim debug sphere")
 
 
 static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = false) -> void:
@@ -41,3 +32,7 @@ static func get_point_velocity(body: RigidBody3D, point: Vector3) -> Vector3:
 
 static func get_ticks_sec() -> float:
 	return Time.get_ticks_msec() / 1000.0
+
+
+static func get_vector3_xz(v: Vector3) -> Vector2:
+	return Vector2(v.x, v.z)

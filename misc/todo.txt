@@ -1,5 +1,10 @@
 Todo:
 
+- Make gun impart small force on shooter and target
+- Muzzle flash particle effect
+- Kick up dirt when driving
+- Crash damage
+- Sky texture
 - Make damaged steering wheels turn freely
 - Explosion effect when part is destroyed
 - Hitmarker
@@ -13,5 +18,9 @@ Todo:
 
 Ideas:
 
-- Enemies should target parts more carefully - e.g important parts or parts near the center of volume
+- In vulkan renderer, use custom fog shader and increate camera far distance
+- Enemies should target parts more carefully - e.g important parts or parts
+  near the center of volume
 - Enemy aim uses PID
+- Extra dirt kicked up when drifting
+- Emit smoke from damaged parts

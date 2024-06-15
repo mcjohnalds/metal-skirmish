@@ -1,6 +1,8 @@
 class_name Vehicle
 extends RigidBody3D
 
+const ENEMY_SHOOTING_ENABLED := true
+const ENEMY_INACCURACY := 0.1
 const SPRING_REST_DISTANCE := 0.7
 const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
 const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
@@ -11,6 +13,7 @@ const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
 const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
 const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
 const frame_giblet_scene: PackedScene = preload("res://scenes/frame_giblet.tscn")
+@onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
 @export var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -45,7 +48,7 @@ func _ready() -> void:
 			part.ray_cast.position.x += direction * x_offset
 
 			var is_front: bool = child.position.z > 0.0
-			part.traction = is_front
+			part.traction = true
 			part.steering = is_front
 			part.front = is_front
 		elif child is GunPart:
@@ -81,7 +84,17 @@ func _physics_process(delta: float) -> void:
 
 
 func _physics_process_gun_part(part: GunPart) -> void:
-	if part.health == 0.0 or cockpit_part.health == 0.0 or not g.player:
+	var is_enabled := (
+		part.health > 0.0
+		and cockpit_part.health > 0.0
+		and (is_player or ENEMY_SHOOTING_ENABLED)
+	)
+	var player_visible := (
+		is_instance_valid(g.level.player)
+		and g.level.player.global_position.distance_to(part.global_position)
+			<= Global.MAX_AIM_RANGE
+	)
+	if not is_enabled or not player_visible:
 		return
 	var fire_rate := 10.0
 	var gun_ready: bool = Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate
@@ -94,8 +107,8 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			else:
 				target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
 		else:
-			var target_part: Node3D = g.player.cockpit_part
-			for p in g.player.parts:
+			var target_part: Node3D = g.level.player.cockpit_part
+			for p in g.level.player.parts:
 				if p.health > 0.0:
 					target_part = p
 					break
@@ -114,13 +127,13 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			ap = 0.0
 			ay = 0.0
 		else:
-			var v := linear_velocity - g.player.linear_velocity
-			var d := global_position - g.player.global_position
+			var v := linear_velocity - g.level.player.linear_velocity
+			var d := global_position - g.level.player.global_position
 			var p := v.project(d)
 			var l := p.distance_to(v)
 			var a := clampf(l / 50.0, 0.0, 1.0)
 			var t := Global.get_ticks_sec() * TAU
-			var m := 0.3 * TAU
+			var m := ENEMY_INACCURACY * TAU
 			ap = m * a * sin(t)
 			ay = m * a * sin(2.0 * t)
 
@@ -135,7 +148,8 @@ func _physics_process_gun_part(part: GunPart) -> void:
 
 		var query := PhysicsRayQueryParameters3D.new()
 		query.from = bullet_start
-		query.to = bullet_start + bullet_rand_dir * 1000.0
+		query.to = bullet_start + bullet_rand_dir * Global.MAX_AIM_RANGE
+		query.collision_mask = g.camera_pivot.aim.collision_mask
 		var collision := get_world_3d().direct_space_state.intersect_ray(query)
 
 		var bullet_end: Vector3
@@ -151,7 +165,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 		get_tree().current_scene.add_child(tracer)
 
 		if collision:
-			if collision.collider == g.ground:
+			if collision.collider == g.level.ground:
 				var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
 				dirt_hit.position = bullet_end
 				dirt_hit.one_shot = true
@@ -178,7 +192,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		var breaking := false
 		if part.traction and part.health > 0.0 and cockpit_part.health > 0.0:
 			var input := get_throttle_input()
-			var max_torque := 15000.0 * absf(input)
+			var max_torque := 7500.0 * absf(input)
 			var forward_speed := linear_velocity.dot(basis.z)
 			if forward_speed * input < 0.0:
 				breaking = true
@@ -189,12 +203,25 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 			apply_force(global_basis.z * s * max_torque * input, force_offset)
 
 		if part.steering:
+			var can_steer_fast := part.health > 0.0
+
+			var can_steer_slow := false
+			for p: WheelPart in wheel_parts:
+				var is_touching_ground := p.ray_cast.get_collider()
+				if p.health > 0.0 and is_touching_ground and p.steering:
+					can_steer_slow = true
+					break
+
+			var steer_speed := (
+				4.0 if can_steer_fast
+				else 0.5 if can_steer_slow
+				else 0.0
+			)
 			var input_steering := get_steering_input()
-			var steer_speed := 4.0
 			var steer_max := TAU * 0.1 * absf(input_steering)
 			var has_input = absf(input_steering) > 0.0
 			var steering_outward := has_input and input_steering * part.wheel.rotation.y >= 0.0
-			if steering_outward and part.health > 0.0 and cockpit_part.health > 0.0:
+			if steering_outward:
 				var f := 1.0 - pow(absf(part.wheel.rotation.y / steer_max), 0.4)
 				part.wheel.rotation.y += steer_speed * input_steering * f * delta
 				part.wheel.rotation.y = clampf(part.wheel.rotation.y, -steer_max, steer_max)
@@ -223,7 +250,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		part.debug_arrow_y.vector = spring_force_vector * debug_arrow_scale
 
 		var wheel_velocity := Global.get_point_velocity(self, part.wheel.global_position)
-		var forward_friction := 0.1 if breaking else 0.01
+		var forward_friction := 0.1 if breaking else 0.02
 		var wheel_friction_lookup := absf(wheel_velocity.dot(part.wheel.global_basis.x)) / wheel_velocity.length()
 		var curve := wheel_friction_front if part.front else wheel_friction_back
 		var sideways_friction := curve.sample(wheel_friction_lookup)
@@ -235,6 +262,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		apply_force(sideways_friction_force_vector, force_offset)
 		apply_force(forward_friction_force_vector, force_offset)
 		part.debug_arrow_x.global_position = global_position + force_offset
+		# Have to add a tiny offset or it wont render. Don't know why.
 		part.debug_arrow_x.vector = Vector3.ONE * 0.001 + sideways_friction_force_vector * debug_arrow_scale
 		part.debug_arrow_z.global_position = global_position + force_offset
 		part.debug_arrow_z.vector = Vector3.ONE * 0.001 + forward_friction_force_vector * debug_arrow_scale
@@ -244,14 +272,25 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 func get_throttle_input() -> float:
 	if is_player:
 		return Input.get_axis("move_backward", "move_forward")
-	return 0.8 * 0.0
+	if vehicle_detector.has_overlapping_bodies():
+		return 0.0
+	return 1.0
 
 
 func get_steering_input() -> float:
 	if is_player:
-		return -Input.get_axis("move_left", "move_right")
-	var frequency := 0.1
-	return -0.7 * sin(Global.get_ticks_sec() * TAU * frequency)
+		return Input.get_axis("move_right", "move_left")
+	if not is_instance_valid(g.level.player):
+		return 0.0
+	var our_dir := Vector2(global_basis.z.x, global_basis.z.z).normalized()
+	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.level.player.global_position))
+	var a := our_dir.angle() - player_dir.angle()
+	var m := 0.9
+	if a > 0.0:
+		return m
+	return -m
+	# var frequency := 0.1
+	# return -0.7 * sin(Global.get_ticks_sec() * TAU * frequency)
 
 
 func damage_part(vehicle: Vehicle, shape_index: int) -> void:
