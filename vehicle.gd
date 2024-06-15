@@ -14,8 +14,8 @@ const metal_hit_scene: PackedScene = preload("res://metal_hit.tscn")
 @export var is_player := false
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
-var center_of_volume: Vector3
 var view_pitch := 0.0
+var parts: Array[Variant] = []
 
 
 func _ready() -> void:
@@ -53,16 +53,17 @@ func _ready() -> void:
 			gun_parts.append(part)
 			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 		if is_part:
+			parts.append(child)
 			part_position_sum += child.position
 			part_count += 1
 	for d: Dictionary in shapes:
 		var shape: CollisionShape3D = d.shape
 		var trans: Transform3D = d.transform
 		var so := create_shape_owner(shape)
+		# Note that this part can be accessed at parts[shape_index]
 		shape_owner_add_shape(so, shape.shape)
 		shape_owner_set_transform(so, trans)
-	center_of_volume = part_position_sum / part_count
-	center_of_mass = center_of_volume
+	center_of_mass = part_position_sum / part_count
 	center_of_mass.y = -0.5
 
 
@@ -100,7 +101,14 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			else:
 				target = aim_ray_cast.global_transform * aim_ray_cast.target_position
 		else:
-			target = g.player.global_position + g.player.center_of_volume
+			var target_part: Node3D
+			for p in g.player.parts:
+				if p.health > 0.0:
+					target_part = p
+					break
+			if not target_part:
+				return
+			target = target_part.global_position
 
 		Global.safe_look_at(part.barrel, target, true)
 
@@ -162,6 +170,21 @@ func _physics_process_gun_part(part: GunPart) -> void:
 				metal_hit.one_shot = true
 				metal_hit.emitting = true
 				get_tree().current_scene.add_child(metal_hit)
+
+				var vehicle: Vehicle = collision.collider
+				var hit_part = vehicle.parts[collision.shape]
+				hit_part.health -= 10.0
+				if hit_part.health <= 0.0:
+					if hit_part is ArmorPart:
+						hit_part.armor.visible = false
+					if hit_part is GunPart:
+						hit_part.barrel.visible = false
+						hit_part.base.visible = false
+					if hit_part is WheelPart:
+						hit_part.armor.visible = false
+					hit_part.frame.visible = true
+					hit_part.health = 0.0
+					vehicle.shape_owner_set_disabled(collision.shape, true)
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:

@@ -1,7 +1,9 @@
 Todo:
 
-- Enemy aim uses PID
 - Mouse sensitivity slider
 - Smooth camera movement
 
 Ideas:
+
+- Enemies should target parts more carefully - e.g important parts or parts near the center of volume
+- Enemy aim uses PID
