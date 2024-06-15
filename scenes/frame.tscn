@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://beqwv26ycacot"]
+[gd_scene load_steps=4 format=3 uid="uid://beqwv26ycacot"]
 
 [ext_resource type="PackedScene" uid="uid://cem57twwcfajp" path="res://meshes/frame.glb" id="1_01wj1"]
 [ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_gu5qa"]
+[ext_resource type="Script" path="res://scripts/frame.gd" id="2_se4ta"]
 
 [node name="Frame" instance=ExtResource("1_01wj1")]
+script = ExtResource("2_se4ta")
 
 [node name="Frame" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_gu5qa")
+material_override = ExtResource("2_gu5qa")

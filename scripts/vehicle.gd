@@ -9,6 +9,7 @@ const throttle_reverse: Curve = preload("res://curves/throttle_reverse.tres")
 const tracer_scene: PackedScene = preload("res://scenes/tracer.tscn")
 const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
 const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
+const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var aim_ray_cast: RayCast3D = $CameraPivot/Camera3D/Aim
 @export var is_player := false
@@ -135,7 +136,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var l := p.distance_to(v)
 			var a := clampf(l / 50.0, 0.0, 1.0)
 			var t := Global.get_ticks_sec() * TAU
-			var m := 0.3 * TAU
+			var m := 0.1 * TAU
 			ap = m * a * sin(t)
 			ay = m * a * sin(2.0 * t)
 
@@ -178,24 +179,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 				metal_hit.one_shot = true
 				metal_hit.emitting = true
 				get_tree().current_scene.add_child(metal_hit)
-
-				var vehicle: Vehicle = collision.collider
-				var hit_part = vehicle.parts[collision.shape]
-				hit_part.health -= 10.0
-				if hit_part.health <= 0.0:
-					if hit_part is ArmorPart:
-						hit_part.armor.visible = false
-					if hit_part is GunPart:
-						hit_part.barrel.visible = false
-						hit_part.base.visible = false
-					if hit_part is WheelPart:
-						hit_part.armor.visible = false
-					if hit_part is CockpitPart:
-						hit_part.cockpit.visible = false
-					hit_part.health = 0.0
-					hit_part.frame.visible = true
-					if not hit_part is CockpitPart:
-						vehicle.shape_owner_set_disabled(collision.shape, true)
+				damage_part(collision.collider, collision.shape)
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
@@ -284,3 +268,31 @@ func get_steering_input() -> float:
 		return -Input.get_axis("move_left", "move_right")
 	var frequency := 0.1
 	return -0.7 * sin(Global.get_ticks_sec() * TAU * frequency)
+
+
+func damage_part(vehicle: Vehicle, shape_index: int) -> void:
+	var hit_part: Variant = vehicle.parts[shape_index]
+	if hit_part.health == 0.0:
+		return
+	hit_part.health -= 10.0
+	if hit_part.health <= 0.0:
+		if hit_part is ArmorPart:
+			hit_part.armor.visible = false
+		if hit_part is GunPart:
+			hit_part.barrel.visible = false
+			hit_part.base.visible = false
+		if hit_part is WheelPart:
+			hit_part.armor.visible = false
+		if hit_part is CockpitPart:
+			hit_part.cockpit.visible = false
+		hit_part.health = 0.0
+		var hit_part_frame: Frame = hit_part.frame
+		hit_part_frame.visible = true
+		for i in 8:
+			var giblet: PartGiblet = part_giblet_scene.instantiate()
+			get_tree().current_scene.add_child(giblet)
+			giblet.linear_velocity += Global.get_point_velocity(vehicle, hit_part.global_position)
+			giblet.global_position = hit_part.global_position
+			giblet.mesh.material_override = hit_part_frame.mesh.material_override
+		if not hit_part is CockpitPart:
+			vehicle.shape_owner_set_disabled(shape_index, true)

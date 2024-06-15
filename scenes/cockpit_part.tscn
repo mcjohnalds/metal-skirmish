@@ -16,13 +16,13 @@ shape = SubResource("BoxShape3D_mt8u5")
 [node name="Cockpit" parent="." instance=ExtResource("2_2ngob")]
 
 [node name="Cube" parent="Cockpit" index="0"]
-surface_material_override/0 = ExtResource("3_8jqic")
+material_override = ExtResource("3_8jqic")
 
 [node name="Frame" parent="." instance=ExtResource("3_3pccn")]
 visible = false
 
 [node name="Frame" parent="Frame" index="0"]
-surface_material_override/0 = ExtResource("3_8jqic")
+material_override = ExtResource("3_8jqic")
 
 [editable path="Cockpit"]
 [editable path="Frame"]

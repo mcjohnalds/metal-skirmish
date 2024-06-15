@@ -177,6 +177,7 @@ script = ExtResource("6_c3dvn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1000, 0, 0, 0, 1000, -0.000174846, 0, 0.000174846, 1000, 0, 0, 0)
+layers = 3
 mesh = SubResource("PlaneMesh_7msvy")
 skeleton = NodePath("../..")
 

@@ -1,5 +1,6 @@
 Todo:
 
+- Make damages steering wheels turn freely
 - Explosion effect when part is destroyed
 - Display damage texture on damaged parts
 - Sound
