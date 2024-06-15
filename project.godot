@@ -14,6 +14,10 @@ config/name="scrap-skirmish"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+g="*res://global.gd"
+
 [display]
 
 window/size/viewport_width=2040

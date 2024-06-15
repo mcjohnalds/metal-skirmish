@@ -2,16 +2,19 @@ class_name Vehicle
 extends RigidBody3D
 
 const SPRING_REST_DISTANCE := 0.7
+const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
+const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
+const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
+const throttle_reverse: Curve = preload("res://curves/throttle_reverse.tres")
+const tracer_scene: PackedScene = preload("res://tracer.tscn")
+const dirt_hit_scene: PackedScene = preload("res://dirt_hit.tscn")
+const metal_hit_scene: PackedScene = preload("res://metal_hit.tscn")
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var aim_ray_cast: RayCast3D = $CameraPivot/Camera3D/Aim
 @export var is_player := false
-var wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
-var wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
-var throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
-var throttle_reverse: Curve = preload("res://curves/throttle_reverse.tres")
-var tracer_scene: PackedScene = preload("res://tracer.tscn")
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
+var center_of_volume: Vector3
 var view_pitch := 0.0
 
 
@@ -58,7 +61,8 @@ func _ready() -> void:
 		var so := create_shape_owner(shape)
 		shape_owner_add_shape(so, shape.shape)
 		shape_owner_set_transform(so, trans)
-	center_of_mass = part_position_sum / part_count
+	center_of_volume = part_position_sum / part_count
+	center_of_mass = center_of_volume
 	center_of_mass.y = -0.5
 
 
@@ -85,43 +89,79 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process_gun_part(part: GunPart) -> void:
-	if not is_player:
-		return
-	var aim_ray_start := aim_ray_cast.global_position
-
-	var aim_ray_end: Vector3
-	if aim_ray_cast.get_collider():
-		aim_ray_end = aim_ray_cast.get_collision_point()
-	else:
-		aim_ray_end = aim_ray_cast.global_transform * aim_ray_cast.target_position
-	Global.safe_look_at(part.barrel, aim_ray_end, true)
-
-	var bullet_start := part.barrel_end.global_position
-	var bullet_true_dir := bullet_start.direction_to(aim_ray_end)
-	var aim_ray_length := aim_ray_start.distance_to(aim_ray_end)
-	var m := TAU * 0.002
-	var qp := Quaternion(Vector3.LEFT, randf_range(-m, m))
-	var qy := Quaternion(Vector3.UP, randf_range(-m, m))
-	var bullet_rand_dir := qy * (qp * bullet_true_dir)
-
-	var query := PhysicsRayQueryParameters3D.new()
-	query.from = bullet_start
-	query.to = bullet_start + bullet_rand_dir * aim_ray_length
-	var collision := get_world_3d().direct_space_state.intersect_ray(query)
-
-	var bullet_end: Vector3
-	if collision:
-		bullet_end = collision.position
-	else:
-		bullet_end = query.to
-
 	var fire_rate := 10.0
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate:
+	var gun_ready: bool = Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate
+	var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	if wants_to_shoot and gun_ready:
+		var target: Vector3
+		if is_player:
+			if aim_ray_cast.get_collider():
+				target = aim_ray_cast.get_collision_point()
+			else:
+				target = aim_ray_cast.global_transform * aim_ray_cast.target_position
+		else:
+			target = g.player.global_position + g.player.center_of_volume
+
+		Global.safe_look_at(part.barrel, target, true)
+
+		var bullet_start := part.barrel_end.global_position
+		var bullet_true_dir := bullet_start.direction_to(target)
+
+		var ap: float
+		var ay: float
+		if is_player:
+			ap = 0.0
+			ay = 0.0
+		else:
+			var v := linear_velocity - g.player.linear_velocity
+			var d := global_position - g.player.global_position
+			var p := v.project(d)
+			var l := p.distance_to(v)
+			var a := clampf(l / 50.0, 0.0, 1.0)
+			var t := Global.get_ticks_sec() * TAU
+			var m := 0.005 * TAU
+			ap = m * a * sin(t)
+			ay = m * a * sin(2.0 * t)
+
+		var rm := 0.002 * TAU
+		var rp := randf_range(-rm, rm)
+		var ry := randf_range(-rm, rm)
+
+		var qp := Quaternion(Vector3.LEFT, rp + ap)
+		var qy := Quaternion(Vector3.UP, ry + ay)
+
+		var bullet_rand_dir := qy * (qp * bullet_true_dir)
+
+		var query := PhysicsRayQueryParameters3D.new()
+		query.from = bullet_start
+		query.to = bullet_start + bullet_rand_dir * 1000.0
+		var collision := get_world_3d().direct_space_state.intersect_ray(query)
+
+		var bullet_end: Vector3
+		if collision:
+			bullet_end = collision.position
+		else:
+			bullet_end = query.to
+
 		var tracer: Tracer = tracer_scene.instantiate()
 		tracer.start = part.barrel_end.global_position
 		tracer.end = bullet_end
 		part.last_fired_at = Global.get_ticks_sec()
-		add_child(tracer)
+		get_tree().current_scene.add_child(tracer)
+
+		if collision:
+			if collision.collider == g.ground:
+				var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
+				dirt_hit.position = bullet_end
+				dirt_hit.one_shot = true
+				dirt_hit.emitting = true
+				get_tree().current_scene.add_child(dirt_hit)
+			elif collision.collider is Vehicle:
+				var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
+				metal_hit.position = bullet_end
+				metal_hit.one_shot = true
+				metal_hit.emitting = true
+				get_tree().current_scene.add_child(metal_hit)
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:

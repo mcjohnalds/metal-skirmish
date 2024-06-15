@@ -1,5 +1,6 @@
 Todo:
 
+- Enemy aim uses PID
 - Mouse sensitivity slider
 - Smooth camera movement
 
