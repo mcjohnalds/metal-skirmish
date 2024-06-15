@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://4fui5v13ebcj"]
 
-[ext_resource type="Script" path="res://gun_part.gd" id="1_c3nxo"]
+[ext_resource type="Script" path="res://scripts/gun_part.gd" id="1_c3nxo"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
 [ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="3_h56yo"]
-[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://frame.tscn" id="4_d6d68"]
+[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="4_d6d68"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mt8u5"]
 

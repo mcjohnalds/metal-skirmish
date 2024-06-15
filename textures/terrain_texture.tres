@@ -1,6 +1,6 @@
 [gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://cu1cj4yrwsdwk"]
 
-[ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://terrain_noise.tres" id="1_in2vr"]
+[ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://misc/terrain_noise.tres" id="1_jufqx"]
 
 [sub_resource type="Gradient" id="Gradient_hg7pt"]
 colors = PackedColorArray(1, 1, 1, 1, 0.894923, 0.894922, 0.894923, 1)
@@ -9,4 +9,4 @@ colors = PackedColorArray(1, 1, 1, 1, 0.894923, 0.894922, 0.894923, 1)
 generate_mipmaps = false
 seamless = true
 color_ramp = SubResource("Gradient_hg7pt")
-noise = ExtResource("1_in2vr")
+noise = ExtResource("1_jufqx")

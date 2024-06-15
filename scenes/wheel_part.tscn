@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhjl4ne7kf1gk"]
 
-[ext_resource type="Script" path="res://wheel_part.gd" id="1_rc5js"]
-[ext_resource type="PackedScene" uid="uid://cww4rrqoq5fmb" path="res://arrow.tscn" id="2_5re37"]
+[ext_resource type="Script" path="res://scripts/wheel_part.gd" id="1_rc5js"]
+[ext_resource type="PackedScene" uid="uid://cww4rrqoq5fmb" path="res://scenes/arrow.tscn" id="2_5re37"]
 [ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_rty61"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="3_ihea4"]
-[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://frame.tscn" id="5_7n777"]
+[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="5_7n777"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lj6dk"]
 

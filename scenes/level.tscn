@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=3 uid="uid://dibolnwtlpcgq"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_dfxqw"]
-[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://armor_part.tscn" id="1_o2iq1"]
-[ext_resource type="Script" path="res://vehicle.gd" id="2_7obre"]
-[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://wheel_part.tscn" id="3_r4wk5"]
-[ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://crosshair.svg" id="4_6exi3"]
-[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://gun_part.tscn" id="4_k3rsv"]
-[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://cockpit_part.tscn" id="6_43ypp"]
-[ext_resource type="Script" path="res://ground.gd" id="6_c3dvn"]
-[ext_resource type="Shader" path="res://terrain.gdshader" id="7_b3nk6"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_dfxqw"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="1_o2iq1"]
+[ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_7obre"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="3_r4wk5"]
+[ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="4_6exi3"]
+[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="4_k3rsv"]
+[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://scenes/cockpit_part.tscn" id="6_43ypp"]
+[ext_resource type="Script" path="res://scripts/ground.gd" id="6_c3dvn"]
+[ext_resource type="Shader" path="res://scripts/terrain.gdshader" id="7_b3nk6"]
 [ext_resource type="Texture2D" uid="uid://cu1cj4yrwsdwk" path="res://textures/terrain_texture.tres" id="8_i8dtw"]
 [ext_resource type="Texture2D" uid="uid://bbtqr2hm207xu" path="res://textures/terrain_height_map.tres" id="8_ofyn3"]
 [ext_resource type="Texture2D" uid="uid://7cgcov13neb2" path="res://textures/terrain_normal_map.tres" id="9_lhgc0"]
@@ -123,6 +123,7 @@ transform = Transform3D(-0.432149, 0, 0.901802, 0, 1, 0, -0.901802, 0, -0.432149
 mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("2_7obre")
+is_player = null
 
 [node name="ArmorPart4" parent="Enemy" instance=ExtResource("1_o2iq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

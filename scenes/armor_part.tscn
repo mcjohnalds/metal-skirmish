@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cq4gywwo6nthu"]
 
-[ext_resource type="Script" path="res://armor_part.gd" id="1_vwkb6"]
+[ext_resource type="Script" path="res://scripts/armor_part.gd" id="1_vwkb6"]
 [ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_262j4"]
-[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://frame.tscn" id="3_qc0l6"]
+[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="3_qc0l6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mt8u5"]
 

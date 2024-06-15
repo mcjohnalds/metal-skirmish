@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dyjma2rawg826"
-path="res://.godot/imported/cockpit.glb-a242366d6f400da8acead947c12b81c0.scn"
+path="res://.godot/imported/cockpit.glb-9a8981260a0e3a951131ba7d2dbca945.scn"
 
 [deps]
 
-source_file="res://cockpit.glb"
-dest_files=["res://.godot/imported/cockpit.glb-a242366d6f400da8acead947c12b81c0.scn"]
+source_file="res://meshes/cockpit.glb"
+dest_files=["res://.godot/imported/cockpit.glb-9a8981260a0e3a951131ba7d2dbca945.scn"]
 
 [params]
 

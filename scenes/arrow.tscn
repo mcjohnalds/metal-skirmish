@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cww4rrqoq5fmb"]
 
-[ext_resource type="Script" path="res://arrow.gd" id="1_0edhr"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_0edhr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n6p8"]
 resource_local_to_scene = true

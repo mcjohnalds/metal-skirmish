@@ -1,6 +1,6 @@
 [gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://bbtqr2hm207xu"]
 
-[ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://terrain_noise.tres" id="1_b27co"]
+[ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://misc/terrain_noise.tres" id="1_b27co"]
 
 [resource]
 generate_mipmaps = false
