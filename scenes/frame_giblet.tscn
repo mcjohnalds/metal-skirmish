@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxlkanl7xmb5k"]
+
+[ext_resource type="Script" path="res://scripts/giblet.gd" id="1_m68b3"]
+[ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="2_0lhks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmxsd"]
+
+[node name="FrameGiblet" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
+collision_layer = 8
+collision_mask = 2
+mass = 50.0
+script = ExtResource("1_m68b3")
+mesh = NodePath("Frame/Frame")
+
+[node name="Frame" parent="." instance=ExtResource("2_0lhks")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fmxsd")
+
+[editable path="Frame"]

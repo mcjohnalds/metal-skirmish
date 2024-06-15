@@ -10,21 +10,19 @@ const tracer_scene: PackedScene = preload("res://scenes/tracer.tscn")
 const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
 const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
 const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
-@onready var camera_pivot: Node3D = $CameraPivot
-@onready var aim_ray_cast: RayCast3D = $CameraPivot/Camera3D/Aim
+const frame_giblet_scene: PackedScene = preload("res://scenes/frame_giblet.tscn")
 @export var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
-var view_pitch := 0.0
-var parts: Array[Variant] = []
+var parts: Array[Node3D] = []
 
 
 func _ready() -> void:
 	var part_count := 0
 	var part_position_sum := Vector3.ZERO
 	var shapes: Array = []
-	aim_ray_cast.add_exception(self)
+	g.camera_pivot.aim.add_exception(self)
 	for child: Node in get_children():
 		var is_part := false
 		if child is ArmorPart:
@@ -81,23 +79,8 @@ func _physics_process(delta: float) -> void:
 		_physics_process_wheel_part(part, delta)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	if event is InputEventMouseMotion:
-		var sensitivity := 0.002
-		var motion := event as InputEventMouseMotion
-		camera_pivot.rotation.y -= motion.relative.x * sensitivity
-		view_pitch += motion.relative.y * sensitivity
-		var m := TAU / 4.0
-		view_pitch = clampf(view_pitch, -m, m)
-		camera_pivot.rotation.x = view_pitch / 2.0
-		var camera := camera_pivot.get_child(0)
-		camera.rotation.x = -view_pitch / 2.0
-
-
 func _physics_process_gun_part(part: GunPart) -> void:
-	if part.health == 0.0 or cockpit_part.health == 0.0:
+	if part.health == 0.0 or cockpit_part.health == 0.0 or not g.player:
 		return
 	var fire_rate := 10.0
 	var gun_ready: bool = Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate
@@ -105,10 +88,10 @@ func _physics_process_gun_part(part: GunPart) -> void:
 	if wants_to_shoot and gun_ready:
 		var target: Vector3
 		if is_player:
-			if aim_ray_cast.get_collider():
-				target = aim_ray_cast.get_collision_point()
+			if g.camera_pivot.aim.get_collider():
+				target = g.camera_pivot.aim.get_collision_point()
 			else:
-				target = aim_ray_cast.global_transform * aim_ray_cast.target_position
+				target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
 		else:
 			var target_part: Node3D = g.player.cockpit_part
 			for p in g.player.parts:
@@ -260,7 +243,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 func get_throttle_input() -> float:
 	if is_player:
 		return Input.get_axis("move_backward", "move_forward")
-	return 0.8
+	return 0.8 * 0.0
 
 
 func get_steering_input() -> float:
@@ -286,13 +269,26 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 		if hit_part is CockpitPart:
 			hit_part.cockpit.visible = false
 		hit_part.health = 0.0
-		var hit_part_frame: Frame = hit_part.frame
-		hit_part_frame.visible = true
 		for i in 8:
-			var giblet: PartGiblet = part_giblet_scene.instantiate()
+			var giblet: Giblet = part_giblet_scene.instantiate()
 			get_tree().current_scene.add_child(giblet)
 			giblet.linear_velocity += Global.get_point_velocity(vehicle, hit_part.global_position)
 			giblet.global_position = hit_part.global_position
+			var hit_part_frame: Frame = hit_part.frame
+			hit_part_frame.visible = true
 			giblet.mesh.material_override = hit_part_frame.mesh.material_override
-		if not hit_part is CockpitPart:
+		if hit_part is CockpitPart:
+			vehicle.queue_free()
+			for p: Node3D in vehicle.parts:
+				var giblet: Giblet = frame_giblet_scene.instantiate()
+				get_tree().current_scene.add_child(giblet)
+				giblet.global_position = p.global_position
+				giblet.global_rotation = p.global_rotation
+				giblet.linear_velocity += Global.get_point_velocity(vehicle, p.global_position)
+				giblet.angular_velocity += vehicle.angular_velocity
+				var p_frame: Frame = p.frame
+				giblet.mesh.material_override = p_frame.mesh.material_override
+			if vehicle.is_player:
+				g.camera_pivot.reparent(get_tree().current_scene)
+		else:
 			vehicle.shape_owner_set_disabled(shape_index, true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=21 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_dfxqw"]
 [ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="1_o2iq1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="3_r4wk5"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="4_6exi3"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="4_k3rsv"]
+[ext_resource type="Script" path="res://scripts/camera_pivot.gd" id="5_s3t70"]
 [ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://scenes/cockpit_part.tscn" id="6_43ypp"]
 [ext_resource type="Script" path="res://scripts/ground.gd" id="6_c3dvn"]
 [ext_resource type="Shader" path="res://scripts/terrain.gdshader" id="7_b3nk6"]
@@ -100,8 +101,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 [node name="WheelPart4" parent="Player" instance=ExtResource("3_r4wk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="CameraPivot" type="Node3D" parent="Player"]
+[node name="CameraPivot" type="Node3D" parent="Player" groups=["camera pivot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 2.5)
+script = ExtResource("5_s3t70")
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -11)
@@ -119,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2.08165e-12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Enemy" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.432149, 0, 0.901802, 0, 1, 0, -0.901802, 0, -0.432149, 0.0588708, 10.831, 29.2805)
+transform = Transform3D(-0.757644, 0, -0.652667, 0, 1, 0, 0.652667, 0, -0.757644, 0.0588708, 10.831, 29.2805)
 mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("2_7obre")
@@ -154,15 +156,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 [node name="WheelPart4" parent="Enemy" instance=ExtResource("3_r4wk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="CameraPivot" type="Node3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 2.5)
-
-[node name="Camera3D" type="Camera3D" parent="Enemy/CameraPivot"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -11)
-
-[node name="Aim" type="RayCast3D" parent="Enemy/CameraPivot/Camera3D"]
-target_position = Vector3(2.08165e-12, 2.08165e-12, -1000)
-
 [node name="GunPart1" parent="Enemy" instance=ExtResource("4_k3rsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 5)
 
@@ -173,6 +166,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2.08165e-12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["ground"]]
+collision_layer = 3
 script = ExtResource("6_c3dvn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
