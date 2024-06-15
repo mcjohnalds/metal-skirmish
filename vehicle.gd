@@ -12,6 +12,7 @@ const metal_hit_scene: PackedScene = preload("res://metal_hit.tscn")
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var aim_ray_cast: RayCast3D = $CameraPivot/Camera3D/Aim
 @export var is_player := false
+var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
 var view_pitch := 0.0
@@ -52,6 +53,11 @@ func _ready() -> void:
 			var part := child as GunPart
 			gun_parts.append(part)
 			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
+		elif child is CockpitPart:
+			is_part = true
+			var part := child as CockpitPart
+			cockpit_part = part
+			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 		if is_part:
 			parts.append(child)
 			part_position_sum += child.position
@@ -90,6 +96,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process_gun_part(part: GunPart) -> void:
+	if part.health == 0.0 or cockpit_part.health == 0.0:
+		return
 	var fire_rate := 10.0
 	var gun_ready: bool = Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate
 	var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
@@ -101,7 +109,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			else:
 				target = aim_ray_cast.global_transform * aim_ray_cast.target_position
 		else:
-			var target_part: Node3D
+			var target_part: Node3D = g.player.cockpit_part
 			for p in g.player.parts:
 				if p.health > 0.0:
 					target_part = p
@@ -127,7 +135,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var l := p.distance_to(v)
 			var a := clampf(l / 50.0, 0.0, 1.0)
 			var t := Global.get_ticks_sec() * TAU
-			var m := 0.005 * TAU
+			var m := 0.3 * TAU
 			ap = m * a * sin(t)
 			ay = m * a * sin(2.0 * t)
 
@@ -164,7 +172,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 				dirt_hit.one_shot = true
 				dirt_hit.emitting = true
 				get_tree().current_scene.add_child(dirt_hit)
-			elif collision.collider is Vehicle:
+			elif collision.collider is Vehicle and collision.collider != self:
 				var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
 				metal_hit.position = bullet_end
 				metal_hit.one_shot = true
@@ -182,9 +190,12 @@ func _physics_process_gun_part(part: GunPart) -> void:
 						hit_part.base.visible = false
 					if hit_part is WheelPart:
 						hit_part.armor.visible = false
-					hit_part.frame.visible = true
+					if hit_part is CockpitPart:
+						hit_part.cockpit.visible = false
 					hit_part.health = 0.0
-					vehicle.shape_owner_set_disabled(collision.shape, true)
+					hit_part.frame.visible = true
+					if not hit_part is CockpitPart:
+						vehicle.shape_owner_set_disabled(collision.shape, true)
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
@@ -197,7 +208,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		var force_offset := part.wheel.global_position - global_position
 
 		var breaking := false
-		if part.traction:
+		if part.traction and part.health > 0.0 and cockpit_part.health > 0.0:
 			var input := get_throttle_input()
 			var max_torque := 15000.0 * absf(input)
 			var forward_speed := linear_velocity.dot(basis.z)
@@ -215,7 +226,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 			var steer_max := TAU * 0.1 * absf(input_steering)
 			var has_input = absf(input_steering) > 0.0
 			var steering_outward := has_input and input_steering * part.wheel.rotation.y >= 0.0
-			if steering_outward:
+			if steering_outward and part.health > 0.0 and cockpit_part.health > 0.0:
 				var f := 1.0 - pow(absf(part.wheel.rotation.y / steer_max), 0.4)
 				part.wheel.rotation.y += steer_speed * input_steering * f * delta
 				part.wheel.rotation.y = clampf(part.wheel.rotation.y, -steer_max, steer_max)

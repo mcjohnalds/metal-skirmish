@@ -1,5 +1,8 @@
 Todo:
 
+- Explosion effect when part is destroyed
+- Display damage texture on damaged parts
+- Sound
 - Mouse sensitivity slider
 - Smooth camera movement
 

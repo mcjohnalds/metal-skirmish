@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=20 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_dfxqw"]
 [ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://armor_part.tscn" id="1_o2iq1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://wheel_part.tscn" id="3_r4wk5"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://crosshair.svg" id="4_6exi3"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://gun_part.tscn" id="4_k3rsv"]
+[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://cockpit_part.tscn" id="6_43ypp"]
 [ext_resource type="Script" path="res://ground.gd" id="6_c3dvn"]
 [ext_resource type="Shader" path="res://terrain.gdshader" id="7_b3nk6"]
 [ext_resource type="Texture2D" uid="uid://cu1cj4yrwsdwk" path="res://textures/terrain_texture.tres" id="8_i8dtw"]
@@ -73,9 +74,6 @@ is_player = true
 [node name="ArmorPart4" parent="Player" instance=ExtResource("1_o2iq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="ArmorPart5" parent="Player" instance=ExtResource("1_o2iq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-
 [node name="ArmorPart7" parent="Player" instance=ExtResource("1_o2iq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
@@ -117,6 +115,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 5)
 [node name="GunPart2" parent="Player" instance=ExtResource("4_k3rsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2.08165e-12)
 
+[node name="CockpitPart" parent="Player" instance=ExtResource("6_43ypp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
 [node name="Enemy" type="RigidBody3D" parent="."]
 transform = Transform3D(-0.432149, 0, 0.901802, 0, 1, 0, -0.901802, 0, -0.432149, 0.0588708, 10.831, 29.2805)
 mass = 1000.0
@@ -125,9 +126,6 @@ script = ExtResource("2_7obre")
 
 [node name="ArmorPart4" parent="Enemy" instance=ExtResource("1_o2iq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-
-[node name="ArmorPart5" parent="Enemy" instance=ExtResource("1_o2iq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="ArmorPart7" parent="Enemy" instance=ExtResource("1_o2iq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
@@ -169,6 +167,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 5)
 
 [node name="GunPart2" parent="Enemy" instance=ExtResource("4_k3rsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2.08165e-12)
+
+[node name="CockpitPart" parent="Enemy" instance=ExtResource("6_43ypp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["ground"]]
 script = ExtResource("6_c3dvn")
