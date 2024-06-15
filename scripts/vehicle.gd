@@ -22,7 +22,8 @@ func _ready() -> void:
 	var part_count := 0
 	var part_position_sum := Vector3.ZERO
 	var shapes: Array = []
-	g.camera_pivot.aim.add_exception(self)
+	if is_player:
+		g.camera_pivot.aim.add_exception(self)
 	for child: Node in get_children():
 		var is_part := false
 		if child is ArmorPart:
@@ -119,7 +120,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var l := p.distance_to(v)
 			var a := clampf(l / 50.0, 0.0, 1.0)
 			var t := Global.get_ticks_sec() * TAU
-			var m := 0.1 * TAU
+			var m := 0.3 * TAU
 			ap = m * a * sin(t)
 			ay = m * a * sin(2.0 * t)
 

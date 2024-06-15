@@ -1,11 +1,15 @@
 Todo:
 
-- Make damages steering wheels turn freely
+- Make damaged steering wheels turn freely
 - Explosion effect when part is destroyed
+- Hitmarker
 - Display damage texture on damaged parts
 - Sound
 - Mouse sensitivity slider
 - Smooth camera movement
+- Graphics settings
+- Export
+- Publish
 
 Ideas:
 

@@ -5,6 +5,11 @@ extends Node3D
 @onready var aim: RayCast3D = $Camera3D/Aim
 var view_pitch := 0.0
 
+
+func _process(_delta: float) -> void:
+	g.aim_debug_sphere.global_position = g.camera_pivot.aim.get_collision_point()
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()

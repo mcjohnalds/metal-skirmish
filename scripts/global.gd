@@ -17,6 +17,11 @@ var camera_pivot: Node3D:
 		return get_tree().get_first_node_in_group("camera pivot")
 
 
+var aim_debug_sphere: Node3D:
+	get:
+		return get_tree().get_first_node_in_group("aim debug sphere")
+
+
 static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = false) -> void:
 	var p : Vector3 = node.global_transform.origin
 	if p.is_equal_approx(target):
