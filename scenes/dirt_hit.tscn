@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://yu283afprq74"]
+[gd_scene load_steps=10 format=3 uid="uid://yu283afprq74"]
 
 [ext_resource type="Texture2D" uid="uid://uvd4206t6c50" path="res://addons/kenney_particle_pack/smoke_03.png" id="1_ufu6r"]
+[ext_resource type="Script" path="res://scripts/auto_cleanup_one_shot_particles.gd" id="2_fcqoy"]
 
 [sub_resource type="Curve" id="Curve_ksd8x"]
 _data = [Vector2(0.531707, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0185874), 0.0, 0.0, 0, 0]
@@ -45,6 +46,7 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_4bl81"]
 material = SubResource("StandardMaterial3D_j35yp")
+size = Vector2(5, 5)
 
 [node name="DirtHit" type="GPUParticles3D"]
 transform = Transform3D(1.77989, 0, 0, 0, 1.77989, 0, 0, 0, 1.77989, 0, 0, 0)
@@ -54,3 +56,4 @@ randomness = 0.69
 visibility_aabb = AABB(-1.20099, -1.62748, -1.16894, 2.65504, 2.74925, 2.51821)
 process_material = SubResource("ParticleProcessMaterial_6g6xl")
 draw_pass_1 = SubResource("QuadMesh_4bl81")
+script = ExtResource("2_fcqoy")

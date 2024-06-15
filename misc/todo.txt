@@ -1,12 +1,12 @@
 Todo:
 
 - Make gun impart small force on shooter and target
-- Muzzle flash particle effect
 - Kick up dirt when driving
 - Crash damage
 - Sky texture
 - Make damaged steering wheels turn freely
 - Explosion effect when part is destroyed
+- Nuke explosion effect when cockpit destroyed
 - Hitmarker
 - Display damage texture on damaged parts
 - Sound

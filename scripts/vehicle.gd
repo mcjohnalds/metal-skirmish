@@ -13,6 +13,7 @@ const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
 const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
 const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
 const frame_giblet_scene: PackedScene = preload("res://scenes/frame_giblet.tscn")
+const part_destroyed_scene: PackedScene = preload("res://scenes/part_destroyed.tscn")
 @onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
 @export var is_player := false
 var cockpit_part: CockpitPart
@@ -294,7 +295,7 @@ func get_steering_input() -> float:
 
 
 func damage_part(vehicle: Vehicle, shape_index: int) -> void:
-	var hit_part: Variant = vehicle.parts[shape_index]
+	var hit_part: Node3D = vehicle.parts[shape_index]
 	if hit_part.health == 0.0:
 		return
 	hit_part.health -= 10.0
@@ -332,3 +333,9 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 				g.camera_pivot.reparent(get_tree().current_scene)
 		else:
 			vehicle.shape_owner_set_disabled(shape_index, true)
+
+		var particles: GPUParticles3D = part_destroyed_scene.instantiate()
+		particles.position = hit_part.global_position
+		particles.one_shot = true
+		particles.emitting = true
+		get_tree().current_scene.add_child(particles)

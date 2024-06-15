@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://4hfl8w6up7bg"]
+
+[ext_resource type="Texture2D" uid="uid://k53trbvkhr1s" path="res://addons/kenney_particle_pack/trace_07.png" id="1_mlscu"]
+[ext_resource type="Script" path="res://scripts/auto_cleanup_one_shot_particles.gd" id="2_nix4h"]
+
+[sub_resource type="Curve" id="Curve_knub3"]
+_data = [Vector2(0, 1), 0.0, -0.254027, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_etbex"]
+curve = SubResource("Curve_knub3")
+
+[sub_resource type="Curve" id="Curve_2hbj0"]
+_data = [Vector2(0, 1), 0.0, -0.0653213, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r8snk"]
+curve = SubResource("Curve_2hbj0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1e56"]
+lifetime_randomness = 0.37
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 6.0
+initial_velocity_max = 20.0
+damping_max = 10.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_r8snk")
+alpha_curve = SubResource("CurveTexture_etbex")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31b2t"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.44, 1.262, 0.548, 1)
+albedo_texture = ExtResource("1_mlscu")
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_kpa8b"]
+material = SubResource("StandardMaterial3D_31b2t")
+size = Vector2(1, 2)
+
+[node name="PartDestroyed" type="GPUParticles3D"]
+transform = Transform3D(1.77989, 0, 0, 0, 1.77989, 0, 0, 0, 1.77989, 0, 0, 0)
+amount = 16
+lifetime = 0.6
+explosiveness = 0.99
+randomness = 0.9
+process_material = SubResource("ParticleProcessMaterial_f1e56")
+draw_pass_1 = SubResource("QuadMesh_kpa8b")
+script = ExtResource("2_nix4h")

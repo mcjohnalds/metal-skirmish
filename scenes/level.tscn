@@ -134,7 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2.08165e-12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Enemy" type="RigidBody3D" parent="."]
-transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, -11.7497, 10.831, 90.7152)
+transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, 14.7995, 10.831, -27.4631)
 collision_mask = 3
 mass = 1000.0
 center_of_mass_mode = 1
