@@ -2,6 +2,8 @@ class_name Global
 extends Node
 
 const MAX_AIM_RANGE := 100
+const FIRE_RATE := 10.0
+
 
 var level: Level:
 	get:

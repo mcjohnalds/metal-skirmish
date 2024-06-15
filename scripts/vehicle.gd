@@ -96,10 +96,10 @@ func _physics_process_gun_part(part: GunPart) -> void:
 	)
 	if not is_enabled or not player_visible:
 		return
-	var fire_rate := 10.0
-	var gun_ready: bool = Global.get_ticks_sec() - part.last_fired_at >= 1.0 / fire_rate
 	var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	if wants_to_shoot and gun_ready:
+	if wants_to_shoot and part.can_fire():
+		part.fire()
+
 		var target: Vector3
 		if is_player:
 			if g.camera_pivot.aim.get_collider():

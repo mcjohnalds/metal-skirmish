@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://4fui5v13ebcj"]
+[gd_scene load_steps=28 format=3 uid="uid://4fui5v13ebcj"]
 
 [ext_resource type="Script" path="res://scripts/gun_part.gd" id="1_c3nxo"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
+[ext_resource type="Texture2D" uid="uid://2mv8p2468pr1" path="res://addons/kenney_particle_pack/muzzle_02.png" id="3_grapf"]
 [ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="3_h56yo"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="4_d6d68"]
+[ext_resource type="Texture2D" uid="uid://dgj64ghpvhlx0" path="res://addons/kenney_particle_pack/magic_05.png" id="4_t440h"]
+[ext_resource type="Texture2D" uid="uid://c45vajf0x38oe" path="res://addons/kenney_particle_pack/smoke_08.png" id="5_01fvb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mt8u5"]
 
@@ -17,6 +20,98 @@ height = 1.0
 material = ExtResource("2_fnslv")
 radius = 0.15
 height = 0.3
+
+[sub_resource type="Curve" id="Curve_0tjkh"]
+_data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.273171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wne8b"]
+curve = SubResource("Curve_0tjkh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gmnm"]
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+alpha_curve = SubResource("CurveTexture_wne8b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb81q"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_texture = ExtResource("3_grapf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5qcoc"]
+material = SubResource("StandardMaterial3D_wb81q")
+size = Vector2(2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83vri"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_texture = ExtResource("4_t440h")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ij2uc"]
+material = SubResource("StandardMaterial3D_83vri")
+size = Vector2(2, 2)
+
+[sub_resource type="Curve" id="Curve_6ipiw"]
+_data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.536585, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7yq5w"]
+curve = SubResource("Curve_6ipiw")
+
+[sub_resource type="Curve" id="Curve_qokk5"]
+min_value = 2.13163e-14
+max_value = 0.2
+_data = [Vector2(0, 2.13163e-14), 0.0, 0.28, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oucc8"]
+curve = SubResource("Curve_qokk5")
+
+[sub_resource type="Curve" id="Curve_b40h0"]
+_data = [Vector2(0, 0), 0.0, 2.78453, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_st3no"]
+curve = SubResource("Curve_b40h0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h12wm"]
+lifetime_randomness = 0.42
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_oucc8")
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 180.0
+initial_velocity_min = 0.3
+initial_velocity_max = 0.3
+gravity = Vector3(2.08165e-12, 0.3, 2.08165e-12)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_st3no")
+alpha_curve = SubResource("CurveTexture_7yq5w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3mb8"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.678431, 0.678431, 0.678431, 1)
+albedo_texture = ExtResource("5_01fvb")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_iv4c8"]
+material = SubResource("StandardMaterial3D_k3mb8")
+size = Vector2(1.5, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kai1l"]
 material = ExtResource("3_h56yo")
@@ -42,6 +137,50 @@ skeleton = NodePath("../..")
 
 [node name="End" type="Node3D" parent="Barrel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="MuzzleFlash1" type="GPUParticles3D" parent="Barrel/End"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00117433, 0.0328035, 1.24138)
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8gmnm")
+draw_pass_1 = SubResource("QuadMesh_5qcoc")
+
+[node name="MuzzleFlash2" type="GPUParticles3D" parent="Barrel/End"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, 1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, -0.00117433, 0.0328035, 1.24138)
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8gmnm")
+draw_pass_1 = SubResource("QuadMesh_5qcoc")
+
+[node name="MuzzleFlash3" type="GPUParticles3D" parent="Barrel/End"]
+transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.349562)
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8gmnm")
+draw_pass_1 = SubResource("QuadMesh_ij2uc")
+
+[node name="Smoke" type="GPUParticles3D" parent="Barrel/End"]
+transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.00320232)
+emitting = false
+lifetime = 3.0
+randomness = 0.2
+fixed_fps = 60
+visibility_aabb = AABB(-1.62292, -1.09174, -1.68963, 3.18206, 4.79947, 3.20341)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_h12wm")
+draw_pass_1 = SubResource("QuadMesh_iv4c8")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
