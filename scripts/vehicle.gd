@@ -25,7 +25,6 @@ var parts: Array[Node3D] = []
 
 
 func _ready() -> void:
-	var part_count := 0
 	var part_position_sum := Vector3.ZERO
 	if is_player:
 		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
@@ -65,17 +64,14 @@ func _ready() -> void:
 		if is_part:
 			parts.append(child)
 			part_position_sum += child.position
-			part_count += 1
 
 			var shape := CollisionShape3D.new()
 			shape.position = child.position
 			shape.shape = BoxShape3D.new()
 			add_child(shape)
-			# Note that this part can be accessed at parts[shape_index]
-	# TODO: calculate properly
-	center_of_mass = part_position_sum / part_count
-	center_of_mass.y = -0.5
-	mass = 1000.0
+	center_of_mass = part_position_sum / parts.size()
+	center_of_mass.y = center_of_mass.y * 0.5 - 0.5
+	mass = parts.size() * 100.0
 
 
 func _physics_process(delta: float) -> void:

@@ -30,6 +30,9 @@ func _process(_delta: float) -> void:
 		block_face_indicator.position = part.position + normal / 2.0
 		var target := block_face_indicator.position + normal
 		Global.safe_look_at(block_face_indicator, target)
+		block_face_indicator.visible = true
+	else:
+		block_face_indicator.visible = false
 
 
 func _input(event):
