@@ -51,6 +51,14 @@ static func vector_3_to_dictionary(v: Vector3) -> Dictionary:
 	return { "x": v.x, "y": v.y, "z": v.z }
 
 
+static func vector_3_floorf(v: Vector3) -> Vector3:
+	return Vector3(floorf(v.x), floorf(v.y), floorf(v.z))
+
+
+static func vector_3_roundi(v: Vector3) -> Vector3i:
+	return Vector3i(roundi(v.x), roundi(v.y), roundi(v.z))
+
+
 static func dictionary_to_vector_3(d: Dictionary) -> Vector3:
 	return Vector3(d["x"], d["y"], d["z"])
 
@@ -92,6 +100,36 @@ static func dictionary_to_parts(dict: Dictionary) -> Array[Node3D]:
 		part.position = p["position"]
 		parts.append(part)
 	return parts
+
+
+static func is_graph_connected(pairs: Array) -> bool:
+	if pairs.size() == 0:
+		return true
+
+	var graph = {}
+	for pair in pairs:
+		var a = pair[0]
+		var b = pair[1]
+		if not graph.has(a):
+			graph[a] = []
+		if not graph.has(b):
+			graph[b] = []
+		graph[a].append(b)
+		graph[b].append(a)
+
+	var visited = {}
+	var nodes = graph.keys()
+	var stack = [nodes[0]]
+	visited[nodes[0]] = true
+
+	while stack.size() > 0:
+		var node = stack.pop_back()
+		for neighbor in graph[node]:
+			if not visited.has(neighbor):
+				visited[neighbor] = true
+				stack.append(neighbor)
+
+	return visited.size() == nodes.size()
 
 
 func _unhandled_input(event: InputEvent) -> void:
