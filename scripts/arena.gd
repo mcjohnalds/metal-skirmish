@@ -8,7 +8,10 @@ var player: Vehicle
 
 
 func _ready() -> void:
-	player.position = player_spawn_point.position
+	var min_y := 0.0
+	for c in player.get_children():
+		min_y = minf(min_y, c.position.y)
+	player.position = player_spawn_point.position - Vector3.UP * min_y
 	add_child(player)
 
 

@@ -43,11 +43,10 @@ func _input(event: InputEvent) -> void:
 			if camera.position.z > -3.0:
 				camera.position.z = -2.0
 	if event is InputEventMouseMotion:
-		var mmb := Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
 		var motion := event as InputEventMouseMotion
 		if fight_mode:
 			view_pitch += motion.relative.y * MOUSE_SENSITIVITY
 			view_yaw -= motion.relative.x * MOUSE_SENSITIVITY
-		elif mmb:
+		elif Input.is_action_pressed("orbit"):
 			view_pitch += motion.relative.y * MOUSE_SENSITIVITY * 2.0
 			view_yaw -= motion.relative.x * MOUSE_SENSITIVITY * 2.0

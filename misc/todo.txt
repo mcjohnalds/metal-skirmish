@@ -1,37 +1,5 @@
 Todo:
 
-- Construction
-  - Create main scene, arena is a child, listens for F key
-  - When F is pressed
-    - Fade out to black
-    - Player part data serialized, stored in main scene
-    - Scene changes to garage
-    - Fade in from black
-    - part data deserialized, parts instantiated
-    - Cursor appears
-    - Inventory is displayed on left of screen
-      - Each part type is displayed as a wireframe
-      - Quantity displayed on bottom-right
-      - When part type is pressed, it is selected
-      - Selected part type has a white square border
-    - Camera behavior changes
-      - Only pivot rotates
-      - Rotation only when mouse wheel or R is held
-    - When mouse hovers over part face, display face hint
-      - Hint is unshaded square frame
-    - Right click part adds to inventory
-      - Cannot delete cockpit
-    - Left click part places
-  - When F pressed again
-    - Fade out to black
-    - Scene changes to garage
-    - Fade in from black
-    - part data deserialized, stored in main scene
-    - Scene changes to arena
-    - Player instantiated
-      - Raised so lowest part is just above ground
-      - COM calculated
-      - Mass calculated
 - Game loop
   - Display round counter in top-right
   - When all enemies killed
@@ -81,8 +49,11 @@ Todo:
 - Publish
 - Make game work with touchpad
 - Get someone to test beta of my game
+- Display vignette fade in/out effect between screens
 - Display UI hints when hovering over things e.g button outline/bg color
 - At end of each round, let player pick up new parts in a satisfying way
+- Make part buttons fade out when value is 0
+- Better meshes and textures
 - Part health is preseved between rounds
 - Wait until jam complete
 - Create generic assets
