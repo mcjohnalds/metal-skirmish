@@ -1,6 +1,8 @@
 class_name Vehicle
 extends RigidBody3D
 
+signal destroyed(is_player: bool)
+
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
 const SPRING_REST_DISTANCE := 0.7
@@ -328,6 +330,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 				giblet.mesh.material_override = p_frame.mesh.material_override
 			if vehicle.is_player:
 				g.camera_pivot.reparent(get_parent())
+			destroyed.emit(vehicle.is_player)
 		else:
 			vehicle.shape_owner_set_disabled(shape_index, true)
 

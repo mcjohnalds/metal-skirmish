@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7t625mkknres"]
+[gd_scene load_steps=11 format=3 uid="uid://c7t625mkknres"]
 
 [ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_u73kb"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="6_fa7mk"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="7_5kapl"]
 [ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
+[ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="9_eo1ru"]
+[ext_resource type="PackedScene" uid="uid://dumuf1e8lfu48" path="res://scenes/next_button.tscn" id="10_cw7mr"]
 
 [node name="Garage" type="Node3D"]
 script = ExtResource("1_ymf2g")
@@ -23,9 +25,10 @@ script = ExtResource("1_ymf2g")
 [node name="BlockFaceIndicator" parent="." instance=ExtResource("8_anrx1")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 249.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginMedium"
 
@@ -78,6 +81,18 @@ Hold middle mouse button or R key to orbit
 F to focus on part"
 vertical_alignment = 2
 
+[node name="RoundCounter" parent="MarginContainer" instance=ExtResource("9_eo1ru")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="NextRoundButton" parent="MarginContainer" instance=ExtResource("10_cw7mr")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
+text = "Start Next Round"
+
 [editable path="MarginContainer/VBoxContainer/ArmorPartButton"]
 [editable path="MarginContainer/VBoxContainer/WheelPartButton"]
 [editable path="MarginContainer/VBoxContainer/GunPartButton"]
+[editable path="MarginContainer/NextRoundButton"]

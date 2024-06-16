@@ -1,6 +1,8 @@
 class_name Garage
 extends Node3D
 
+signal next_round
+
 const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
 const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
 const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
@@ -16,6 +18,8 @@ const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
 	$MarginContainer/VBoxContainer/GunPartButton
 )
 @onready var block_face_indicator: Node3D = $BlockFaceIndicator
+@onready var round_counter: RoundCounter = $MarginContainer/RoundCounter
+@onready var next_round_button: Button = $MarginContainer/NextRoundButton/Button
 var selected_button: PartButton
 
 
@@ -23,8 +27,10 @@ func _ready() -> void:
 	armor_part_button.button.button_down.connect(on_armor_button_down)
 	wheel_part_button.button.button_down.connect(on_wheel_button_down)
 	gun_part_button.button.button_down.connect(on_gun_button_down)
+	next_round_button.button_down.connect(on_next_round_button_down)
 	on_armor_button_down()
 	update_labels()
+	round_counter.label.text = "Round %s" % g.round_number
 
 
 func _process(_delta: float) -> void:
@@ -185,3 +191,7 @@ static func get_part_at_position(point: Vector3, arr: Array) -> Node3D:
 		if p1 == p2:
 			return part
 	return null
+
+
+func on_next_round_button_down() -> void:
+	next_round.emit()

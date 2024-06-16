@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="4_uhlc6"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="5_jxakr"]
 
-[node name="VehicleSmall" type="RigidBody3D"]
+[node name="VehicleSmall" type="RigidBody3D" groups=["vehicles"]]
 collision_mask = 3
 mass = 1000.0
 center_of_mass_mode = 1

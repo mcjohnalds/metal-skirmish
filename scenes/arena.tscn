@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=22 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_lr0bs"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bbtqr2hm207xu" path="res://textures/terrain_height_map.tres" id="11_y56ws"]
 [ext_resource type="Texture2D" uid="uid://7cgcov13neb2" path="res://textures/terrain_normal_map.tres" id="12_xpnd7"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="13_cprpm"]
+[ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="14_ar3fi"]
+[ext_resource type="PackedScene" uid="uid://dumuf1e8lfu48" path="res://scenes/next_button.tscn" id="15_tpeo3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_agf0a"]
 radius = 7.375
@@ -51,7 +53,7 @@ script = ExtResource("1_vu6ok")
 
 [node name="Environment" parent="." instance=ExtResource("2_lr0bs")]
 
-[node name="Enemy1" type="RigidBody3D" parent="."]
+[node name="Enemy1" type="RigidBody3D" parent="." groups=["vehicles"]]
 transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, 14.7995, 10.831, -27.4631)
 collision_mask = 3
 mass = 1000.0
@@ -105,7 +107,7 @@ monitorable = false
 transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 0, 0, 5.76094)
 shape = SubResource("SphereShape3D_agf0a")
 
-[node name="Enemy2" type="RigidBody3D" parent="."]
+[node name="Enemy2" type="RigidBody3D" parent="." groups=["vehicles"]]
 transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, -17.8738, 10.831, 59.0842)
 collision_mask = 3
 mass = 1000.0
@@ -187,6 +189,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(50, 50)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("13_cprpm")
 expand_mode = 1
 
@@ -198,3 +202,93 @@ mesh = SubResource("SphereMesh_ojded")
 
 [node name="PlayerSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0501, 10.831, -241.678)
+
+[node name="RoundCompleteControl" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -162.5
+offset_right = 89.0
+offset_bottom = -93.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RoundCompleteControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"MarginMedium"
+
+[node name="Label" type="Label" parent="RoundCompleteControl/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyLarge"
+text = "Round Complete"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginMedium"
+
+[node name="RoundCounter" parent="MarginContainer" instance=ExtResource("14_ar3fi")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="GameOverControl" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -115.0
+offset_right = 173.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = 32.0
+offset_right = 113.5
+offset_bottom = 90.0
+grow_horizontal = 2
+size_flags_vertical = 1
+theme_type_variation = &"BodyLarge"
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextRoundButton" parent="GameOverControl" instance=ExtResource("15_tpeo3")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -101.0
+offset_right = 93.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" parent="GameOverControl/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
+text = "Restart"
+
+[editable path="GameOverControl/NextRoundButton"]

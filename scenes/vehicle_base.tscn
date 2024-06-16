@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="1_6oti5"]
 
-[node name="VehicleBase" type="RigidBody3D"]
+[node name="VehicleBase" type="RigidBody3D" groups=["vehicles"]]
 collision_mask = 3
 mass = 1000.0
 center_of_mass_mode = 1

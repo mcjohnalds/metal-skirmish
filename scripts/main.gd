@@ -15,6 +15,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("switch_scene"):
+		switch_scene()
+
+
+func switch_scene() -> void:
 		if transitioning:
 			return
 		transitioning = true
@@ -46,6 +50,7 @@ func go_to_arena() -> void:
 	arena.player = player
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	add_child(arena)
+	arena.round_complete.connect(switch_scene)
 
 
 func go_to_garage() -> void:
@@ -62,3 +67,4 @@ func go_to_garage() -> void:
 		garage.add_part(part)
 	g.camera_pivot.view_pitch = TAU / 8.0
 	g.camera_pivot.view_yaw = 3.0 * TAU / 8.0
+	garage.next_round.connect(switch_scene)

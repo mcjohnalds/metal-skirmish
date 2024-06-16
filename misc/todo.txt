@@ -1,18 +1,5 @@
 Todo:
 
-- Game loop
-  - Display round counter in top-right
-  - When all enemies killed
-    - "Round won"
-    - "Earned: [part icon with quantity] [part icon with quantity] ..."
-    - Fade out to black
-    - Transition to garage
-    - Button on bottom-right of screen to go to next round
-  - When player killed
-    - Crosshair disappears
-    - "Game over"
-    - "Rounds completed: [n]"
-    - Button to restart game
 - Many unique enemies and each round harder than last
 - Make wheels capable of being in the center
 - Tutorial
@@ -61,6 +48,7 @@ Todo:
   - Car
   - Tracer
   - Particle effects
+  - Block placer
 
 Ideas:
 

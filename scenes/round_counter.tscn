@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://270hj1ge6dxn"]
+
+[ext_resource type="Script" path="res://scripts/round_counter.gd" id="1_a8j46"]
+
+[node name="RoundCounter" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_a8j46")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"MarginMedium"
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyMedium"
+text = "Round 13"
+horizontal_alignment = 2

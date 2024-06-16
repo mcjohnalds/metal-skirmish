@@ -1,13 +1,21 @@
 [gd_resource type="Theme" format=3 uid="uid://7ocngskwpd65"]
 
 [resource]
+BodyLarge/base_type = &"Label"
+BodyLarge/font_sizes/font_size = 42
 BodyMedium/base_type = &"Label"
 BodyMedium/font_sizes/font_size = 35
 BodySmall/base_type = &"Label"
 BodySmall/font_sizes/font_size = 25
+Button/font_sizes/font_size = 30
 Label/colors/font_color = Color(1, 1, 1, 1)
 MarginMedium/base_type = &"MarginContainer"
 MarginMedium/constants/margin_bottom = 10
 MarginMedium/constants/margin_left = 10
 MarginMedium/constants/margin_right = 10
 MarginMedium/constants/margin_top = 10
+MarginSmall/base_type = &"MarginContainer"
+MarginSmall/constants/margin_bottom = 5
+MarginSmall/constants/margin_left = 5
+MarginSmall/constants/margin_right = 5
+MarginSmall/constants/margin_top = 0
