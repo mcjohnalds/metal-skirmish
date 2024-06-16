@@ -9,6 +9,8 @@ const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tre
 const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
 const throttle_reverse: Curve = preload("res://curves/throttle_reverse.tres")
 const tracer_scene: PackedScene = preload("res://scenes/tracer.tscn")
+const camera_pivot_scene := preload("res://scenes/camera_pivot.tscn")
+const vehicle_base_scene := preload("res://scenes/vehicle_base.tscn")
 const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
 const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
 const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
@@ -27,7 +29,11 @@ func _ready() -> void:
 	var part_position_sum := Vector3.ZERO
 	var shapes: Array = []
 	if is_player:
-		g.camera_pivot.aim.add_exception(self)
+		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
+		camera_pivot.fight_mode = true
+		camera_pivot.position.y = 5.0
+		add_child(camera_pivot)
+		camera_pivot.aim.add_exception(self)
 	for child: Node in get_children():
 		var is_part := false
 		if child is ArmorPart:
@@ -73,8 +79,10 @@ func _ready() -> void:
 		# Note that this part can be accessed at parts[shape_index]
 		shape_owner_add_shape(so, shape.shape)
 		shape_owner_set_transform(so, trans)
+	# TODO: calculate properly
 	center_of_mass = part_position_sum / part_count
 	center_of_mass.y = -0.5
+	mass = 1000.0
 
 
 func _physics_process(delta: float) -> void:
@@ -91,8 +99,8 @@ func _physics_process_gun_part(part: GunPart) -> void:
 		and (is_player or ENEMY_SHOOTING_ENABLED)
 	)
 	var player_visible := (
-		is_instance_valid(g.level.player)
-		and g.level.player.global_position.distance_to(part.global_position)
+		is_instance_valid(g.arena.player)
+		and g.arena.player.global_position.distance_to(part.global_position)
 			<= Global.MAX_AIM_RANGE
 	)
 	if not is_enabled or not player_visible:
@@ -108,8 +116,8 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			else:
 				target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
 		else:
-			var target_part: Node3D = g.level.player.cockpit_part
-			for p in g.level.player.parts:
+			var target_part: Node3D = g.arena.player.cockpit_part
+			for p in g.arena.player.parts:
 				if p.health > 0.0:
 					target_part = p
 					break
@@ -128,8 +136,8 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			ap = 0.0
 			ay = 0.0
 		else:
-			var v := linear_velocity - g.level.player.linear_velocity
-			var d := global_position - g.level.player.global_position
+			var v := linear_velocity - g.arena.player.linear_velocity
+			var d := global_position - g.arena.player.global_position
 			var p := v.project(d)
 			var l := p.distance_to(v)
 			var a := clampf(l / 50.0, 0.0, 1.0)
@@ -163,21 +171,21 @@ func _physics_process_gun_part(part: GunPart) -> void:
 		tracer.start = part.barrel_end.global_position
 		tracer.end = bullet_end
 		part.last_fired_at = Global.get_ticks_sec()
-		get_tree().current_scene.add_child(tracer)
+		get_parent().add_child(tracer)
 
 		if collision:
-			if collision.collider == g.level.ground:
+			if collision.collider == g.arena.ground:
 				var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
 				dirt_hit.position = bullet_end
 				dirt_hit.one_shot = true
 				dirt_hit.emitting = true
-				get_tree().current_scene.add_child(dirt_hit)
+				get_parent().add_child(dirt_hit)
 			elif collision.collider is Vehicle and collision.collider != self:
 				var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
 				metal_hit.position = bullet_end
 				metal_hit.one_shot = true
 				metal_hit.emitting = true
-				get_tree().current_scene.add_child(metal_hit)
+				get_parent().add_child(metal_hit)
 				damage_part(collision.collider, collision.shape)
 
 
@@ -281,10 +289,10 @@ func get_throttle_input() -> float:
 func get_steering_input() -> float:
 	if is_player:
 		return Input.get_axis("move_right", "move_left")
-	if not is_instance_valid(g.level.player):
+	if not is_instance_valid(g.arena.player):
 		return 0.0
 	var our_dir := Vector2(global_basis.z.x, global_basis.z.z).normalized()
-	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.level.player.global_position))
+	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.arena.player.global_position))
 	var a := our_dir.angle() - player_dir.angle()
 	var m := 0.9
 	if a > 0.0:
@@ -312,7 +320,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 		hit_part.health = 0.0
 		for i in 8:
 			var giblet: Giblet = part_giblet_scene.instantiate()
-			get_tree().current_scene.add_child(giblet)
+			get_parent().add_child(giblet)
 			giblet.linear_velocity += Global.get_point_velocity(vehicle, hit_part.global_position)
 			giblet.global_position = hit_part.global_position
 			var hit_part_frame: Frame = hit_part.frame
@@ -322,7 +330,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 			vehicle.queue_free()
 			for p: Node3D in vehicle.parts:
 				var giblet: Giblet = frame_giblet_scene.instantiate()
-				get_tree().current_scene.add_child(giblet)
+				get_parent().add_child(giblet)
 				giblet.global_position = p.global_position
 				giblet.global_rotation = p.global_rotation
 				giblet.linear_velocity += Global.get_point_velocity(vehicle, p.global_position)
@@ -330,7 +338,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 				var p_frame: Frame = p.frame
 				giblet.mesh.material_override = p_frame.mesh.material_override
 			if vehicle.is_player:
-				g.camera_pivot.reparent(get_tree().current_scene)
+				g.camera_pivot.reparent(get_parent())
 		else:
 			vehicle.shape_owner_set_disabled(shape_index, true)
 
@@ -338,4 +346,11 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 		particles.position = hit_part.global_position
 		particles.one_shot = true
 		particles.emitting = true
-		get_tree().current_scene.add_child(particles)
+		get_parent().add_child(particles)
+
+
+static func from_dictionary(dict: Dictionary) -> Vehicle:
+	var vehicle := vehicle_base_scene.instantiate()
+	for part in Global.dictionary_to_parts(dict):
+		vehicle.add_child(part)
+	return vehicle

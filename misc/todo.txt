@@ -1,5 +1,66 @@
 Todo:
 
+- Construction
+  - Create main scene, arena is a child, listens for F key
+  - When F is pressed
+    - Fade out to black
+    - Player part data serialized, stored in main scene
+    - Scene changes to garage
+    - Fade in from black
+    - part data deserialized, parts instantiated
+    - Cursor appears
+    - Inventory is displayed on left of screen
+      - Each part type is displayed as a wireframe
+      - Quantity displayed on bottom-right
+      - When part type is pressed, it is selected
+      - Selected part type has a white square border
+    - Camera behavior changes
+      - Only pivot rotates
+      - Rotation only when mouse wheel or R is held
+    - When mouse hovers over part face, display face hint
+      - Hint is unshaded square frame
+    - Right click part adds to inventory
+      - Cannot delete cockpit
+    - Left click part places
+  - When F pressed again
+    - Fade out to black
+    - Scene changes to garage
+    - Fade in from black
+    - part data deserialized, stored in main scene
+    - Scene changes to arena
+    - Player instantiated
+      - Raised so lowest part is just above ground
+      - COM calculated
+      - Mass calculated
+- Game loop
+  - Display round counter in top-right
+  - When all enemies killed
+    - "Round won"
+    - "Earned: [part icon with quantity] [part icon with quantity] ..."
+    - Fade out to black
+    - Transition to garage
+    - Button on bottom-right of screen to go to next round
+  - When player killed
+    - Crosshair disappears
+    - "Game over"
+    - "Rounds completed: [n]"
+    - Button to restart game
+- Many unique enemies and each round harder than last
+- Tutorial
+- Pause menu with reset game button
+- Gun base is rotated to the face it was placed on
+- Shader precomp
+- Custom font
+- Enemies select random part to attack
+- Enemies cannot damage each other
+- Put instructions when in build mode
+- Put instructions when in fight mode
+- Custom cursor
+- Camera shake
+- Guns aim even when not firing
+- Zoom with right click
+- On death, camera aims at enemy that killed you and crosshair disappears
+- Screen space shaders
 - Make gun impart small force on shooter and target
 - Kick up dirt when driving
 - Crash damage
@@ -13,8 +74,21 @@ Todo:
 - Mouse sensitivity slider
 - Smooth camera movement
 - Graphics settings
+- Physics tick rate setting
+- Physics "particle" count setting
 - Export
 - Publish
+- Make game work with touchpad
+- Get someone to test beta of my game
+- Display UI hints when hovering over things e.g button outline/bg color
+- At end of each round, let player pick up new parts in a satisfying way
+- Part health is preseved between rounds
+- Wait until jam complete
+- Create generic assets
+  - Settings menu
+  - Car
+  - Tracer
+  - Particle effects
 
 Ideas:
 
@@ -24,3 +98,21 @@ Ideas:
 - Enemy aim uses PID
 - Extra dirt kicked up when drifting
 - Emit smoke from damaged parts
+- Leaderboard + screenshot
+- Something to give player a reason to not fire all the time, e.g ammo
+- Build mode camera can be panned with trackpad
+- Save and load game state
+- More complex enemy behavior
+- part icons are 3D rendered with wireframe shader and can rotate
+- Make metal hit particles more satisfying
+- Arena has circular wall, enemy reverses when hit wall
+- When garage open, display ticker animation to show new parts earned
+- Grey-out parts with quantity of 0
+- Add confirm dialog when clicking "next round"
+- When arena is stuck (e.g enemy and player have no means of locomotion),
+  randomly drop bombs or something to end arena
+- Test mode in garage
+- Paint mode
+- Freeze mouse when rotating in garage
+- Muzzle smoke and other particle effects should inherit parent velocity in a
+  realistic manner

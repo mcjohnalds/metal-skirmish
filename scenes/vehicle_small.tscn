@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4cn5shwftu0n"]
+
+[ext_resource type="Script" path="res://scripts/vehicle.gd" id="1_p0kvn"]
+[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://scenes/cockpit_part.tscn" id="2_rme1l"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="3_wb03o"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="4_uhlc6"]
+[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="5_jxakr"]
+
+[node name="VehicleSmall" type="RigidBody3D"]
+collision_mask = 3
+mass = 1000.0
+center_of_mass_mode = 1
+script = ExtResource("1_p0kvn")
+is_player = true
+
+[node name="CockpitPart" parent="." instance=ExtResource("2_rme1l")]
+
+[node name="ArmorPart4" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="ArmorPart7" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="ArmorPart6" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 1)
+
+[node name="ArmorPart9" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 3)
+
+[node name="ArmorPart11" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 2)
+
+[node name="ArmorPart12" parent="." instance=ExtResource("3_wb03o")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 4)
+
+[node name="WheelPart1" parent="." instance=ExtResource("4_uhlc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="WheelPart2" parent="." instance=ExtResource("4_uhlc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="WheelPart3" parent="." instance=ExtResource("4_uhlc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="WheelPart4" parent="." instance=ExtResource("4_uhlc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="GunPart1" parent="." instance=ExtResource("5_jxakr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="GunPart2" parent="." instance=ExtResource("5_jxakr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)

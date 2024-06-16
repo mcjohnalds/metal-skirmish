@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7t625mkknres"]
+
+[ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
+[ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_u73kb"]
+[ext_resource type="PackedScene" uid="uid://baxd2e51ghvfa" path="res://scenes/camera_pivot.tscn" id="3_ti46u"]
+
+[node name="Garage" type="Node3D"]
+script = ExtResource("1_ymf2g")
+
+[node name="Environment" parent="." instance=ExtResource("2_u73kb")]
+
+[node name="Parts" type="Node3D" parent="."]
+
+[node name="CameraPivot" parent="." instance=ExtResource("3_ti46u")]
