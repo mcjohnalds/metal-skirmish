@@ -27,23 +27,19 @@ var parts: Array[Node3D] = []
 func _ready() -> void:
 	var part_count := 0
 	var part_position_sum := Vector3.ZERO
-	var shapes: Array = []
 	if is_player:
 		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
 		camera_pivot.fight_mode = true
 		camera_pivot.position.y = 5.0
 		add_child(camera_pivot)
 		camera_pivot.aim.add_exception(self)
-	for child: Node in get_children():
+	for child: Node3D in get_children():
 		var is_part := false
 		if child is ArmorPart:
 			is_part = true
-			var part := child as ArmorPart
-			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 		elif child is WheelPart:
 			is_part = true
 			var part := child as WheelPart
-			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 			wheel_parts.append(part)
 			part.ray_cast.add_exception(self)
 			part.ray_cast.target_position.y = -SPRING_REST_DISTANCE - part.radius
@@ -62,23 +58,20 @@ func _ready() -> void:
 			is_part = true
 			var part := child as GunPart
 			gun_parts.append(part)
-			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 		elif child is CockpitPart:
 			is_part = true
 			var part := child as CockpitPart
 			cockpit_part = part
-			shapes.append({ "shape": part.collision_shape, "transform": part.transform })
 		if is_part:
 			parts.append(child)
 			part_position_sum += child.position
 			part_count += 1
-	for d: Dictionary in shapes:
-		var shape: CollisionShape3D = d.shape
-		var trans: Transform3D = d.transform
-		var so := create_shape_owner(shape)
-		# Note that this part can be accessed at parts[shape_index]
-		shape_owner_add_shape(so, shape.shape)
-		shape_owner_set_transform(so, trans)
+
+			var shape := CollisionShape3D.new()
+			shape.position = child.position
+			shape.shape = BoxShape3D.new()
+			add_child(shape)
+			# Note that this part can be accessed at parts[shape_index]
 	# TODO: calculate properly
 	center_of_mass = part_position_sum / part_count
 	center_of_mass.y = -0.5

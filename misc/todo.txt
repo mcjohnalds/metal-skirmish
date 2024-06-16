@@ -46,6 +46,7 @@ Todo:
     - "Rounds completed: [n]"
     - Button to restart game
 - Many unique enemies and each round harder than last
+- Make wheels capable of being in the center
 - Tutorial
 - Pause menu with reset game button
 - Gun base is rotated to the face it was placed on

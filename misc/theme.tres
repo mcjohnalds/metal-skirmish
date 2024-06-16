@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://7ocngskwpd65"]
+
+[resource]
+BodyMedium/base_type = &"Label"
+BodyMedium/constants/outline_size = 10
+BodyMedium/font_sizes/font_size = 50
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+MarginMedium/base_type = &"MarginContainer"
+MarginMedium/constants/margin_bottom = 10
+MarginMedium/constants/margin_left = 10
+MarginMedium/constants/margin_right = 10
+MarginMedium/constants/margin_top = 10

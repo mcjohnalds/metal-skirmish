@@ -28,6 +28,10 @@ window/size/viewport_height=1200
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="res://misc/theme.tres"
+
 [input]
 
 move_forward={

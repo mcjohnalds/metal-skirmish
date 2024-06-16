@@ -1,17 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxwv3sxpc8d4n"]
+[gd_scene load_steps=5 format=3 uid="uid://cxwv3sxpc8d4n"]
 
 [ext_resource type="Script" path="res://scripts/cockpit_part.gd" id="1_xq0u5"]
 [ext_resource type="PackedScene" uid="uid://dyjma2rawg826" path="res://meshes/cockpit.glb" id="2_2ngob"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="3_3pccn"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="3_8jqic"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mt8u5"]
-
 [node name="CockpitPart" type="Node3D"]
 script = ExtResource("1_xq0u5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_mt8u5")
 
 [node name="Cockpit" parent="." instance=ExtResource("2_2ngob")]
 

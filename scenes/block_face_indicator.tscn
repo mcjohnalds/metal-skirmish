@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpxap1qdqn84w"]
+
+[ext_resource type="PackedScene" uid="uid://grjlymcvn055" path="res://meshes/block_face_indicator.glb" id="1_g3bah"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4p6s"]
+shading_mode = 0
+albedo_color = Color(0.0728, 0.0728, 0.91, 1)
+
+[node name="BlockFaceIndicator" instance=ExtResource("1_g3bah")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.525, 0, 0, 0, -1.14742e-09, -0.525, 0, 0.02625, -2.29485e-08, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_b4p6s")

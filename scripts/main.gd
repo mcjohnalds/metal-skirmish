@@ -56,10 +56,9 @@ func go_to_garage() -> void:
 	arena = null
 
 	garage = garage_scene.instantiate()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	add_child(garage)
+	for part in Global.dictionary_to_parts(dict):
+		garage.add_part(part)
 	g.camera_pivot.view_pitch = TAU / 8.0
 	g.camera_pivot.view_yaw = 3.0 * TAU / 8.0
-	var out_parts := Global.dictionary_to_parts(dict)
-	for part in out_parts:
-		garage.parts.add_child(part)
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

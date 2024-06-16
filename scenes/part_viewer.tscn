@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://daa0akqjk2ymk"]
+
+[ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="1_5wf28"]
+
+[node name="PartViewer" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 3.02058e-16, 0.866025, 0.5, -0.707107, -0.353553, 0.612373, 1, 0.82, 1)
+projection = 1
+fov = 53.5
+size = 1.59
+near = 0.01
+far = 100.0
+
+[node name="Environment" parent="." instance=ExtResource("1_5wf28")]

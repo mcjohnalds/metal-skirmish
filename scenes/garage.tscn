@@ -1,14 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7t625mkknres"]
+[gd_scene load_steps=9 format=3 uid="uid://c7t625mkknres"]
 
 [ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_u73kb"]
 [ext_resource type="PackedScene" uid="uid://baxd2e51ghvfa" path="res://scenes/camera_pivot.tscn" id="3_ti46u"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="4_g3fkt"]
+[ext_resource type="PackedScene" uid="uid://fjdp76g7y1mb" path="res://scenes/part_button.tscn" id="4_pdkw2"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="6_fa7mk"]
+[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="7_5kapl"]
+[ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
 
 [node name="Garage" type="Node3D"]
 script = ExtResource("1_ymf2g")
 
 [node name="Environment" parent="." instance=ExtResource("2_u73kb")]
 
+[node name="CameraPivot" parent="." instance=ExtResource("3_ti46u")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
 [node name="Parts" type="Node3D" parent="."]
 
-[node name="CameraPivot" parent="." instance=ExtResource("3_ti46u")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 120.0
+offset_bottom = 328.0
+theme_type_variation = &"MarginMedium"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ArmorPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+layout_mode = 2
+
+[node name="ArmorPart" parent="MarginContainer/VBoxContainer/ArmorPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("4_g3fkt")]
+
+[node name="WheelPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+layout_mode = 2
+
+[node name="WheelPart" parent="MarginContainer/VBoxContainer/WheelPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("6_fa7mk")]
+
+[node name="GunPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+layout_mode = 2
+
+[node name="GunPart" parent="MarginContainer/VBoxContainer/GunPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("7_5kapl")]
+
+[node name="BlockFaceIndicator" parent="." instance=ExtResource("8_anrx1")]
+
+[editable path="MarginContainer/VBoxContainer/ArmorPartButton"]
+[editable path="MarginContainer/VBoxContainer/WheelPartButton"]
+[editable path="MarginContainer/VBoxContainer/GunPartButton"]
