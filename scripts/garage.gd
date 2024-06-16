@@ -95,6 +95,12 @@ func _input(event):
 			if picked_part is GunPart:
 				g.gun_part_inventory += 1
 		update_labels()
+	if event.is_action_pressed("recenter"):
+		var collision := get_mouse_ray_collision()
+		if collision:
+			var shape_index: int = collision.shape
+			var picked_part: Node3D = parts.get_child(shape_index)
+			g.camera_pivot.position = picked_part.position
 
 
 func get_mouse_ray_collision() -> Dictionary:
