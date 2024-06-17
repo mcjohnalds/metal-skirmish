@@ -1,7 +1,7 @@
 class_name Main
 extends Node3D
 
-const vehicle_small_scene := preload("res://scenes/vehicle_prick.tscn")
+const vehicle_prick_scene := preload("res://scenes/vehicle_prick.tscn")
 @onready var arena_scene := preload("res://scenes/arena.tscn")
 @onready var garage_scene := preload("res://scenes/garage.tscn")
 var arena: Arena
@@ -45,7 +45,7 @@ func go_to_arena() -> void:
 		await garage.tree_exited
 		garage = null
 	else:
-		player = vehicle_small_scene.instantiate()
+		player = vehicle_prick_scene.instantiate()
 		player.is_player = true
 
 	arena = arena_scene.instantiate()

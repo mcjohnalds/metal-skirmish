@@ -1,14 +1,9 @@
 Essential:
 
-- Enemy types
-  - Store array, one element per round, each element has array of scene and
-    offset
-  - Load from array on round start
-  - When exhaused all rounds, display win message instead of round complete
-    message
 - Gain parts after each round
   - Add to round data array
   - "Parts gained" [icon] [icon] ...
+- Make it more obvious that the cockpit is important (maybe AI chip?)
 - Put instructions on screen when in fight mode
 - Maybe rename project
 - Start menu
@@ -79,7 +74,9 @@ Really want:
 - Better win screen
 - Custom cursor
 - Custom font
+- Give first enemy a crappy gun
 - Pause menu with settings and exit button
+- Make ending more satisfying (maybe fade to black?)
 - Better start page
 - Display vignette fade in/out effect between screens
 - Screen space shaders
@@ -105,6 +102,7 @@ Really want:
 - Trailer
 - Vehicle collision sound
 - Vehicle landed on dirt sound
+- Destroyed parts still collide with vehicles
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
@@ -124,6 +122,7 @@ After game jam:
 
 Ideas:
 
+- Analytics
 - When round won, display ticker animation on icons to show new parts earned
 - Drifting
   - Extra dirt kicked up
