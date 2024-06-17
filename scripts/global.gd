@@ -1,7 +1,14 @@
 class_name Global
 extends Node
 
-const MAX_AIM_RANGE := 100
+enum PhysicsLayers {
+    Vehicle = 1 << 0,
+    Ground = 1 << 1,
+    Giblet = 1 << 2,
+    Wall = 1 << 2,
+}
+
+const MAX_AIM_RANGE := 70
 const FIRE_RATE := 10.0
 const cockpit_part_scene: PackedScene = preload("res://scenes/cockpit_part.tscn")
 const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")

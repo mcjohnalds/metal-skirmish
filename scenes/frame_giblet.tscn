@@ -7,7 +7,7 @@
 
 [node name="FrameGiblet" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_m68b3")
 mesh = NodePath("Frame/Frame")
 

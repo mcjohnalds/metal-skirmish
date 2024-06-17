@@ -78,6 +78,7 @@ recenter={
 3d_physics/layer_1="vehicle"
 3d_physics/layer_2="ground"
 3d_physics/layer_3="giblet"
+3d_physics/layer_4="wall"
 
 [physics]
 

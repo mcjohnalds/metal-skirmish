@@ -25,7 +25,7 @@ const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
 const frame_giblet_scene: PackedScene = preload("res://scenes/frame_giblet.tscn")
 const part_destroyed_scene: PackedScene = preload("res://scenes/part_destroyed.tscn")
 @onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
-@export var is_player := false
+var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []

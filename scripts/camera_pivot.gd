@@ -1,7 +1,7 @@
 class_name CameraPivot
 extends Node3D
 
-const MOUSE_SENSITIVITY := 0.002
+const MOUSE_SENSITIVITY := 0.001
 @onready var camera: Camera3D = $Camera
 @onready var aim: RayCast3D = $Camera/Aim
 var fight_mode := false

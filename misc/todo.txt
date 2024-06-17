@@ -1,10 +1,6 @@
 Essential:
 
 - Enemy types
-  - Make all vehicles inherit from base scene
-  - Enemy spawn point in arena
-  - Reduce aim range and mouse sensitivity
-  - Create scenes for different enemy types
   - Store array, one element per round, each element has array of scene and
     offset
   - Load from array on round start
@@ -39,6 +35,7 @@ Essential:
     - Glow
     - SDFGI
     - Auto exposure
+- More enemy types
 - Export
   - Web
   - Mac
@@ -111,6 +108,7 @@ Really want:
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
+- Let player chose reward after each level
 
 After game jam:
 

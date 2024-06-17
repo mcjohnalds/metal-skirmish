@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpg05agoybjy"]
+
+[ext_resource type="PackedScene" uid="uid://snnaytk25wxo" path="res://scenes/vehicle_base.tscn" id="1_bt7ck"]
+[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://scenes/cockpit_part.tscn" id="2_qr3a1"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="3_6188c"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="4_ga1xr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4q23m"]
+radius = 7.375
+
+[node name="Vehicle" instance=ExtResource("1_bt7ck")]
+
+[node name="CockpitPart" parent="." index="0" instance=ExtResource("2_qr3a1")]
+
+[node name="ArmorPart4" parent="." index="1" instance=ExtResource("3_6188c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="ArmorPart7" parent="." index="2" instance=ExtResource("3_6188c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="ArmorPart8" parent="." index="3" instance=ExtResource("3_6188c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ArmorPart9" parent="." index="4" instance=ExtResource("3_6188c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="ArmorPart6" parent="." index="5" instance=ExtResource("3_6188c")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 1)
+
+[node name="WheelPart1" parent="." index="6" instance=ExtResource("4_ga1xr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="WheelPart2" parent="." index="7" instance=ExtResource("4_ga1xr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="WheelPart3" parent="." index="8" instance=ExtResource("4_ga1xr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="VehicleDetector" type="Area3D" parent="." index="9"]
+transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 5)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleDetector" index="0"]
+transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 0, 0, 5.76094)
+shape = SubResource("SphereShape3D_4q23m")

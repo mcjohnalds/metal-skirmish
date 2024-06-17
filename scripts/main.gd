@@ -1,7 +1,7 @@
 class_name Main
 extends Node3D
 
-const vehicle_small_scene := preload("res://scenes/vehicle_small.tscn")
+const vehicle_small_scene := preload("res://scenes/vehicle_prick.tscn")
 @onready var arena_scene := preload("res://scenes/arena.tscn")
 @onready var garage_scene := preload("res://scenes/garage.tscn")
 var arena: Arena
@@ -40,6 +40,7 @@ func go_to_arena() -> void:
 			in_parts.append(p)
 		var dict := Global.parts_to_dictionary(in_parts)
 		player = Vehicle.from_dictionary(dict)
+		player.is_player = true
 		garage.queue_free()
 		await garage.tree_exited
 		garage = null
