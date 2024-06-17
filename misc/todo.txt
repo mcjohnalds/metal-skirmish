@@ -1,62 +1,150 @@
-Todo:
+Essential:
 
-- Many unique enemies and each round harder than last
 - Make wheels capable of being in the center
-- Tutorial
-- Pause menu with reset game button
-- Gun base is rotated to the face it was placed on
-- Shader precomp
-- Custom font
+- Tweak wheel steering enabling logic
 - Enemies select random part to attack
 - Enemies cannot damage each other
-- Put instructions when in build mode
-- Put instructions when in fight mode
+- Enemy types
+  - Enemy spawn point in arena
+  - Reduce aim range and mouse sensitivity
+  - Create scenes for different enemy types
+  - Store array, one element per round, each element has array of scene and
+    offset
+  - Load from array on round start
+  - When exhaused all rounds, display win message instead of round complete
+    message
+- Gain parts after each round
+  - Add to round data array
+  - "Parts gained" [icon] [icon] ...
+- Put instructions on screen when in fight mode
+- Maybe rename project
+- Start menu
+  - Title
+  - Start button
+  - Settings button (non-functional)
+- Settings page
+  - Mouse sensitivity slider
+  - Music slider
+  - Sound effect slider
+  - Low/med/high preset
+  - Vsync on/off
+  - Window mode
+  - Screen space shaders
+  - 3D resolution scale
+  - Fog
+  - Physics tick rate setting
+  - Physics "particle" count setting
+  - Only when in desktop
+    - AO
+    - AA
+    - Shadows
+    - Volume fog
+    - Glow
+    - SDFGI
+    - Auto exposure
+- Export
+  - Web
+  - Mac
+  - Windows
+  - Linux
+- Upload to itch
+- Test
+  - Mac
+    - Chrome
+    - Safari
+    - Firefox
+  - Windows
+    - Chrome
+    - Edge
+    - Firefox
+- Shader precomp
+- Prevent placing things on sides of guns
+- Prevent placing things on wheels
+- Get someone to test alpha of my game
+- Submit game to jam
+
+Really want:
+
+- Sound
+  - Shoot
+  - Throttle
+    - Matches throttle curve
+  - Break
+  - Dirt hit
+  - Part hit
+  - Part destroyed
+  - Cockpit destroyed
+  - Round won
+  - Game over
+  - Button press
+  - Part placed
+  - Part removed
+  - Error when attempted part placement/removal invalid
+  - Music
+- Make frame less imposing
+- Better win screen
 - Custom cursor
-- Camera shake
-- Guns aim even when not firing
-- Zoom with right click
-- On death, camera aims at enemy that killed you and crosshair disappears
+- Custom font
+- Pause menu with settings and exit button
+- Better start page
+- Display vignette fade in/out effect between screens
 - Screen space shaders
+- Camera shake
+- Smooth camera movement
+- Improve itch page
 - Make gun impart small force on shooter and target
 - Kick up dirt when driving
-- Crash damage
+- Leave trails in dirt
 - Sky texture
-- Make damaged steering wheels turn freely
-- Explosion effect when part is destroyed
-- Nuke explosion effect when cockpit destroyed
-- Hitmarker
-- Display damage texture on damaged parts
-- Sound
-- Mouse sensitivity slider
-- Smooth camera movement
-- Graphics settings
-- Physics tick rate setting
-- Physics "particle" count setting
-- Export
-- Publish
-- Make game work with touchpad
-- Get someone to test beta of my game
-- Display vignette fade in/out effect between screens
-- Display UI hints when hovering over things e.g button outline/bg color
-- At end of each round, let player pick up new parts in a satisfying way
-- Make part buttons fade out when value is 0
 - Better meshes and textures
+- Sensible colors
+- Hitmarker sound and UI
+- Display damage texture on damaged parts
+- Make game work with touchpad
+- At end of each round, let player pick up new parts in a satisfying way
+- Paint mode
+- Make face hint flash red when trying to remove bridge
 - Part health is preseved between rounds
-- Wait until jam complete
+- Trailer
+- Vehicle collision sound
+- Vehicle landed on dirt sound
+- Make face hint red when hovering over gun
+
+After game jam:
+
 - Create generic assets
   - Settings menu
   - Car
   - Tracer
   - Particle effects
   - Block placer
+  - Export templates and scripts
+  - Theme variants
 
 Ideas:
 
+- When round won, display ticker animation on icons to show new parts earned
+- Drifting
+  - Extra dirt kicked up
+  - Sound
+- Different music in garage, win screen, and lose screen
+- Add "reset my build" button to garage
+- When you finish game, you are given a super cannon and play through the game
+  from the start. Super cannon flings enemies.
+- Start background should basically place trailer clips
+- Crash damage
+- Fire/smoke explosion effect when part is destroyed
+- Smoke effect when bullet hits target
+- Nuke explosion effect when cockpit destroyed
+- Guns take time to rotate towards aim point (maybe spring?)
+- Make gun not fire if pointing at self
+- Display UI hints when hovering over things e.g button outline/bg color
+- Make part buttons greyed out when value is 0
+- Make damaged steering wheels turn freely
 - In vulkan renderer, use custom fog shader and increate camera far distance
 - Enemies should target parts more carefully - e.g important parts or parts
   near the center of volume
 - Enemy aim uses PID
-- Extra dirt kicked up when drifting
 - Emit smoke from damaged parts
 - Leaderboard + screenshot
 - Something to give player a reason to not fire all the time, e.g ammo
@@ -66,13 +154,12 @@ Ideas:
 - part icons are 3D rendered with wireframe shader and can rotate
 - Make metal hit particles more satisfying
 - Arena has circular wall, enemy reverses when hit wall
-- When garage open, display ticker animation to show new parts earned
-- Grey-out parts with quantity of 0
-- Add confirm dialog when clicking "next round"
+- Add confirm dialog when clicking "next round" or "rest my build" button
 - When arena is stuck (e.g enemy and player have no means of locomotion),
   randomly drop bombs or something to end arena
 - Test mode in garage
-- Paint mode
 - Freeze mouse when rotating in garage
 - Muzzle smoke and other particle effects should inherit parent velocity in a
   realistic manner
+- Zoom with right click
+- On death, camera aims at enemy that killed you and crosshair disappears

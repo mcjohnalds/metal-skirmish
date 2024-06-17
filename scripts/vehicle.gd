@@ -44,9 +44,11 @@ func _ready() -> void:
 			wheel_parts.append(part)
 			part.ray_cast.add_exception(self)
 			part.ray_cast.target_position.y = -SPRING_REST_DISTANCE - part.radius
-			
-			var is_left := part.position.x > 0.0
-			var direction := 1.0 if is_left else -1.0
+
+			var i_pos := Global.vector_3_roundi(part.position)
+			var is_center := i_pos.x == 0
+			var is_left := i_pos.x > 0.0
+			var direction := 0.0 if is_center else 1.0 if is_left else -1.0
 			var x_offset := 0.5
 			part.wheel.position.x += direction * x_offset
 			part.ray_cast.position.x += direction * x_offset
