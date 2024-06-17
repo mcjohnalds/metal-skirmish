@@ -104,6 +104,8 @@ Really want:
 - Make face hint flash red when trying to remove bridge
 - Part health is preseved between rounds
 - Circle enemy AI type that tries to flank the player
+- Ran enemy AI
+- When enemy has no guns, it tries to ram player
 - Trailer
 - Vehicle collision sound
 - Vehicle landed on dirt sound

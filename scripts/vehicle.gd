@@ -145,7 +145,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var d := global_position - g.arena.player.global_position
 			var p := v.project(d)
 			var l := p.distance_to(v)
-			var a := clampf(l / 50.0, 0.0, 1.0)
+			var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
 			var t := Global.get_ticks_sec() * TAU
 			var m := ENEMY_INACCURACY * TAU
 			ap = m * a * sin(t)
