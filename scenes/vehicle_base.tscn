@@ -4,7 +4,5 @@
 
 [node name="VehicleBase" type="RigidBody3D" groups=["vehicles"]]
 collision_mask = 11
-mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("1_6oti5")
-is_player = true

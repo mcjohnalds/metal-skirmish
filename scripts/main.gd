@@ -45,6 +45,7 @@ func go_to_arena() -> void:
 		garage = null
 	else:
 		player = vehicle_small_scene.instantiate()
+		player.is_player = true
 
 	arena = arena_scene.instantiate()
 	arena.player = player

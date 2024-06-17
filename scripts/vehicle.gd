@@ -6,7 +6,7 @@ signal destroyed(is_player: bool)
 const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
-const ENGINE_TORQUE := 7500.0 * 10.0
+const ENGINE_TORQUE := 7500.0
 const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6

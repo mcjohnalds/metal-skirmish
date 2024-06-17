@@ -1,7 +1,7 @@
 Essential:
 
-- Make ground wider and add invisible walls
 - Enemy types
+  - Make all vehicles inherit from base scene
   - Enemy spawn point in arena
   - Reduce aim range and mouse sensitivity
   - Create scenes for different enemy types
