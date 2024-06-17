@@ -179,19 +179,23 @@ func _physics_process_gun_part(part: GunPart) -> void:
 		get_parent().add_child(tracer)
 
 		if collision:
-			if collision.collider == g.arena.ground:
+			var collider: Node = collision.collider
+			if collider == g.arena.ground:
 				var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
 				dirt_hit.position = bullet_end
 				dirt_hit.one_shot = true
 				dirt_hit.emitting = true
 				get_parent().add_child(dirt_hit)
-			elif collision.collider is Vehicle and collision.collider != self:
-				var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
-				metal_hit.position = bullet_end
-				metal_hit.one_shot = true
-				metal_hit.emitting = true
-				get_parent().add_child(metal_hit)
-				damage_part(collision.collider, collision.shape)
+			elif collider is Vehicle:
+				var vehicle: Vehicle = collider
+				var is_opposing_team := is_player != vehicle.is_player
+				if is_opposing_team:
+					var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
+					metal_hit.position = bullet_end
+					metal_hit.one_shot = true
+					metal_hit.emitting = true
+					get_parent().add_child(metal_hit)
+					damage_part(collider, collision.shape)
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
