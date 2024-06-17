@@ -200,6 +200,33 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -93.0
+offset_right = 233.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/PanelContainer"]
+layout_mode = 2
+theme_type_variation = &"MarginMedium"
+
+[node name="Label" type="Label" parent="MarginContainer/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"BodySmall"
+text = "WASD to move
+Left click to shoot
+Destroy your enemy"
+vertical_alignment = 2
+
 [node name="GameOverControl" type="Panel" parent="."]
 visible = false
 anchors_preset = 8

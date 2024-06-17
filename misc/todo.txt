@@ -1,7 +1,5 @@
 Essential:
 
-- Make it more obvious that the cockpit is important (maybe AI chip?)
-- Put instructions on screen when in fight mode
 - Maybe rename project
 - Start menu
   - Title
