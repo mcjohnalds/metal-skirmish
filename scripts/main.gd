@@ -1,16 +1,18 @@
 class_name Main
 extends Node3D
 
+const start_scene := preload("res://scenes/start.tscn")
 const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
 @onready var arena_scene := preload("res://scenes/arena.tscn")
 @onready var garage_scene := preload("res://scenes/garage.tscn")
+@onready var start: Start = $Start
 var arena: Arena
 var garage: Garage
 var transitioning := false
 
 
 func _ready() -> void:
-	go_to_arena()
+	start.button.button_down.connect(on_start_button_down)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -19,6 +21,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		g.wheel_part_inventory = 50
 		g.gun_part_inventory = 50
 		switch_scene()
+
+
+func on_start_button_down() -> void:
+	start.queue_free()
+	await start.tree_exited
+	go_to_arena()
 
 
 func switch_scene() -> void:

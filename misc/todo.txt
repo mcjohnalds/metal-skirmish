@@ -1,10 +1,5 @@
 Essential:
 
-- Maybe rename project
-- Start menu
-  - Title
-  - Start button
-  - Settings button (non-functional)
 - Settings page
   - Mouse sensitivity slider
   - Music slider

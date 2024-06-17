@@ -11,6 +11,7 @@ BodyMedium/font_sizes/font_size = 35
 BodySmall/base_type = &"Label"
 BodySmall/font_sizes/font_size = 25
 Button/font_sizes/font_size = 30
+HeaderLarge/font_sizes/font_size = 60
 Label/colors/font_color = Color(1, 1, 1, 1)
 LightButton/base_type = &"Button"
 LightButton/styles/normal = SubResource("StyleBoxFlat_k8u8k")
