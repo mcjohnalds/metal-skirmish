@@ -2,10 +2,10 @@ class_name Global
 extends Node
 
 enum PhysicsLayers {
-    Vehicle = 1 << 0,
-    Ground = 1 << 1,
-    Giblet = 1 << 2,
-    Wall = 1 << 2,
+	Vehicle = 1 << 0,
+	Ground = 1 << 1,
+	Giblet = 1 << 2,
+	Wall = 1 << 2,
 }
 
 const MAX_AIM_RANGE := 70
@@ -14,10 +14,10 @@ const cockpit_part_scene: PackedScene = preload("res://scenes/cockpit_part.tscn"
 const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
 const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
 const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
-var armor_part_inventory := 50
-var wheel_part_inventory := 40
-var gun_part_inventory := 10
-var round_number := 1
+var armor_part_inventory: int
+var wheel_part_inventory: int
+var gun_part_inventory: int
+var round_number: int
 
 
 var arena: Arena:
@@ -28,6 +28,17 @@ var arena: Arena:
 var camera_pivot: CameraPivot:
 	get:
 		return get_tree().get_first_node_in_group("camera pivot")
+
+
+func _init() -> void:
+	reset()
+
+
+func reset() -> void:
+	armor_part_inventory = 0
+	wheel_part_inventory = 0
+	gun_part_inventory = 0
+	round_number = 1
 
 
 static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = false) -> void:
@@ -141,5 +152,5 @@ static func is_graph_connected(pairs: Array) -> bool:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if OS.is_debug_build() and event.is_action_pressed("ui_cancel"):
 		get_tree().quit()

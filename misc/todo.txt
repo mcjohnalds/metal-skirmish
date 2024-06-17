@@ -1,8 +1,5 @@
 Essential:
 
-- Gain parts after each round
-  - Add to round data array
-  - "Parts gained" [icon] [icon] ...
 - Make it more obvious that the cockpit is important (maybe AI chip?)
 - Put instructions on screen when in fight mode
 - Maybe rename project
@@ -30,7 +27,10 @@ Essential:
     - Glow
     - SDFGI
     - Auto exposure
-- More enemy types
+- Balance
+  - More enemy types
+  - Make first round more fun
+  - Gave player reason to go fast, e.g enemy aim penalty when still
 - Export
   - Web
   - Mac
@@ -103,6 +103,7 @@ Really want:
 - Vehicle collision sound
 - Vehicle landed on dirt sound
 - Destroyed parts still collide with vehicles
+- Camera height adapts to build size
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player

@@ -3,7 +3,7 @@ extends RigidBody3D
 
 signal destroyed(is_player: bool)
 
-const BULLET_DAMAGE := 5.0
+const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
 const ENGINE_TORQUE := 7500.0

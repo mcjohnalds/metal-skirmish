@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://7ocngskwpd65"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://7ocngskwpd65"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8u8k"]
+bg_color = Color(0.336607, 0.336608, 0.336608, 0.85098)
 
 [resource]
 BodyLarge/base_type = &"Label"
@@ -9,6 +12,8 @@ BodySmall/base_type = &"Label"
 BodySmall/font_sizes/font_size = 25
 Button/font_sizes/font_size = 30
 Label/colors/font_color = Color(1, 1, 1, 1)
+LightButton/base_type = &"Button"
+LightButton/styles/normal = SubResource("StyleBoxFlat_k8u8k")
 MarginMedium/base_type = &"MarginContainer"
 MarginMedium/constants/margin_bottom = 10
 MarginMedium/constants/margin_left = 10

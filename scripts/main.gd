@@ -1,7 +1,7 @@
 class_name Main
 extends Node3D
 
-const vehicle_prick_scene := preload("res://scenes/vehicle_prick.tscn")
+const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
 @onready var arena_scene := preload("res://scenes/arena.tscn")
 @onready var garage_scene := preload("res://scenes/garage.tscn")
 var arena: Arena
@@ -14,7 +14,10 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("switch_scene"):
+	if OS.is_debug_build() and event.is_action_pressed("switch_scene"):
+		g.armor_part_inventory = 50
+		g.wheel_part_inventory = 50
+		g.gun_part_inventory = 50
 		switch_scene()
 
 
@@ -45,7 +48,7 @@ func go_to_arena() -> void:
 		await garage.tree_exited
 		garage = null
 	else:
-		player = vehicle_prick_scene.instantiate()
+		player = start_vehicle_scene.instantiate()
 		player.is_player = true
 
 	arena = arena_scene.instantiate()

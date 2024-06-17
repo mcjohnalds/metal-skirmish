@@ -11,23 +11,69 @@ var vehicle_banger := load("res://scenes/vehicle_banger.tscn")
 var vehicle_the_block := load("res://scenes/vehicle_the_block.tscn")
 
 var rounds := [
-	[
-		{ "scene": vehicle_cow, "position": Vector3(0.0, 0.0, 0.0) },
-	],
-	[
-		{ "scene": vehicle_tinny_bopper, "position": Vector3(0.0, 0.0, 0.0) },
-	],
-	# [
-	# 	{ "scene": vehicle_prick, "position": Vector3(0.0, 0.0, 0.0) },
-	# ],
-	# [
-	# 	{ "scene": vehicle_banger, "position": Vector3(0.0, 0.0, 0.0) },
-	# ],
-	# [
-	# 	{ "scene": vehicle_the_block, "position": Vector3(0.0, 0.0, 0.0) },
-	# 	{ "scene": vehicle_tinny_bopper, "position": Vector3(10.0, 0.0, -40.0) },
-	# 	{ "scene": vehicle_tinny_bopper, "position": Vector3(-10.0, 0.0, -40.0) },
-	# ],
+	{
+		"enemies": [
+			{
+				"scene": vehicle_cow,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 1,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_prick,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 3,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_banger,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 3,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 2,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_the_block,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(30.0, 0.0, 150.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-30.0, 0.0, 150.0)
+			},
+		],
+		"armor_parts_earned": 0,
+		"wheel_parts_earned": 0,
+		"gun_parts_earned": 0,
+	},
 ]
 
 @onready var player_spawn_point: Node3D = $PlayerSpawnPoint
@@ -36,6 +82,11 @@ var rounds := [
 @onready var round_counter: RoundCounter = $MarginContainer/RoundCounter
 @onready var round_complete_control: Control = $RoundCompleteControl
 @onready var round_complete_label: Label = $RoundCompleteControl/MarginContainer/Label
+@onready var parts_earned_text: Control = $PartsEarnedText
+@onready var parts_earned_buttons: Control = $PartsEarnedButtons
+@onready var armor_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/ArmorPartButton
+@onready var wheel_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/WheelPartButton
+@onready var gun_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/GunPartButton
 @onready var ground: Ground = $Ground
 @onready var crosshair: Control = $Crosshair
 @onready var game_over_control: Control = $GameOverControl
@@ -50,7 +101,8 @@ func _ready() -> void:
 	player.position = player_spawn_point.position - Vector3.UP * min_y
 	add_child(player)
 
-	var enemies: Array = rounds[g.round_number - 1]
+	var round_data: Dictionary = rounds[g.round_number - 1]
+	var enemies: Array = round_data.enemies
 	for enemy: Dictionary in enemies:
 		var scene = enemy["scene"]
 		var pos: Vector3 = enemy["position"]
@@ -78,13 +130,27 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		return
 	if get_tree().get_nodes_in_group("vehicles").size() == 2:
 		round_complete_control.visible = true
-		await get_tree().create_timer(3.0).timeout
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
 		else:
+			await get_tree().create_timer(2.0).timeout
+			parts_earned_text.visible = true
+			parts_earned_buttons.visible = true
+			var round_data: Dictionary = rounds[g.round_number - 1]
+			var armor_parts_earned: int = round_data["armor_parts_earned"]
+			var wheel_parts_earned: int = round_data["wheel_parts_earned"]
+			var gun_parts_earned: int = round_data["gun_parts_earned"]
+			armor_part_button.label.text = str(armor_parts_earned)
+			wheel_part_button.label.text = str(wheel_parts_earned)
+			gun_part_button.label.text = str(gun_parts_earned)
+			await get_tree().create_timer(5.0).timeout
+			g.armor_part_inventory += armor_parts_earned
+			g.wheel_part_inventory += wheel_parts_earned
+			g.gun_part_inventory += gun_parts_earned
 			g.round_number += 1
 			round_complete.emit()
 
 
 func on_restart_button_down() -> void:
+	g.reset()
 	get_tree().reload_current_scene()

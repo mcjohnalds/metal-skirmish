@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=14 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_lr0bs"]
 [ext_resource type="PackedScene" uid="uid://ca5c21n3ub847" path="res://scenes/wall.tscn" id="3_3iwxt"]
+[ext_resource type="PackedScene" uid="uid://fjdp76g7y1mb" path="res://scenes/part_button.tscn" id="6_u2300"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="7_egnf0"]
 [ext_resource type="PackedScene" uid="uid://eewxycwm7fsg" path="res://scenes/ground.tscn" id="8_cv38k"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="8_y2fcv"]
+[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="9_k1rwl"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="13_cprpm"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="14_ar3fi"]
 [ext_resource type="PackedScene" uid="uid://dumuf1e8lfu48" path="res://scenes/next_button.tscn" id="15_tpeo3"]
@@ -75,10 +79,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -162.5
-offset_right = 89.0
-offset_bottom = -93.5
+offset_left = -197.0
+offset_top = -174.0
+offset_right = 197.0
+offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -93,6 +97,95 @@ layout_mode = 2
 theme_type_variation = &"BodyLarge"
 text = "Round Complete"
 horizontal_alignment = 2
+
+[node name="PartsEarnedText" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 87.0
+offset_right = 128.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PartsEarnedText"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"MarginMedium"
+
+[node name="Label" type="Label" parent="PartsEarnedText/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyMedium"
+text = "Parts Earned"
+horizontal_alignment = 2
+
+[node name="PartsEarnedButtons" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 222.0
+offset_right = 180.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PartsEarnedButtons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -75.0
+offset_right = 229.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ArmorPartButton" parent="PartsEarnedButtons/HBoxContainer" instance=ExtResource("6_u2300")]
+layout_mode = 2
+
+[node name="Button" parent="PartsEarnedButtons/HBoxContainer/ArmorPartButton" index="0"]
+theme_type_variation = &"LightButton"
+
+[node name="SubViewport" parent="PartsEarnedButtons/HBoxContainer/ArmorPartButton/Button/MarginContainer/SubViewportContainer" index="0"]
+render_target_update_mode = 0
+
+[node name="ArmorPart" parent="PartsEarnedButtons/HBoxContainer/ArmorPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("7_egnf0")]
+
+[node name="WheelPartButton" parent="PartsEarnedButtons/HBoxContainer" instance=ExtResource("6_u2300")]
+layout_mode = 2
+
+[node name="Button" parent="PartsEarnedButtons/HBoxContainer/WheelPartButton" index="0"]
+theme_type_variation = &"LightButton"
+
+[node name="SubViewport" parent="PartsEarnedButtons/HBoxContainer/WheelPartButton/Button/MarginContainer/SubViewportContainer" index="0"]
+render_target_update_mode = 0
+
+[node name="WheelPart" parent="PartsEarnedButtons/HBoxContainer/WheelPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("8_y2fcv")]
+
+[node name="GunPartButton" parent="PartsEarnedButtons/HBoxContainer" instance=ExtResource("6_u2300")]
+layout_mode = 2
+
+[node name="Button" parent="PartsEarnedButtons/HBoxContainer/GunPartButton" index="0"]
+theme_type_variation = &"LightButton"
+
+[node name="SubViewport" parent="PartsEarnedButtons/HBoxContainer/GunPartButton/Button/MarginContainer/SubViewportContainer" index="0"]
+render_target_update_mode = 0
+
+[node name="GunPart" parent="PartsEarnedButtons/HBoxContainer/GunPartButton/Button/MarginContainer/SubViewportContainer/SubViewport/PartViewer" index="2" instance=ExtResource("9_k1rwl")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -156,4 +249,7 @@ size_flags_vertical = 0
 [node name="Label" parent="GameOverControl/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
 text = "Restart"
 
+[editable path="PartsEarnedButtons/HBoxContainer/ArmorPartButton"]
+[editable path="PartsEarnedButtons/HBoxContainer/WheelPartButton"]
+[editable path="PartsEarnedButtons/HBoxContainer/GunPartButton"]
 [editable path="GameOverControl/NextRoundButton"]

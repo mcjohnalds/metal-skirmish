@@ -217,25 +217,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
 [node name="GunPart13" parent="." index="68" instance=ExtResource("5_2qeh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 
-[node name="GunPart7" parent="." index="69" instance=ExtResource("5_2qeh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
-
-[node name="GunPart8" parent="." index="70" instance=ExtResource("5_2qeh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1)
-
-[node name="GunPart14" parent="." index="71" instance=ExtResource("5_2qeh7")]
+[node name="GunPart8" parent="." index="69" instance=ExtResource("5_2qeh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
 
-[node name="GunPart11" parent="." index="72" instance=ExtResource("5_2qeh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1)
-
-[node name="GunPart12" parent="." index="73" instance=ExtResource("5_2qeh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
-
-[node name="GunPart16" parent="." index="74" instance=ExtResource("5_2qeh7")]
+[node name="GunPart11" parent="." index="70" instance=ExtResource("5_2qeh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
 
-[node name="VehicleDetector" type="Area3D" parent="." index="75"]
+[node name="VehicleDetector" type="Area3D" parent="." index="71"]
 transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 5)
 collision_layer = 0
 monitorable = false
