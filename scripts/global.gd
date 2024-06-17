@@ -8,7 +8,7 @@ const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
 const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
 const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
 var armor_part_inventory := 50
-var wheel_part_inventory := 4
+var wheel_part_inventory := 40
 var gun_part_inventory := 10
 var round_number := 1
 

@@ -6,9 +6,11 @@ signal destroyed(is_player: bool)
 const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
-const SPRING_STRENGTH := 25000.0
+const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
+# Tire mass only affects friction
+const TIRE_MASS := 100.0
 const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
 const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
 const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
@@ -260,9 +262,9 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 
 		part.wheel.position.y = part.ray_cast.position.y - spring_length
 		var spring_velocity := (part.last_spring_offset - spring_offset) / delta
-		var spring_strength := SPRING_STRENGTH
-		var spring_damping := spring_strength * SPRING_DAMPING
-		var spring_force := spring_offset * spring_strength - spring_velocity * spring_damping
+		var spring_force := SPRING_STRENGTH * mass / wheel_parts.size() * (
+			spring_offset - spring_velocity * SPRING_DAMPING
+		)
 		var spring_force_vector := part.global_basis.y * spring_force
 		apply_force(spring_force_vector, force_offset)
 
@@ -274,10 +276,9 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		var wheel_friction_lookup := absf(wheel_velocity.dot(part.wheel.global_basis.x)) / wheel_velocity.length()
 		var curve := wheel_friction_front if part.front else wheel_friction_back
 		var sideways_friction := curve.sample(wheel_friction_lookup)
-		var tire_mass := 100.0
 
-		var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction * tire_mass / delta
-		var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction * tire_mass / delta
+		var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction * TIRE_MASS / delta
+		var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction * TIRE_MASS / delta
 
 		apply_force(sideways_friction_force_vector, force_offset)
 		apply_force(forward_friction_force_vector, force_offset)
