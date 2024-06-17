@@ -1,9 +1,8 @@
 Essential:
 
-- Make wheels capable of being in the center
-- Tweak wheel steering enabling logic
 - Enemies select random part to attack
 - Enemies cannot damage each other
+- Make ground wider and add invisible walls
 - Enemy types
   - Enemy spawn point in arena
   - Reduce aim range and mouse sensitivity
@@ -105,6 +104,7 @@ Really want:
 - Paint mode
 - Make face hint flash red when trying to remove bridge
 - Part health is preseved between rounds
+- Circle enemy AI type that tries to flank the player
 - Trailer
 - Vehicle collision sound
 - Vehicle landed on dirt sound
@@ -120,6 +120,7 @@ After game jam:
   - Block placer
   - Export templates and scripts
   - Theme variants
+  - Heightmap
 
 Ideas:
 

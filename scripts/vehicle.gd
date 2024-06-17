@@ -34,6 +34,15 @@ func _ready() -> void:
 		camera_pivot.position.y = 5.0
 		add_child(camera_pivot)
 		camera_pivot.aim.add_exception(self)
+
+	var wheel_min_z := 1000.0
+	var wheel_max_z := -1000.0
+	for child: Node3D in get_children():
+		if child is WheelPart:
+			wheel_min_z = minf(child.position.z, wheel_min_z)
+			wheel_max_z = maxf(child.position.z, wheel_max_z)
+	var wheel_midpoint_z := (wheel_max_z + wheel_min_z) / 2.0
+
 	for child: Node3D in get_children():
 		var is_part := false
 		if child is ArmorPart:
@@ -53,7 +62,7 @@ func _ready() -> void:
 			part.wheel.position.x += direction * x_offset
 			part.ray_cast.position.x += direction * x_offset
 
-			var is_front: bool = child.position.z > 0.0
+			var is_front: bool = part.position.z >= wheel_midpoint_z
 			part.traction = true
 			part.steering = is_front
 			part.front = is_front
