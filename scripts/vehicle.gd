@@ -3,6 +3,7 @@ extends RigidBody3D
 
 signal destroyed(is_player: bool)
 
+const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
 const SPRING_REST_DISTANCE := 0.7
@@ -24,6 +25,7 @@ var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
 var parts: Array[Node3D] = []
+var target_index := 0
 
 
 func _ready() -> void:
@@ -85,6 +87,7 @@ func _ready() -> void:
 	center_of_mass = part_position_sum / parts.size()
 	center_of_mass.y = center_of_mass.y * 0.5 - 0.5
 	mass = parts.size() * 100.0
+	start_target_select_loop()
 
 
 func _physics_process(delta: float) -> void:
@@ -118,13 +121,13 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			else:
 				target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
 		else:
-			var target_part: Node3D = g.arena.player.cockpit_part
+			if g.arena.player.cockpit_part.health == 0.0:
+				return
+			var living_parts: Array[Node3D] = []
 			for p in g.arena.player.parts:
 				if p.health > 0.0:
-					target_part = p
-					break
-			if not target_part:
-				return
+					living_parts.append(p)
+			var target_part := living_parts[target_index % living_parts.size()]
 			target = target_part.global_position
 
 		Global.safe_look_at(part.barrel, target, true)
@@ -308,7 +311,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 	var hit_part: Node3D = vehicle.parts[shape_index]
 	if hit_part.health == 0.0:
 		return
-	hit_part.health -= 10.0
+	hit_part.health -= BULLET_DAMAGE
 	if hit_part.health <= 0.0:
 		if hit_part is ArmorPart:
 			hit_part.armor.visible = false
@@ -357,3 +360,9 @@ static func from_dictionary(dict: Dictionary) -> Vehicle:
 	for part in Global.dictionary_to_parts(dict):
 		vehicle.add_child(part)
 	return vehicle
+
+
+func start_target_select_loop() -> void:
+	while true:
+		target_index = randi()
+		await get_tree().create_timer(randf_range(0.5, 3.0)).timeout

@@ -1,6 +1,5 @@
 Essential:
 
-- Enemies select random part to attack
 - Enemies cannot damage each other
 - Make ground wider and add invisible walls
 - Enemy types
