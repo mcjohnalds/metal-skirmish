@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="5_jxakr"]
 
 [node name="VehicleSmall" type="RigidBody3D" groups=["vehicles"]]
-collision_mask = 3
+collision_mask = 11
 mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("1_p0kvn")

@@ -110,6 +110,7 @@ Really want:
 - Vehicle landed on dirt sound
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
+- Fade walls based on distance to player
 
 After game jam:
 

@@ -6,6 +6,7 @@ signal destroyed(is_player: bool)
 const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
+const ENGINE_TORQUE := 7500.0 * 10.0
 const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
@@ -214,7 +215,7 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		var breaking := false
 		if part.traction and part.health > 0.0 and cockpit_part.health > 0.0:
 			var input := get_throttle_input()
-			var max_torque := 7500.0 * absf(input)
+			var max_torque := ENGINE_TORQUE * absf(input)
 			var forward_speed := linear_velocity.dot(basis.z)
 			if forward_speed * input < 0.0:
 				breaking = true

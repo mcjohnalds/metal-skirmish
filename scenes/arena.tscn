@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=16 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/environment.tscn" id="2_lr0bs"]
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_vd60c"]
+[ext_resource type="PackedScene" uid="uid://ca5c21n3ub847" path="res://scenes/wall.tscn" id="3_3iwxt"]
 [ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="3_3sqo7"]
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="4_smsly"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="6_aqp3c"]
@@ -28,9 +29,23 @@ script = ExtResource("1_vu6ok")
 
 [node name="Environment" parent="." instance=ExtResource("2_lr0bs")]
 
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall1" parent="Walls" instance=ExtResource("3_3iwxt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10, 997.5)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("3_3iwxt")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2.08165e-12, 10, -997.5)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("3_3iwxt")]
+transform = Transform3D(1.31134e-07, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, 1.31134e-07, 997.5, 10, 2.08165e-12)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("3_3iwxt")]
+transform = Transform3D(-2.18557e-07, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -2.18557e-07, -997.5, 10, 2.08165e-12)
+
 [node name="Enemy1" type="RigidBody3D" parent="." groups=["vehicles"]]
 transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, 14.7995, 10.831, -27.4631)
-collision_mask = 3
+collision_mask = 11
 mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("2_vd60c")
@@ -84,7 +99,7 @@ shape = SubResource("SphereShape3D_agf0a")
 
 [node name="Enemy2" type="RigidBody3D" parent="." groups=["vehicles"]]
 transform = Transform3D(0.453571, 0, -0.89122, 0, 1, 0, 0.89122, 0, 0.453571, -17.8738, 10.831, 59.0842)
-collision_mask = 3
+collision_mask = 11
 mass = 1000.0
 center_of_mass_mode = 1
 script = ExtResource("2_vd60c")

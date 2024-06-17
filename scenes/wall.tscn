@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca5c21n3ub847"]
+
+[sub_resource type="Gradient" id="Gradient_lfd3x"]
+colors = PackedColorArray(0.193154, 0.193154, 0.193154, 1, 0.404511, 0.404511, 0.404511, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6pa6s"]
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i8rgo"]
+seamless = true
+color_ramp = SubResource("Gradient_lfd3x")
+noise = SubResource("FastNoiseLite_6pa6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itu6k"]
+albedo_texture = SubResource("NoiseTexture2D_i8rgo")
+uv1_scale = Vector3(100, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q85nr"]
+material = SubResource("StandardMaterial3D_itu6k")
+size = Vector3(1995, 20, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdqsj"]
+size = Vector3(1995, 1000, 5)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 8
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+mesh = SubResource("BoxMesh_q85nr")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+shape = SubResource("BoxShape3D_mdqsj")
