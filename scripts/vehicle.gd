@@ -6,7 +6,9 @@ signal destroyed(is_player: bool)
 const BULLET_DAMAGE := 10.0
 const ENEMY_SHOOTING_ENABLED := true
 const ENEMY_INACCURACY := 0.1
-const SPRING_REST_DISTANCE := 0.7
+const SPRING_STRENGTH := 25000.0
+const SPRING_DAMPING := 0.15
+const SPRING_REST_DISTANCE := 0.6
 const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
 const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
 const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
@@ -258,9 +260,9 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 
 		part.wheel.position.y = part.ray_cast.position.y - spring_length
 		var spring_velocity := (part.last_spring_offset - spring_offset) / delta
-		var spring_strength := 20000.0
-		var spring_damping := spring_strength * 0.15
-		var spring_force := 1.5 * spring_offset * spring_strength - spring_velocity * spring_damping
+		var spring_strength := SPRING_STRENGTH
+		var spring_damping := spring_strength * SPRING_DAMPING
+		var spring_force := spring_offset * spring_strength - spring_velocity * spring_damping
 		var spring_force_vector := part.global_basis.y * spring_force
 		apply_force(spring_force_vector, force_offset)
 

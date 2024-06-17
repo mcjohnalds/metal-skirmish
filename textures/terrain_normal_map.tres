@@ -3,6 +3,8 @@
 [ext_resource type="FastNoiseLite" uid="uid://di5ch7362bcey" path="res://misc/terrain_noise.tres" id="1_pyx7c"]
 
 [resource]
+width = 1024
+height = 1024
 generate_mipmaps = false
 seamless = true
 as_normal_map = true

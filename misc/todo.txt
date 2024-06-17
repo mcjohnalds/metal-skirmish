@@ -1,6 +1,5 @@
 Essential:
 
-- Enemies cannot damage each other
 - Make ground wider and add invisible walls
 - Enemy types
   - Enemy spawn point in arena
@@ -110,6 +109,7 @@ Really want:
 - Vehicle collision sound
 - Vehicle landed on dirt sound
 - Make face hint red when hovering over gun
+- Different ground/fog/sky for each round e.g grass
 
 After game jam:
 

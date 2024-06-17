@@ -10,7 +10,7 @@ uniform sampler2D normal_map;
 varying vec2 tex_position;
 
 void vertex() {
-	tex_position = VERTEX.xz * 1.0 + 0.5;
+	tex_position = VERTEX.xz + 0.5;
 	float height = texture(height_map, tex_position).x;
 	VERTEX.y += height * height_scale;
 }

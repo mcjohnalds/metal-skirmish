@@ -6,6 +6,8 @@
 colors = PackedColorArray(1, 1, 1, 1, 0.894923, 0.894922, 0.894923, 1)
 
 [resource]
+width = 1024
+height = 1024
 generate_mipmaps = false
 seamless = true
 color_ramp = SubResource("Gradient_hg7pt")
