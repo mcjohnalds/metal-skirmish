@@ -75,32 +75,32 @@ var rounds := [
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(100.0, 0.0, -700.0),
+				"position": Vector3(100.0, 0.0, -300.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-100.0, 0.0, -700.0),
+				"position": Vector3(-100.0, 0.0, -300.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(400.0, 0.0, 100.0),
+				"position": Vector3(100.0, 0.0, 100.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(400.0, 0.0, -100.0),
+				"position": Vector3(100.0, 0.0, -100.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-400.0, 0.0, 100.0),
+				"position": Vector3(-100.0, 0.0, 100.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-400.0, 0.0, -100.0),
+				"position": Vector3(-100.0, 0.0, -100.0),
 				"accuracy": 1.0,
 			},
 		],

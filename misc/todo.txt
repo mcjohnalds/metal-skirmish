@@ -1,13 +1,12 @@
 Essential:
 
-- Balance earned parts data
-- Move all enemies spawn closer to player so game is faster
 - Fix bug where esc doesn't work first time due to button focus
 - Fix bug where tracers don't get cleaned up
 - Fix bug where switching to another app breaks input grabbed state
 - Kill enemy if they manage to leave level bounds
 - Kill enemy if they are immobile for too long
-- Add an alternative way to scroll
+- Add an alternative way to scroll zoom
+- Balance earned parts data
 - Fix weird camera bug that happens when only cockpit part is left
 - Export
   - Set to maximize window mode
@@ -97,13 +96,13 @@ Really want:
 - Paint mode
 - Make face hint flash red when trying to remove bridge
 - Part health is preseved between rounds
+- Destroyed parts still collide with vehicles
 - Circle enemy AI type that tries to flank the player
 - Ran enemy AI
 - When enemy has no guns, it tries to ram player
 - Trailer
 - Vehicle collision sound
 - Vehicle landed on dirt sound
-- Destroyed parts still collide with vehicles
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
