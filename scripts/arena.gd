@@ -111,14 +111,24 @@ var rounds := [
 	{
 		"enemies": [
 			{
-				"scene": vehicle_train,
+				"scene": vehicle_the_block,
 				"position": Vector3(0.0, 0.0, 0.0),
 				"accuracy": 1.0,
 			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(30.0, 0.0, 150.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-30.0, 0.0, 150.0),
+				"accuracy": 1.0,
+			},
 		],
-		"armor_parts_earned": 2,
-		"wheel_parts_earned": 1,
-		"gun_parts_earned": 1,
+		"armor_parts_earned": 0,
+		"wheel_parts_earned": 0,
+		"gun_parts_earned": 0,
 	},
 	{
 		"enemies": [
@@ -140,24 +150,61 @@ var rounds := [
 	{
 		"enemies": [
 			{
-				"scene": vehicle_the_block,
+				"scene": vehicle_train,
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
+			},
+		],
+		"armor_parts_earned": 20,
+		"wheel_parts_earned": 10,
+		"gun_parts_earned": 10,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_tinny_bopper,
 				"position": Vector3(0.0, 0.0, 0.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(30.0, 0.0, 150.0),
+				"position": Vector3(100.0, 0.0, 0.0),
 				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-30.0, 0.0, 150.0),
+				"position": Vector3(200.0, 0.0, 0.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_prick,
+				"position": Vector3(0.0, 0.0, 100.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_banger,
+				"position": Vector3(100.0, 0.0, 100.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_broadside,
+				"position": Vector3(200.0, 0.0, 100.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_tall_boy,
+				"position": Vector3(0.0, 0.0, 200.0),
+				"accuracy": 1.0,
+			},
+			{
+				"scene": vehicle_train,
+				"position": Vector3(100.0, 0.0, 200.0),
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 0,
-		"wheel_parts_earned": 0,
-		"gun_parts_earned": 0,
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
 	},
 ]
 

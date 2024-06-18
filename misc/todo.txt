@@ -1,11 +1,12 @@
 Essential:
 
-- Balance
-  - Make a fun finale level
+- Balance earned parts data
 - Move all enemies spawn closer to player so game is faster
 - Fix bug where esc doesn't work first time due to button focus
 - Fix bug where tracers don't get cleaned up
 - Fix bug where switching to another app breaks input grabbed state
+- Kill enemy if they manage to leave level bounds
+- Kill enemy if they are immobile for too long
 - Add an alternative way to scroll
 - Fix weird camera bug that happens when only cockpit part is left
 - Export
@@ -77,6 +78,8 @@ Really want:
 - Display vignette fade in/out effect between screens
 - Screen space shaders and settings
 - Camera shake
+- Some way of knowing where the front of the vehicle is in the garage and in
+  the arena. Maybe style the cockpit or add a debug arrow.
 - Smooth camera movement
 - Improve itch page
 - Make gun impart small force on shooter and target
