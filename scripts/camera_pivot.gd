@@ -28,7 +28,7 @@ var view_yaw := 0.0:
 
 
 func _ready() -> void:
-	aim.target_position = Vector3(0.0, 0.0, -Global.MAX_AIM_RANGE)
+	aim.target_position = Vector3(0.0, 0.0, -10000.0)
 
 
 func _input(event: InputEvent) -> void:

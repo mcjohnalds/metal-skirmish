@@ -1,8 +1,8 @@
 Essential:
 
 - Balance
-  - Fix player aim logic when zooming out
   - Make a fun finale level
+- Move all enemies spawn closer to player so game is faster
 - Fix bug where esc doesn't work first time due to button focus
 - Fix bug where tracers don't get cleaned up
 - Fix bug where switching to another app breaks input grabbed state
