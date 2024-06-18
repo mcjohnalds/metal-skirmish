@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="5_31tj5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4q23m"]
-radius = 7.375
+radius = 7.0
 
 [node name="VehicleSmall" instance=ExtResource("1_75cb2")]
 
@@ -83,7 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
 
 [node name="VehicleDetector" type="Area3D" parent="." index="24"]
-transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 8)
+transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 7.64434)
 collision_layer = 0
 monitorable = false
 

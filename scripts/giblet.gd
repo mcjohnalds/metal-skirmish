@@ -7,8 +7,8 @@ extends RigidBody3D
 func _ready() -> void:
 	rotation += rand_vector3(TAU)
 	angular_velocity += rand_vector3(0.3 * TAU)
-	linear_velocity += rand_vector3(10.0) * Vector3(1.0, 0.0, 1.0)
-	linear_velocity.y += randf_range(10.0, 20.0)
+	linear_velocity += rand_vector3(50.0)
+	linear_velocity.y += 5.0
 	await get_tree().create_timer(randf_range(5.0, 10.0)).timeout
 	collision_layer = 0
 	collision_mask = 0

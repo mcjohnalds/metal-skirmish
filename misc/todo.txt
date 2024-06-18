@@ -1,10 +1,12 @@
 Essential:
 
 - Balance
-  - Make first enemy have poor accuracy
   - Make enemy drive very slow if unable to steer
   - Fix player aim logic when zooming out
+  - Make a fun finale level
 - Fix bug where esc doesn't work first time due to button focus
+- Fix bug where tracers don't get cleaned up
+- Fix bug where switching to another app breaks input grabbed state
 - Add an alternative way to scroll
 - Fix weird camera bug that happens when only cockpit part is left
 - Export
@@ -109,6 +111,7 @@ Really want:
 - Restart should take user back to first level, not main menu
 - Boot splash image
 - Disable dynamic lighting when graphics setting is low
+- Blast out gibs randomy when bullets collide with parts
 
 After game jam:
 

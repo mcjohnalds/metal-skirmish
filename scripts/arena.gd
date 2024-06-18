@@ -17,7 +17,8 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 0.2,
 			},
 		],
 		"armor_parts_earned": 2,
@@ -28,7 +29,8 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_prick,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 3,
@@ -39,7 +41,8 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_banger,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 3,
@@ -50,7 +53,8 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_broadside,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 3,
@@ -61,35 +65,43 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(100.0, 0.0, 0.0)
+				"position": Vector3(100.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-100.0, 0.0, 0.0)
+				"position": Vector3(-100.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(100.0, 0.0, -700.0)
+				"position": Vector3(100.0, 0.0, -700.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-100.0, 0.0, -700.0)
+				"position": Vector3(-100.0, 0.0, -700.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(400.0, 0.0, 100.0)
+				"position": Vector3(400.0, 0.0, 100.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(400.0, 0.0, -100.0)
+				"position": Vector3(400.0, 0.0, -100.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-400.0, 0.0, 100.0)
+				"position": Vector3(-400.0, 0.0, 100.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-400.0, 0.0, -100.0)
+				"position": Vector3(-400.0, 0.0, -100.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 2,
@@ -100,7 +112,8 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_train,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 2,
@@ -111,11 +124,13 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_tall_boy,
-				"position": Vector3(100.0, 0.0, 0.0)
+				"position": Vector3(100.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tall_boy,
-				"position": Vector3(-100.0, 0.0, 0.0)
+				"position": Vector3(-100.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 2,
@@ -126,31 +141,23 @@ var rounds := [
 		"enemies": [
 			{
 				"scene": vehicle_the_block,
-				"position": Vector3(0.0, 0.0, 0.0)
+				"position": Vector3(0.0, 0.0, 0.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(30.0, 0.0, 150.0)
+				"position": Vector3(30.0, 0.0, 150.0),
+				"accuracy": 1.0,
 			},
 			{
 				"scene": vehicle_tinny_bopper,
-				"position": Vector3(-30.0, 0.0, 150.0)
+				"position": Vector3(-30.0, 0.0, 150.0),
+				"accuracy": 1.0,
 			},
 		],
 		"armor_parts_earned": 0,
 		"wheel_parts_earned": 0,
 		"gun_parts_earned": 0,
-	},
-	{
-		"enemies": [
-			{
-				"scene": vehicle_train,
-				"position": Vector3(0.0, 0.0, 0.0)
-			},
-		],
-		"armor_parts_earned": 2,
-		"wheel_parts_earned": 1,
-		"gun_parts_earned": 1,
 	},
 ]
 
@@ -184,7 +191,10 @@ func _ready() -> void:
 	for enemy: Dictionary in enemies:
 		var scene = enemy["scene"]
 		var pos: Vector3 = enemy["position"]
+		var accuracy: float = enemy["accuracy"]
 		var vehicle: Vehicle = scene.instantiate()
+		vehicle.accuracy = accuracy
+
 		vehicle.position = enemy_spawn_point.position + pos
 
 		# Face player
@@ -210,7 +220,7 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		g.camera_pivot.process_mode = Node.PROCESS_MODE_DISABLED
 		return
-	if get_tree().get_nodes_in_group("vehicles").size() == 2:
+	if all_enemies_destroyed():
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
@@ -231,3 +241,10 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 			g.gun_part_inventory += gun_parts_earned
 			g.round_number += 1
 			round_complete.emit()
+
+
+func all_enemies_destroyed() -> bool:
+	for vehicle: Vehicle in get_tree().get_nodes_in_group("vehicles"):
+		if not vehicle.is_player and vehicle.cockpit_part.health > 0.0:
+			return false
+	return true

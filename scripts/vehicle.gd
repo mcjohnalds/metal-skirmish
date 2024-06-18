@@ -4,8 +4,9 @@ extends RigidBody3D
 signal destroyed(is_player: bool)
 
 const BULLET_DAMAGE := 10.0
+const BULLET_SPREAD := 0.002
 const ENEMY_SHOOTING_ENABLED := true
-const ENEMY_INACCURACY := 0.1
+const ENEMY_INACCURACY := 0.05
 const ENGINE_TORQUE := 7500.0
 const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
@@ -30,6 +31,7 @@ var wheel_parts: Array[WheelPart] = []
 var gun_parts: Array[GunPart] = []
 var parts: Array[Node3D] = []
 var target_index := 0
+var accuracy: float
 
 
 func _ready() -> void:
@@ -149,22 +151,28 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			ap = 0.0
 			ay = 0.0
 		else:
-			var v := linear_velocity - g.arena.player.linear_velocity
-			var d := global_position - g.arena.player.global_position
-			var p := v.project(d)
+			var m := ENEMY_INACCURACY * TAU
+
 			# Imagine self's computer screen when looking at the player. The
 			# player is moving across the screen at a certain rate. This rate
 			# is affected by the difference in velocities between the player
-			# and self. This rate is reflected in l.
+			# and self. This rate is reflected in a.
+			var v := linear_velocity - g.arena.player.linear_velocity
+			var d := global_position - g.arena.player.global_position
+			var p := v.project(d)
 			var l := p.distance_to(v)
 			var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
-			var t := Global.get_ticks_sec() * TAU
-			var m := ENEMY_INACCURACY * TAU
-			var s := 1.0 + g.arena.player.linear_velocity.length() / 70.0
-			ap = m * a * s * sin(t)
-			ay = m * a * s * sin(2.0 * t)
 
-		var rm := 0.002 * TAU
+			var s := g.arena.player.linear_velocity.length() / 70.0
+
+			var c := 1.0 - accuracy
+
+			var z := m * (a + s + c)
+			var t := Global.get_ticks_sec() * TAU
+			ap = z * sin(t)
+			ay = z * sin(2.0 * t)
+
+		var rm := BULLET_SPREAD * TAU
 		var rp := randf_range(-rm, rm)
 		var ry := randf_range(-rm, rm)
 
@@ -316,7 +324,7 @@ func get_steering_input() -> float:
 	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.arena.player.global_position))
 	var a := our_dir.angle() - player_dir.angle()
 	# Tiny vehicles tend to spin out of control
-	var m := 0.9 if mass > 1000.0 else 0.4
+	var m := 0.9 if mass > 1200.0 else 0.3
 	if a > 0.0:
 		return m
 	return -m
