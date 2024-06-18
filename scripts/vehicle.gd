@@ -112,7 +112,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 		and (is_player or ENEMY_SHOOTING_ENABLED)
 	)
 	var player_visible := (
-		is_instance_valid(g.arena.player)
+		g.arena.player.cockpit_part.health > 0.0
 		and g.arena.player.global_position.distance_to(part.global_position)
 			<= Global.MAX_AIM_RANGE
 	)
@@ -310,7 +310,7 @@ func get_throttle_input() -> float:
 func get_steering_input() -> float:
 	if is_player:
 		return Input.get_axis("move_right", "move_left")
-	if not is_instance_valid(g.arena.player):
+	if g.arena.player.cockpit_part.health == 0.0:
 		return 0.0
 	var our_dir := Vector2(global_basis.z.x, global_basis.z.z).normalized()
 	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.arena.player.global_position))
@@ -320,8 +320,6 @@ func get_steering_input() -> float:
 	if a > 0.0:
 		return m
 	return -m
-	# var frequency := 0.1
-	# return -0.7 * sin(Global.get_ticks_sec() * TAU * frequency)
 
 
 func damage_part(vehicle: Vehicle, shape_index: int) -> void:
@@ -349,7 +347,8 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 			hit_part_frame.visible = true
 			giblet.mesh.material_override = hit_part_frame.mesh.material_override
 		if hit_part is CockpitPart:
-			vehicle.queue_free()
+			vehicle.process_mode = Node.PROCESS_MODE_DISABLED
+			vehicle.visible = false
 			for p: Node3D in vehicle.parts:
 				var giblet: Giblet = frame_giblet_scene.instantiate()
 				get_parent().add_child(giblet)

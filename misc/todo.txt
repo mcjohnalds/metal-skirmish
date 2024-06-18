@@ -1,12 +1,10 @@
 Essential:
 
 - Balance
-  - Make first round more fun
-  - Gave player reason to go fast, e.g enemy aim penalty when still
-  - Getting killed takes you back to the garage
   - Add restart round button to pause menu
   - Fix player aim logic when zooming out
 - Add an alternative way to scroll
+- Fix weird camera bug that happens when only cockpit part is left
 - Export
   - Set to maximize window mode
   - Web

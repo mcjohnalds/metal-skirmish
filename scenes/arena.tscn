@@ -253,7 +253,7 @@ offset_bottom = 90.0
 grow_horizontal = 2
 size_flags_vertical = 1
 theme_type_variation = &"BodyLarge"
-text = "Game Over"
+text = "Round Lost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -274,7 +274,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Label" parent="GameOverControl/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
-text = "Restart"
+text = "Retry	"
 
 [editable path="PartsEarnedButtons/HBoxContainer/ArmorPartButton"]
 [editable path="PartsEarnedButtons/HBoxContainer/WheelPartButton"]

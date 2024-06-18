@@ -192,7 +192,6 @@ func _ready() -> void:
 	round_counter.label.text = "Round %s" % g.round_number
 	for vehicle: Vehicle in get_tree().get_nodes_in_group("vehicles"):
 		vehicle.destroyed.connect(on_vehicle_destroyed)
-	restart_button.button_down.connect(on_restart_button_down)
 
 
 func _process(_delta: float) -> void:
@@ -227,8 +226,3 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 			g.gun_part_inventory += gun_parts_earned
 			g.round_number += 1
 			round_complete.emit()
-
-
-func on_restart_button_down() -> void:
-	g.reset_progress()
-	get_tree().reload_current_scene()
