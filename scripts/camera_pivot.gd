@@ -1,8 +1,8 @@
 class_name CameraPivot
 extends Node3D
 
-const MOUSE_SENSITIVITY := 0.001
 const ORBIT_SPEED := 0.004
+const MOUSE_SENSITIVITY_MULTIPLIER := 0.001
 @onready var camera: Camera3D = $Camera
 @onready var aim: RayCast3D = $Camera/Aim
 var fight_mode := false
@@ -44,10 +44,12 @@ func _input(event: InputEvent) -> void:
 			if camera.position.z > -3.0:
 				camera.position.z = -2.0
 	if event is InputEventMouseMotion:
+		var invert := -1.0 if g.invert_mouse else 1.0
 		var motion := event as InputEventMouseMotion
 		if fight_mode:
-			view_pitch += motion.relative.y * MOUSE_SENSITIVITY
-			view_yaw -= motion.relative.x * MOUSE_SENSITIVITY
+			var s := g.mouse_sensitivity * MOUSE_SENSITIVITY_MULTIPLIER
+			view_pitch += motion.relative.y * s * invert
+			view_yaw -= motion.relative.x * s
 		elif Input.is_action_pressed("orbit"):
-			view_pitch += motion.relative.y * ORBIT_SPEED
+			view_pitch += motion.relative.y * ORBIT_SPEED * invert
 			view_yaw -= motion.relative.x * ORBIT_SPEED

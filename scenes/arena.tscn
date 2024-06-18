@@ -222,9 +222,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_type_variation = &"BodySmall"
-text = "WASD to move
-Left click to shoot
-Destroy your enemy"
+text = "WASD or arrow keys to move
+Left click to shoot"
 vertical_alignment = 2
 
 [node name="GameOverControl" type="Panel" parent="."]

@@ -152,5 +152,5 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 
 
 func on_restart_button_down() -> void:
-	g.reset()
+	g.reset_progress()
 	get_tree().reload_current_scene()

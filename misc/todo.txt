@@ -1,30 +1,11 @@
 Essential:
 
-- Settings page
-  - Mouse sensitivity slider
-  - Music slider
-  - Sound effect slider
-  - Low/med/high preset
-  - Vsync on/off
-  - Window mode
-  - Screen space shaders
-  - 3D resolution scale
-  - Fog
-  - Physics tick rate setting
-  - Physics "particle" count setting
-  - Only when in desktop
-    - AO
-    - AA
-    - Shadows
-    - Volume fog
-    - Glow
-    - SDFGI
-    - Auto exposure
 - Balance
   - More enemy types
   - Make first round more fun
   - Gave player reason to go fast, e.g enemy aim penalty when still
 - Export
+  - Set to maximize window mode
   - Web
   - Mac
   - Windows
@@ -63,16 +44,21 @@ Really want:
   - Part removed
   - Error when attempted part placement/removal invalid
   - Music
+- Sound and music settings
 - Make frame less imposing
 - Better win screen
 - Custom cursor
 - Custom font
+- Vary particle count based on graphics preset
 - Give first enemy a crappy gun
 - Pause menu with settings and exit button
 - Make ending more satisfying (maybe fade to black?)
 - Better start page
+  - The start page should carefuly set the player's feelings and expectations
+    - Wonder?
+    - Curiosity?
 - Display vignette fade in/out effect between screens
-- Screen space shaders
+- Screen space shaders and settings
 - Camera shake
 - Smooth camera movement
 - Improve itch page
@@ -101,6 +87,11 @@ Really want:
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
 - Let player chose reward after each level
+- Analytics
+- Gamma setting
+- Restart should take user back to first level, not main menu
+- Boot splash image
+- Disable dynamic lighting when graphics setting is low
 
 After game jam:
 
@@ -116,7 +107,9 @@ After game jam:
 
 Ideas:
 
-- Analytics
+- AO in browser using a shader
+- Automatically resize rows in settings page
+- Sun in sky
 - When round won, display ticker animation on icons to show new parts earned
 - Drifting
   - Extra dirt kicked up

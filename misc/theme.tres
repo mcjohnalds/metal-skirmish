@@ -4,6 +4,10 @@
 bg_color = Color(0.336607, 0.336608, 0.336608, 0.85098)
 
 [resource]
+BodyExtraLarge/base_type = &"Label"
+BodyExtraLarge/font_sizes/font_size = 35
+BodyExtraSmall/base_type = &"Label"
+BodyExtraSmall/font_sizes/font_size = 14
 BodyLarge/base_type = &"Label"
 BodyLarge/font_sizes/font_size = 42
 BodyMedium/base_type = &"Label"
@@ -11,6 +15,8 @@ BodyMedium/font_sizes/font_size = 35
 BodySmall/base_type = &"Label"
 BodySmall/font_sizes/font_size = 25
 Button/font_sizes/font_size = 30
+GridContainer/constants/v_separation = 10
+HBoxContainer/constants/separation = 10
 HeaderLarge/font_sizes/font_size = 60
 Label/colors/font_color = Color(1, 1, 1, 1)
 LightButton/base_type = &"Button"
@@ -25,3 +31,6 @@ MarginSmall/constants/margin_bottom = 5
 MarginSmall/constants/margin_left = 5
 MarginSmall/constants/margin_right = 5
 MarginSmall/constants/margin_top = 0
+OptionButton/font_sizes/font_size = 25
+PopupMenu/font_sizes/font_size = 25
+VBoxContainer/constants/separation = 10

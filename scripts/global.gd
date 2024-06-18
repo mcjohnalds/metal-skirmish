@@ -1,23 +1,88 @@
 class_name Global
 extends Node
 
-enum PhysicsLayers {
-	Vehicle = 1 << 0,
-	Ground = 1 << 1,
-	Giblet = 1 << 2,
-	Wall = 1 << 2,
+enum PhysicsLayer {
+	VEHICLE = 1 << 0,
+	GROUND = 1 << 1,
+	GIBLET = 1 << 2,
+	WALL = 1 << 2,
 }
+
+enum GraphicsPreset { LOW, MEDIUM, HIGH, INSANE }
 
 const MAX_AIM_RANGE := 70
 const FIRE_RATE := 10.0
+const DEFAULT_PHYSICS_TICKS_PER_SECOND = 60.0
+const DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME = 8.0
 const cockpit_part_scene: PackedScene = preload("res://scenes/cockpit_part.tscn")
 const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
 const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
 const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
+var environment: Environment = preload("res://misc/environment.tres")
 var armor_part_inventory: int
 var wheel_part_inventory: int
 var gun_part_inventory: int
 var round_number: int
+var mouse_sensitivity := 0.25
+var invert_mouse := false
+
+
+var graphics_preset := GraphicsPreset.MEDIUM:
+	set(value):
+		graphics_preset = value
+		match graphics_preset:
+			GraphicsPreset.LOW:
+				Engine.physics_ticks_per_second = int(DEFAULT_PHYSICS_TICKS_PER_SECOND)
+				Engine.max_physics_steps_per_frame = int(DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME)
+				get_viewport().scaling_3d_scale = 0.5
+				get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+				get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+				environment.fog_enabled = false
+				environment.volumetric_fog_enabled = false
+				environment.glow_enabled = false
+				environment.ssr_enabled = false
+				environment.ssao_enabled = false
+				environment.ssil_enabled = false
+				environment.sdfgi_enabled = false
+			GraphicsPreset.MEDIUM:
+				Engine.physics_ticks_per_second = int(DEFAULT_PHYSICS_TICKS_PER_SECOND)
+				Engine.max_physics_steps_per_frame = int(DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME)
+				get_viewport().scaling_3d_scale = 0.5
+				get_viewport().msaa_3d = Viewport.MSAA_2X
+				get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
+				environment.fog_enabled = true
+				environment.volumetric_fog_enabled = false
+				environment.glow_enabled = true
+				environment.ssr_enabled = false
+				environment.ssao_enabled = false
+				environment.ssil_enabled = false
+				environment.sdfgi_enabled = false
+			GraphicsPreset.HIGH:
+				Engine.physics_ticks_per_second = int(DEFAULT_PHYSICS_TICKS_PER_SECOND)
+				Engine.max_physics_steps_per_frame = int(DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME)
+				get_viewport().scaling_3d_scale = 1.0
+				get_viewport().msaa_3d = Viewport.MSAA_2X
+				get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+				environment.fog_enabled = true
+				environment.volumetric_fog_enabled = false
+				environment.glow_enabled = true
+				environment.ssr_enabled = false
+				environment.ssao_enabled = true
+				environment.ssil_enabled = false
+				environment.sdfgi_enabled = false
+			GraphicsPreset.INSANE:
+				Engine.physics_ticks_per_second = int(DEFAULT_PHYSICS_TICKS_PER_SECOND * 2.0)
+				Engine.max_physics_steps_per_frame = int(DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME * 2.0)
+				get_viewport().scaling_3d_scale = 1.0
+				get_viewport().msaa_3d = Viewport.MSAA_4X
+				get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+				environment.fog_enabled = true
+				environment.volumetric_fog_enabled = true
+				environment.glow_enabled = true
+				environment.ssr_enabled = true
+				environment.ssao_enabled = true
+				environment.ssil_enabled = true
+				environment.sdfgi_enabled = true
 
 
 var arena: Arena:
@@ -31,10 +96,19 @@ var camera_pivot: CameraPivot:
 
 
 func _init() -> void:
-	reset()
+	reset_progress()
 
 
-func reset() -> void:
+func _ready() -> void:
+	g.graphics_preset = g.graphics_preset
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
+
+
+func reset_progress() -> void:
 	armor_part_inventory = 0
 	wheel_part_inventory = 0
 	gun_part_inventory = 0
@@ -149,8 +223,3 @@ static func is_graph_connected(pairs: Array) -> bool:
 				stack.append(neighbor)
 
 	return visited.size() == nodes.size()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if OS.is_debug_build() and event.is_action_pressed("ui_cancel"):
-		get_tree().quit()

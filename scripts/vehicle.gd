@@ -11,7 +11,6 @@ const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
 # Tire mass only affects friction
-const TIRE_MASS := 100.0
 const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
 const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
 const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
@@ -273,13 +272,13 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 		part.debug_arrow_y.vector = spring_force_vector * debug_arrow_scale
 
 		var wheel_velocity := Global.get_point_velocity(self, part.wheel.global_position)
-		var forward_friction := 0.1 if breaking else 0.02
+		var forward_friction := 10.0 if breaking else 2.0
 		var wheel_friction_lookup := absf(wheel_velocity.dot(part.wheel.global_basis.x)) / wheel_velocity.length()
 		var curve := wheel_friction_front if part.front else wheel_friction_back
-		var sideways_friction := curve.sample(wheel_friction_lookup)
+		var sideways_friction := curve.sample(wheel_friction_lookup) * 200.0
 
-		var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction * TIRE_MASS / delta
-		var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction * TIRE_MASS / delta
+		var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction / delta
+		var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction / delta
 
 		apply_force(sideways_friction_force_vector, force_offset)
 		apply_force(forward_friction_force_vector, force_offset)
