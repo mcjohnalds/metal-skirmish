@@ -4,24 +4,15 @@ extends Node3D
 signal round_complete
 
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
-var vehicle_cow := load("res://scenes/vehicle_cow.tscn")
 var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
+var vehicle_tall_boy := load("res://scenes/vehicle_tall_boy.tscn")
+var vehicle_broadside := load("res://scenes/vehicle_broadside.tscn")
 var vehicle_prick := load("res://scenes/vehicle_prick.tscn")
 var vehicle_banger := load("res://scenes/vehicle_banger.tscn")
 var vehicle_the_block := load("res://scenes/vehicle_the_block.tscn")
+var vehicle_train := load("res://scenes/vehicle_train.tscn")
 
 var rounds := [
-	{
-		"enemies": [
-			{
-				"scene": vehicle_cow,
-				"position": Vector3(0.0, 0.0, 0.0)
-			},
-		],
-		"armor_parts_earned": 1,
-		"wheel_parts_earned": 1,
-		"gun_parts_earned": 1,
-	},
 	{
 		"enemies": [
 			{
@@ -58,6 +49,82 @@ var rounds := [
 	{
 		"enemies": [
 			{
+				"scene": vehicle_broadside,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 3,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 2,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(100.0, 0.0, 0.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-100.0, 0.0, 0.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(100.0, 0.0, -700.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-100.0, 0.0, -700.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(400.0, 0.0, 100.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(400.0, 0.0, -100.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-400.0, 0.0, 100.0)
+			},
+			{
+				"scene": vehicle_tinny_bopper,
+				"position": Vector3(-400.0, 0.0, -100.0)
+			},
+		],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_train,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_tall_boy,
+				"position": Vector3(100.0, 0.0, 0.0)
+			},
+			{
+				"scene": vehicle_tall_boy,
+				"position": Vector3(-100.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
+	{
+		"enemies": [
+			{
 				"scene": vehicle_the_block,
 				"position": Vector3(0.0, 0.0, 0.0)
 			},
@@ -73,6 +140,17 @@ var rounds := [
 		"armor_parts_earned": 0,
 		"wheel_parts_earned": 0,
 		"gun_parts_earned": 0,
+	},
+	{
+		"enemies": [
+			{
+				"scene": vehicle_train,
+				"position": Vector3(0.0, 0.0, 0.0)
+			},
+		],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
 	},
 ]
 

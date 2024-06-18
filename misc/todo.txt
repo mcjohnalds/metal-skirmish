@@ -1,9 +1,12 @@
 Essential:
 
 - Balance
-  - More enemy types
   - Make first round more fun
   - Gave player reason to go fast, e.g enemy aim penalty when still
+  - Getting killed takes you back to the garage
+  - Add restart round button to pause menu
+  - Fix player aim logic when zooming out
+- Add an alternative way to scroll
 - Export
   - Set to maximize window mode
   - Web
@@ -44,12 +47,25 @@ Really want:
   - Part removed
   - Error when attempted part placement/removal invalid
   - Music
+- Add advanced info tooltips when hovering over part buttons
+  - Guns
+    - All problems can be solve with more dakka
+  - Wheels
+    - Wheels make you go faster and turn faster
+    - Wheels towards the front will steer your vehicle
+    - Destroyed wheels do not make you go faster
+    - If all the wheels towards the front are destroyed, you will lose the
+      ability to steer
+    - Going fast makes you hard to hit
+  - Armor
+    - Blocks bullets
 - Sound and music settings
 - Make frame less imposing
 - Better win screen
 - Custom cursor
 - Custom font
 - Vary particle count based on graphics preset
+- Set vehicle zoom based on size
 - Give first enemy a crappy gun
 - Pause menu with settings and exit button
 - Make ending more satisfying (maybe fade to black?)
@@ -63,10 +79,12 @@ Really want:
 - Smooth camera movement
 - Improve itch page
 - Make gun impart small force on shooter and target
+- Fix issue where enemies facing each other deadlock
 - Kick up dirt when driving
 - Leave trails in dirt
 - Sky texture
 - Better meshes and textures
+- In garage, show a little picture that displays your next enemy
 - Sensible colors
 - Hitmarker sound and UI
 - Display damage texture on damaged parts
@@ -82,7 +100,6 @@ Really want:
 - Vehicle collision sound
 - Vehicle landed on dirt sound
 - Destroyed parts still collide with vehicles
-- Camera height adapts to build size
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
@@ -97,6 +114,7 @@ After game jam:
 
 - Create generic assets
   - Settings menu
+  - Pause/unpause/start
   - Car
   - Tracer
   - Particle effects
@@ -109,6 +127,7 @@ Ideas:
 
 - AO in browser using a shader
 - Automatically resize rows in settings page
+- Preseve cursor position when pausing/unpausing
 - Sun in sky
 - When round won, display ticker animation on icons to show new parts earned
 - Drifting

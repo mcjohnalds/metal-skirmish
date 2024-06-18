@@ -1,4 +1,3 @@
-# TODO: preseve cursor position when pausing/unpausing
 class_name Main
 extends Node3D
 
@@ -29,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			unpause()
 		else:
 			pause()
-	if OS.is_debug_build() and event.is_action_pressed("switch_scene"):
+	if OS.is_debug_build() and event.is_action_pressed("switch_scene") and level:
 		g.armor_part_inventory = 50
 		g.wheel_part_inventory = 50
 		g.gun_part_inventory = 50

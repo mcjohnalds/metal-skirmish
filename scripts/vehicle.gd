@@ -34,19 +34,15 @@ var target_index := 0
 
 func _ready() -> void:
 	var part_position_sum := Vector3.ZERO
-	if is_player:
-		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
-		camera_pivot.fight_mode = true
-		camera_pivot.position.y = 5.0
-		add_child(camera_pivot)
-		camera_pivot.aim.add_exception(self)
 
 	var wheel_min_z := 1000.0
 	var wheel_max_z := -1000.0
+	var part_max_y := -1000.0
 	for child: Node3D in get_children():
 		if child is WheelPart:
 			wheel_min_z = minf(child.position.z, wheel_min_z)
 			wheel_max_z = maxf(child.position.z, wheel_max_z)
+		part_max_y = maxf(child.position.y, part_max_y)
 	var wheel_midpoint_z := (wheel_max_z + wheel_min_z) / 2.0
 
 	for child: Node3D in get_children():
@@ -88,6 +84,14 @@ func _ready() -> void:
 			shape.position = child.position
 			shape.shape = BoxShape3D.new()
 			add_child(shape)
+
+	if is_player:
+		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
+		camera_pivot.fight_mode = true
+		camera_pivot.position.y = part_max_y * 2.0
+		add_child(camera_pivot)
+		camera_pivot.aim.add_exception(self)
+
 	center_of_mass = part_position_sum / parts.size()
 	center_of_mass.y = center_of_mass.y * 0.5 - 0.5
 	mass = parts.size() * 100.0
@@ -148,12 +152,17 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var v := linear_velocity - g.arena.player.linear_velocity
 			var d := global_position - g.arena.player.global_position
 			var p := v.project(d)
+			# Imagine self's computer screen when looking at the player. The
+			# player is moving across the screen at a certain rate. This rate
+			# is affected by the difference in velocities between the player
+			# and self. This rate is reflected in l.
 			var l := p.distance_to(v)
 			var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
 			var t := Global.get_ticks_sec() * TAU
 			var m := ENEMY_INACCURACY * TAU
-			ap = m * a * sin(t)
-			ay = m * a * sin(2.0 * t)
+			var s := 1.0 + g.arena.player.linear_velocity.length() / 100.0
+			ap = m * a * s * sin(t)
+			ay = m * a * s * sin(2.0 * t)
 
 		var rm := 0.002 * TAU
 		var rp := randf_range(-rm, rm)
@@ -306,7 +315,8 @@ func get_steering_input() -> float:
 	var our_dir := Vector2(global_basis.z.x, global_basis.z.z).normalized()
 	var player_dir := Global.get_vector3_xz(global_position.direction_to(g.arena.player.global_position))
 	var a := our_dir.angle() - player_dir.angle()
-	var m := 0.9
+	# Tiny vehicles tend to spin out of control
+	var m := 0.9 if mass > 1000.0 else 0.4
 	if a > 0.0:
 		return m
 	return -m
