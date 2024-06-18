@@ -10,7 +10,6 @@ const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
 var level: Node
 var transitioning := false
 var paused := false
-var mouse_mode_before_pausing: Input.MouseMode
 
 
 func _ready() -> void:
@@ -76,11 +75,12 @@ func go_to_arena() -> void:
 
 	var new_arena: Arena = arena_scene.instantiate()
 	new_arena.player = player
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	level_container.add_child(new_arena)
 	new_arena.round_complete.connect(go_to_garage)
 	new_arena.restart_button.button_down.connect(on_restart_button_down)
+	new_arena.round_lost.connect(on_round_lost)
 	level = new_arena
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	transitioning = false
 
@@ -97,7 +97,6 @@ func go_to_garage() -> void:
 	await arena.tree_exited
 
 	var garage: Garage = garage_scene.instantiate()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	level_container.add_child(garage)
 	for part in Global.dictionary_to_parts(dict):
 		garage.add_part(part)
@@ -105,6 +104,7 @@ func go_to_garage() -> void:
 	g.camera_pivot.view_yaw = 3.0 * TAU / 8.0
 	garage.next_round.connect(go_to_arena)
 	level = garage
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	transitioning = false
 
@@ -119,18 +119,20 @@ func on_resume_button_down() -> void:
 
 func pause() -> void:
 	paused = true
-	mouse_mode_before_pausing = Input.mouse_mode
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	settings.restart_button.get_parent().visible = level is Arena
 	settings.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func unpause() -> void:
 	paused = false
-	Input.mouse_mode = mouse_mode_before_pausing
 	settings.visible = false
 	level.process_mode = Node.PROCESS_MODE_INHERIT
+	if level is Arena:
+		var arena: Arena = level
+		if not arena.is_round_lost:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func on_restart_button_down() -> void:
@@ -139,3 +141,7 @@ func on_restart_button_down() -> void:
 		go_to_arena()
 	else:
 		go_to_garage()
+
+
+func on_round_lost() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

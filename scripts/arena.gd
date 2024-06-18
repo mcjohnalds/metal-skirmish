@@ -2,6 +2,7 @@ class_name Arena
 extends Node3D
 
 signal round_complete
+signal round_lost
 
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
 var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
@@ -224,6 +225,7 @@ var rounds := [
 @onready var game_over_control: Control = $GameOverControl
 @onready var restart_button: Button = $GameOverControl/NextRoundButton/Button
 var player: Vehicle
+var is_round_lost := false
 
 
 func _ready() -> void:
@@ -264,8 +266,9 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 	if is_player:
 		game_over_control.visible = true
 		crosshair.visible = false
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		g.camera_pivot.process_mode = Node.PROCESS_MODE_DISABLED
+		is_round_lost = true
+		round_lost.emit()
 		return
 	if all_enemies_destroyed():
 		round_complete_control.visible = true
