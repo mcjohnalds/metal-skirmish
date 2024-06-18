@@ -3,6 +3,7 @@ extends Control
 
 @onready var start_button: Button = %StartButton
 @onready var resume_button: Button = %ResumeButton
+@onready var restart_button: Button = %RestartButton
 @onready var quit_button: Button = %QuitButton
 @onready var mouse_sensitivity_slider: Slider = %MouseSensitivitySlider
 @onready var invert_mouse_option_button: OptionButton = %InvertMouseOptionButton

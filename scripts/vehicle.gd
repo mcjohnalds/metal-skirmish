@@ -160,7 +160,7 @@ func _physics_process_gun_part(part: GunPart) -> void:
 			var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
 			var t := Global.get_ticks_sec() * TAU
 			var m := ENEMY_INACCURACY * TAU
-			var s := 1.0 + g.arena.player.linear_velocity.length() / 100.0
+			var s := 1.0 + g.arena.player.linear_velocity.length() / 70.0
 			ap = m * a * s * sin(t)
 			ay = m * a * s * sin(2.0 * t)
 

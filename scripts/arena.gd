@@ -186,7 +186,12 @@ func _ready() -> void:
 		var pos: Vector3 = enemy["position"]
 		var vehicle: Vehicle = scene.instantiate()
 		vehicle.position = enemy_spawn_point.position + pos
-		vehicle.rotation = enemy_spawn_point.rotation
+
+		# Face player
+		var p1 := Global.get_vector3_xz(vehicle.position) 
+		var p2 := Global.get_vector3_xz(player_spawn_point.position)
+		vehicle.rotation.y = p1.angle_to_point(p2) - TAU / 4.0
+
 		add_child(vehicle)
 
 	round_counter.label.text = "Round %s" % g.round_number

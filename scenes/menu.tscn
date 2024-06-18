@@ -54,6 +54,15 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
+[node name="MarginContainer3" type="MarginContainer" parent="MaginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="RestartButton" type="Button" parent="MaginContainer/BoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart Round"
+
 [node name="MarginContainer4" type="MarginContainer" parent="MaginContainer/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 15

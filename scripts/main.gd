@@ -16,10 +16,12 @@ var mouse_mode_before_pausing: Input.MouseMode
 func _ready() -> void:
 	start.start_button.button_down.connect(on_start_button_down)
 	start.resume_button.get_parent().visible = false
+	start.restart_button.get_parent().visible = false
 	start.quit_button.button_down.connect(on_quit_button_down)
 	settings.start_button.get_parent().visible = false
 	settings.resume_button.button_down.connect(on_resume_button_down)
 	settings.quit_button.button_down.connect(on_quit_button_down)
+	settings.restart_button.button_down.connect(on_restart_button_down)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,9 +39,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		g.wheel_part_inventory = 50
 		g.gun_part_inventory = 50
 		if level is Arena:
-			await go_to_garage()
+			go_to_garage()
 		else:
-			await go_to_arena()
+			go_to_arena()
 
 
 func on_start_button_down() -> void:
@@ -120,6 +122,7 @@ func pause() -> void:
 	mouse_mode_before_pausing = Input.mouse_mode
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	level.process_mode = Node.PROCESS_MODE_DISABLED
+	settings.restart_button.get_parent().visible = level is Arena
 	settings.visible = true
 
 
@@ -131,6 +134,7 @@ func unpause() -> void:
 
 
 func on_restart_button_down() -> void:
+	unpause()
 	if g.round_number == 1:
 		go_to_arena()
 	else:

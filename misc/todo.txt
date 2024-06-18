@@ -1,8 +1,10 @@
 Essential:
 
 - Balance
-  - Add restart round button to pause menu
+  - Make first enemy have poor accuracy
+  - Make enemy drive very slow if unable to steer
   - Fix player aim logic when zooming out
+- Fix bug where esc doesn't work first time due to button focus
 - Add an alternative way to scroll
 - Fix weird camera bug that happens when only cockpit part is left
 - Export
