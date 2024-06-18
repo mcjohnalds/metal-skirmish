@@ -1,13 +1,13 @@
 Essential:
 
-- Fix bug where esc doesn't work first time due to button focus
 - Fix bug where tracers don't get cleaned up
 - Fix bug where switching to another app breaks input grabbed state
 - Kill enemy if they manage to leave level bounds
 - Kill enemy if they are immobile for too long
 - Add an alternative way to scroll zoom
 - Balance earned parts data
-- Fix weird camera bug that happens when only cockpit part is left
+- Fix weird camera bug that happens when only cockpit part is left. Maybe
+  happens becaues COM is below ground. Maybe recalculate COM.
 - Export
   - Set to maximize window mode
   - Web
@@ -76,6 +76,7 @@ Really want:
     - Curiosity?
 - Display vignette fade in/out effect between screens
 - Screen space shaders and settings
+- Fix bug where clicking start/resume/next round button triggers shooting
 - Camera shake
 - Some way of knowing where the front of the vehicle is in the garage and in
   the arena. Maybe style the cockpit or add a debug arrow.

@@ -8,6 +8,7 @@ size_flags_vertical = 8
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+focus_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
