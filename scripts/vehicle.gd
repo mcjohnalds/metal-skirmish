@@ -242,18 +242,9 @@ func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
 			apply_force(global_basis.z * s * max_torque * input, force_offset)
 
 		if part.steering:
-			var can_steer_fast := part.health > 0.0
-
-			var can_steer_slow := false
-			for p: WheelPart in wheel_parts:
-				var is_touching_ground := p.ray_cast.get_collider()
-				if p.health > 0.0 and is_touching_ground and p.steering:
-					can_steer_slow = true
-					break
-
 			var steer_speed := (
-				4.0 if can_steer_fast
-				else 0.5 if can_steer_slow
+				4.0 if part.health > 0.0
+				else 0.5 if can_steer()
 				else 0.0
 			)
 			var input_steering := get_steering_input()
@@ -312,7 +303,19 @@ func get_throttle_input() -> float:
 		return Input.get_axis("move_backward", "move_forward")
 	if vehicle_detector.has_overlapping_bodies():
 		return 0.0
-	return 1.0
+	if can_steer():
+		return 1.0
+	else:
+		# Prevent enemy from running away into the distance
+		return 0.1
+
+
+func can_steer() -> bool:
+	for p: WheelPart in wheel_parts:
+		var is_touching_ground := p.ray_cast.get_collider()
+		if p.health > 0.0 and is_touching_ground and p.steering:
+			return true
+	return false
 
 
 func get_steering_input() -> float:

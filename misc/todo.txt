@@ -1,7 +1,6 @@
 Essential:
 
 - Balance
-  - Make enemy drive very slow if unable to steer
   - Fix player aim logic when zooming out
   - Make a fun finale level
 - Fix bug where esc doesn't work first time due to button focus
