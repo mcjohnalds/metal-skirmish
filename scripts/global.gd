@@ -101,6 +101,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	g.graphics_preset = g.graphics_preset
+	# Disables mouse acceleration on Mac
+	Input.use_accumulated_input = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
