@@ -1,7 +1,5 @@
 Essential:
 
-- Prevent placing things on sides of guns
-- Prevent placing things on wheels
 - Lag on web export last level - make gib count depend on graphics setting and
   OS?
 - Export
@@ -26,6 +24,8 @@ Essential:
 
 Really want:
 
+- Prevent placing things on wheels
+- Fix gun placement exploit
 - Fix bug where user can interact with parts in garage when pause menu is open
 - Make garage -> start round button primary style
 - Fix bug where tracers don't get cleaned up

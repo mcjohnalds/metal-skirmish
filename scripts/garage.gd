@@ -72,18 +72,28 @@ func _input(event):
 				part_scene = armor_part_scene
 				if g.armor_part_inventory == 0:
 					return
-				g.armor_part_inventory -= 1
 			elif selected_button == wheel_part_button:
 				part_scene = wheel_part_scene
 				if g.wheel_part_inventory == 0:
 					return
-				g.wheel_part_inventory -= 1
 			elif selected_button == gun_part_button:
 				part_scene = gun_part_scene
 				if g.gun_part_inventory == 0:
 					return
-				g.gun_part_inventory -= 1
+
+			# TODO: this validation logic is exploitable, need to do a proper
+			# solution where i have a is_vehicle_valid(parts) -> bool function
+			if picked_part is GunPart:
+				return
+
 			var normal: Vector3 = collision.normal
+
+			var normali = Global.vector_3_roundi(collision.normal)
+			if (
+				selected_button == gun_part_button and normali != Vector3i.UP
+			):
+				return
+
 			var new_part_position := picked_part.position + normal
 			if Garage.get_part_at_position(new_part_position, parts.get_children()):
 				return
@@ -91,6 +101,13 @@ func _input(event):
 			new_part.position = new_part_position
 			new_part.position = Global.vector_3_floorf(new_part.position)
 			add_part(new_part)
+
+			if selected_button == armor_part_button:
+				g.armor_part_inventory -= 1
+			elif selected_button == wheel_part_button:
+				g.wheel_part_inventory -= 1
+			elif selected_button == gun_part_button:
+				g.gun_part_inventory -= 1
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if picked_part is CockpitPart or is_part_bridge(picked_part):
 				return
