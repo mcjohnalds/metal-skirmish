@@ -1,8 +1,5 @@
 Essential:
 
-- Remove restart button
-- Make start round button primary style
-- Experiment with more bullet damage
 - Show round max counter
 - Lag on web export last level - make gib count depend on graphics setting and
   OS?
@@ -31,6 +28,7 @@ Essential:
 
 Really want:
 
+- Make garage -> start round button primary style
 - Fix bug where tracers don't get cleaned up
 - Sound
   - Shoot
