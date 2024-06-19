@@ -1,11 +1,18 @@
 Essential:
 
+- Remove restart button
+- Experiment with more bullet damage
+- Show round max counter
+- Lag on web export last level - make gib count depend on graphics setting and
+  OS?
 - Export
   - Set to maximize window mode
   - Web
   - Mac
   - Windows
   - Linux
+- Balance game for non-optimal strats
+- Create beta trailer
 - Upload to itch
 - Test
   - Mac
@@ -72,6 +79,8 @@ Really want:
 - Display vignette fade in/out effect between screens
 - Screen space shaders and settings
 - Fix bug where clicking start/resume/next round button triggers shooting
+- Fix issue where restart button can be clicked while in garage if player
+  pauses when round is won
 - Camera shake
 - Some way of knowing where the front of the vehicle is in the garage and in
   the arena. Maybe style the cockpit or add a debug arrow.
@@ -124,7 +133,7 @@ After game jam:
   - Tracer
   - Particle effects
   - Block placer
-  - Export templates and scripts
+  - Export templates and scripts (esp mac signing)
   - Theme variants
   - Heightmap
 
@@ -176,3 +185,7 @@ Ideas:
   realistic manner
 - Zoom with right click
 - On death, camera aims at enemy that killed you and crosshair disappears
+- Animate part buttons when hovering over them:
+  - Rotate
+  - Steer wheel
+  - Fire gun

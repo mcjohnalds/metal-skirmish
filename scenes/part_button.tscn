@@ -32,17 +32,16 @@ theme_type_variation = &"MarginMedium"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Button/MarginContainer"]
 layout_mode = 2
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Button/MarginContainer/SubViewportContainer"]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(130, 130)
-size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="PartViewer" parent="Button/MarginContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_clpxv")]
+unique_name_in_owner = true
 
 [node name="Label" type="Label" parent="Button/MarginContainer"]
 layout_mode = 2

@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 		camera.position.z *= e.factor
 	if event is InputEventMouseButton:
 		var button := event as InputEventMouseButton
-		var scroll_speed := 1.5
+		var scroll_speed := 1.1
 		if button.button_index == MOUSE_BUTTON_WHEEL_UP:
 			camera.position.z *= scroll_speed
 		elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -46,8 +46,8 @@ func _input(event: InputEvent) -> void:
 
 	if camera.position.z < -100.0:
 		camera.position.z = -100.0
-	if camera.position.z > -3.0:
-		camera.position.z = -2.0
+	if camera.position.z >= -3.0:
+		camera.position.z = -3.0
 
 	if event is InputEventMouseMotion:
 		var e := event as InputEventMouseMotion

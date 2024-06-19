@@ -1,6 +1,8 @@
 class_name Global
 extends Node
 
+signal graphics_preset_changed
+
 enum PhysicsLayer {
 	VEHICLE = 1 << 0,
 	GROUND = 1 << 1,
@@ -30,6 +32,7 @@ var invert_mouse := false
 var graphics_preset := GraphicsPreset.MEDIUM:
 	set(value):
 		graphics_preset = value
+		graphics_preset_changed.emit()
 		match graphics_preset:
 			GraphicsPreset.LOW:
 				Engine.physics_ticks_per_second = int(DEFAULT_PHYSICS_TICKS_PER_SECOND)
@@ -225,3 +228,10 @@ static func is_graph_connected(pairs: Array) -> bool:
 				stack.append(neighbor)
 
 	return visited.size() == nodes.size()
+
+
+static func is_compatibility_renderer() -> bool:
+	var rendering_method: String = (
+		ProjectSettings["rendering/renderer/rendering_method"]
+	)
+	return rendering_method == "gl_compatibility"

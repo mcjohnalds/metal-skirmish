@@ -12,6 +12,12 @@ extends Control
 
 
 func _ready() -> void:
+	performance_preset_option_button.clear()
+	performance_preset_option_button.add_item("Low")
+	performance_preset_option_button.add_item("Medium")
+	performance_preset_option_button.add_item("High")
+	if not Global.is_compatibility_renderer():
+		performance_preset_option_button.add_item("Insane")
 	mouse_sensitivity_slider.drag_ended.connect(
 		on_mouse_sensitivity_slider_drag_ended
 	)
@@ -25,6 +31,7 @@ func _ready() -> void:
 		on_performance_preset_item_selected
 	)
 	read_settings_from_environment()
+	quit_button.get_parent().visible = OS.get_name() != "Web"
 
 
 func read_settings_from_environment() -> void:

@@ -10,6 +10,8 @@ const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
 var level: Node
 var transitioning := false
 var paused := false
+var desired_mouse_mode := Input.MOUSE_MODE_VISIBLE
+var mouse_mode_mismatch_count := 0
 
 
 func _ready() -> void:
@@ -23,10 +25,28 @@ func _ready() -> void:
 	settings.restart_button.button_down.connect(on_restart_button_down)
 
 
+func _process(_delta: float) -> void:
+	# Deal with the bullshit that can happen when the browser takes away the
+	# game's pointer lock
+	if (
+		desired_mouse_mode != Input.mouse_mode
+		and desired_mouse_mode == Input.MOUSE_MODE_CAPTURED
+	):
+		mouse_mode_mismatch_count += 1
+	else:
+		mouse_mode_mismatch_count = 0
+	if mouse_mode_mismatch_count > 10:
+		pause()
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if level and event.is_action_pressed("ui_cancel"):
 		if paused:
-			unpause()
+			# In a browser, we can only capture the mouse on a mouse click
+			# event, so we only let the user unpause by clicking the resume
+			# buttom
+			if OS.get_name() != "Web":
+				unpause()
 		else:
 			pause()
 	if (
@@ -52,6 +72,8 @@ func go_to_arena() -> void:
 	if transitioning:
 		return
 	transitioning = true
+
+	set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	var player: Vehicle
 	if level is Garage:
@@ -80,7 +102,6 @@ func go_to_arena() -> void:
 	new_arena.restart_button.button_down.connect(on_restart_button_down)
 	new_arena.round_lost.connect(on_round_lost)
 	level = new_arena
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	transitioning = false
 
@@ -89,6 +110,8 @@ func go_to_garage() -> void:
 	if transitioning:
 		return
 	transitioning = true
+
+	set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	var arena: Arena = level
 	var dict := Global.parts_to_dictionary(arena.player.parts)
@@ -104,7 +127,6 @@ func go_to_garage() -> void:
 	g.camera_pivot.view_yaw = 3.0 * TAU / 8.0
 	garage.next_round.connect(go_to_arena)
 	level = garage
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	transitioning = false
 
@@ -122,7 +144,7 @@ func pause() -> void:
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	settings.restart_button.get_parent().visible = level is Arena
 	settings.visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func unpause() -> void:
@@ -132,11 +154,12 @@ func unpause() -> void:
 	if level is Arena:
 		var arena: Arena = level
 		if not arena.is_round_lost:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func on_restart_button_down() -> void:
-	unpause()
+	if paused:
+		unpause()
 	if g.round_number == 1:
 		go_to_arena()
 	else:
@@ -150,4 +173,9 @@ func on_round_complete() -> void:
 
 
 func on_round_lost() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func set_mouse_mode(mode: Input.MouseMode) -> void:
+	desired_mouse_mode = mode
+	Input.mouse_mode = mode

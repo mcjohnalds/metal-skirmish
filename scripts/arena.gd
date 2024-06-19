@@ -215,11 +215,10 @@ static var rounds := [
 @onready var round_counter: RoundCounter = $MarginContainer/RoundCounter
 @onready var round_complete_control: Control = $RoundCompleteControl
 @onready var round_complete_label: Label = $RoundCompleteControl/MarginContainer/Label
-@onready var parts_earned_text: Control = $PartsEarnedText
-@onready var parts_earned_buttons: Control = $PartsEarnedButtons
-@onready var armor_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/ArmorPartButton
-@onready var wheel_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/WheelPartButton
-@onready var gun_part_button: PartButton = $PartsEarnedButtons/HBoxContainer/GunPartButton
+@onready var parts_earned: Control = $PartsEarned
+@onready var armor_part_button: PartButton = %ArmorPartButton
+@onready var wheel_part_button: PartButton = %WheelPartButton
+@onready var gun_part_button: PartButton = %GunPartButton
 @onready var ground: Ground = $Ground
 @onready var crosshair: Control = $Crosshair
 @onready var game_over_control: Control = $GameOverControl
@@ -275,8 +274,7 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
 		await get_tree().create_timer(2.0).timeout
-		parts_earned_text.visible = true
-		parts_earned_buttons.visible = true
+		parts_earned.visible = true
 		var round_data: Dictionary = rounds[g.round_number - 1]
 		var armor_parts_earned: int = round_data["armor_parts_earned"]
 		var wheel_parts_earned: int = round_data["wheel_parts_earned"]
