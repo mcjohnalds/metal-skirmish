@@ -1,6 +1,5 @@
 Essential:
 
-- Balance earned parts data
 - Export
   - Set to maximize window mode
   - Web
@@ -45,6 +44,7 @@ Really want:
 - Add advanced info tooltips when hovering over part buttons
   - Guns
     - All problems can be solve with more dakka
+    - Will not shoot through parts
   - Wheels
     - Wheels make you go faster and turn faster
     - Wheels towards the front will steer your vehicle
@@ -95,6 +95,9 @@ Really want:
 - Destroyed parts still collide with vehicles
 - Circle enemy AI type that tries to flank the player
 - Ran enemy AI
+- Gun frames should look different
+- Make it clear that after the game ends, the player may keep repeating the
+  last round
 - When enemy has no guns, it tries to ram player
 - Trailer
 - Vehicle collision sound

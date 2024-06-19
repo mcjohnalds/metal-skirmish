@@ -76,7 +76,7 @@ func go_to_arena() -> void:
 	var new_arena: Arena = arena_scene.instantiate()
 	new_arena.player = player
 	level_container.add_child(new_arena)
-	new_arena.round_complete.connect(go_to_garage)
+	new_arena.round_complete.connect(on_round_complete)
 	new_arena.restart_button.button_down.connect(on_restart_button_down)
 	new_arena.round_lost.connect(on_round_lost)
 	level = new_arena
@@ -141,6 +141,12 @@ func on_restart_button_down() -> void:
 		go_to_arena()
 	else:
 		go_to_garage()
+
+
+func on_round_complete() -> void:
+	if g.round_number < Arena.rounds.size():
+		g.round_number += 1
+	go_to_garage()
 
 
 func on_round_lost() -> void:

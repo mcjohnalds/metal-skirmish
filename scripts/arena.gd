@@ -5,15 +5,15 @@ signal round_complete
 signal round_lost
 
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
-var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
-var vehicle_tall_boy := load("res://scenes/vehicle_tall_boy.tscn")
-var vehicle_broadside := load("res://scenes/vehicle_broadside.tscn")
-var vehicle_prick := load("res://scenes/vehicle_prick.tscn")
-var vehicle_banger := load("res://scenes/vehicle_banger.tscn")
-var vehicle_the_block := load("res://scenes/vehicle_the_block.tscn")
-var vehicle_train := load("res://scenes/vehicle_train.tscn")
+static var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
+static var vehicle_tall_boy := load("res://scenes/vehicle_tall_boy.tscn")
+static var vehicle_broadside := load("res://scenes/vehicle_broadside.tscn")
+static var vehicle_prick := load("res://scenes/vehicle_prick.tscn")
+static var vehicle_banger := load("res://scenes/vehicle_banger.tscn")
+static var vehicle_the_block := load("res://scenes/vehicle_the_block.tscn")
+static var vehicle_train := load("res://scenes/vehicle_train.tscn")
 
-var rounds := [
+static var rounds := [
 	{
 		"enemies": [
 			{
@@ -48,7 +48,7 @@ var rounds := [
 		],
 		"armor_parts_earned": 3,
 		"wheel_parts_earned": 1,
-		"gun_parts_earned": 2,
+		"gun_parts_earned": 1,
 	},
 	{
 		"enemies": [
@@ -60,7 +60,7 @@ var rounds := [
 		],
 		"armor_parts_earned": 3,
 		"wheel_parts_earned": 1,
-		"gun_parts_earned": 2,
+		"gun_parts_earned": 1,
 	},
 	{
 		"enemies": [
@@ -105,7 +105,7 @@ var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 2,
+		"armor_parts_earned": 3,
 		"wheel_parts_earned": 1,
 		"gun_parts_earned": 1,
 	},
@@ -127,9 +127,9 @@ var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 0,
-		"wheel_parts_earned": 0,
-		"gun_parts_earned": 0,
+		"armor_parts_earned": 3,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
 	},
 	{
 		"enemies": [
@@ -144,7 +144,7 @@ var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 2,
+		"armor_parts_earned": 3,
 		"wheel_parts_earned": 1,
 		"gun_parts_earned": 1,
 	},
@@ -156,9 +156,9 @@ var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 20,
-		"wheel_parts_earned": 10,
-		"gun_parts_earned": 10,
+		"armor_parts_earned": 6,
+		"wheel_parts_earned": 6,
+		"gun_parts_earned": 4,
 	},
 	{
 		"enemies": [
@@ -203,9 +203,9 @@ var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 2,
-		"wheel_parts_earned": 1,
-		"gun_parts_earned": 1,
+		"armor_parts_earned": 50,
+		"wheel_parts_earned": 50,
+		"gun_parts_earned": 50,
 	},
 ]
 
@@ -274,23 +274,27 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
-		else:
-			await get_tree().create_timer(2.0).timeout
-			parts_earned_text.visible = true
-			parts_earned_buttons.visible = true
-			var round_data: Dictionary = rounds[g.round_number - 1]
-			var armor_parts_earned: int = round_data["armor_parts_earned"]
-			var wheel_parts_earned: int = round_data["wheel_parts_earned"]
-			var gun_parts_earned: int = round_data["gun_parts_earned"]
-			armor_part_button.label.text = str(armor_parts_earned)
-			wheel_part_button.label.text = str(wheel_parts_earned)
-			gun_part_button.label.text = str(gun_parts_earned)
-			await get_tree().create_timer(5.0).timeout
-			g.armor_part_inventory += armor_parts_earned
-			g.wheel_part_inventory += wheel_parts_earned
-			g.gun_part_inventory += gun_parts_earned
-			g.round_number += 1
-			round_complete.emit()
+		await get_tree().create_timer(2.0).timeout
+		parts_earned_text.visible = true
+		parts_earned_buttons.visible = true
+		var round_data: Dictionary = rounds[g.round_number - 1]
+		var armor_parts_earned: int = round_data["armor_parts_earned"]
+		var wheel_parts_earned: int = round_data["wheel_parts_earned"]
+		var gun_parts_earned: int = round_data["gun_parts_earned"]
+		armor_part_button.label.text = str(armor_parts_earned)
+		wheel_part_button.label.text = str(wheel_parts_earned)
+		gun_part_button.label.text = str(gun_parts_earned)
+		await get_tree().create_timer(5.0).timeout
+		g.armor_part_inventory += armor_parts_earned
+		g.wheel_part_inventory += wheel_parts_earned
+		g.gun_part_inventory += gun_parts_earned
+		if g.armor_part_inventory > 50:
+			g.armor_part_inventory = 50
+		if g.wheel_part_inventory > 50:
+			g.wheel_part_inventory = 50
+		if g.gun_part_inventory > 50:
+			g.gun_part_inventory = 50
+		round_complete.emit()
 
 
 func all_enemies_destroyed() -> bool:
