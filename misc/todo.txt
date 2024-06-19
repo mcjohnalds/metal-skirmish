@@ -1,11 +1,6 @@
 Essential:
 
-- Kill enemy if they manage to leave level bounds
-- Kill enemy if they are immobile for too long
-- Add an alternative way to scroll zoom
 - Balance earned parts data
-- Fix weird camera bug that happens when only cockpit part is left. Maybe
-  happens becaues COM is below ground. Maybe recalculate COM.
 - Export
   - Set to maximize window mode
   - Web
@@ -67,6 +62,7 @@ Really want:
 - Vary particle count based on graphics preset
 - Set vehicle zoom based on size
 - Give first enemy a crappy gun
+- Preserve camera zoom in global state
 - Pause menu with settings and exit button
 - Make ending more satisfying (maybe fade to black?)
 - Better start page
@@ -103,6 +99,8 @@ Really want:
 - Trailer
 - Vehicle collision sound
 - Vehicle landed on dirt sound
+- Fix weird camera bug that happens when only cockpit part is left. Maybe
+  happens becaues COM is below ground. Maybe recalculate COM.
 - Make face hint red when hovering over gun
 - Different ground/fog/sky for each round e.g grass
 - Fade walls based on distance to player
@@ -129,6 +127,8 @@ After game jam:
 
 Ideas:
 
+- Kill enemy if they manage to leave level bounds
+- Kill enemy if they are immobile for too long
 - AO in browser using a shader
 - Automatically resize rows in settings page
 - Preseve cursor position when pausing/unpausing

@@ -76,8 +76,8 @@ size_flags_vertical = 8
 theme_type_variation = &"BodySmall"
 text = "Left click to place part
 Right click to remove part
-Scroll to zoom
-Hold middle mouse button or R key to orbit
+Scroll/pinch to zoom
+Middle mouse button or R key to rotate
 F to focus on part"
 vertical_alignment = 2
 
