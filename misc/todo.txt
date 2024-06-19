@@ -1,6 +1,6 @@
 Essential:
 
-- Shader precomp
+- Fix issue where mouse sensitivity depends on viewport size
 - Prevent placing things on sides of guns
 - Prevent placing things on wheels
 - Lag on web export last level - make gib count depend on graphics setting and
@@ -133,6 +133,7 @@ After game jam:
   - Export templates and scripts (esp mac signing)
   - Theme variants
   - Heightmap
+  - Shader compilation
 
 Ideas:
 

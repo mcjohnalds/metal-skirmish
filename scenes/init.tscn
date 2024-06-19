@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b10m51d0m4api"]
+
+[ext_resource type="Script" path="res://scripts/init.gd" id="1_j4at5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de0qw"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="Init" type="Node"]
+script = ExtResource("1_j4at5")
+
+[node name="Container" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Container"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_de0qw")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(520, 2.08165e-12)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -81.0
+offset_right = 215.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLarge"
+text = "Loading assets (0%)..."
+
+[node name="TherapyLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyMedium"
+text = "This will take a while"
+
+[node name="FileLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodySmall"
+text = "foo.tscn"

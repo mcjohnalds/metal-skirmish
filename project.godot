@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Metal Skirmish"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/init.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://textures/icon.svg"
 
 [autoload]
 
 g="*res://scripts/global.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 
