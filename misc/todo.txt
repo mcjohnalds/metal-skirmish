@@ -1,7 +1,6 @@
 Essential:
 
-- Lag on web export last level - make gib count depend on graphics setting and
-  OS?
+- Speed up tracers
 - Export
   - Set to maximize window mode
   - Mac

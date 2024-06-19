@@ -1,7 +1,8 @@
 class_name Main
 extends Node3D
 
-const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
+# const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
+const start_vehicle_scene := preload("res://scenes/vehicle_train.tscn")
 @onready var arena_scene := preload("res://scenes/arena.tscn")
 @onready var garage_scene := preload("res://scenes/garage.tscn")
 @onready var start: Menu = $Start

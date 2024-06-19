@@ -117,7 +117,7 @@ func reset_progress() -> void:
 	armor_part_inventory = 0
 	wheel_part_inventory = 0
 	gun_part_inventory = 0
-	round_number = 1
+	round_number = 9
 
 
 static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = false) -> void:
