@@ -30,7 +30,9 @@ func _ready() -> void:
 	next_round_button.button_down.connect(on_next_round_button_down)
 	on_armor_button_down()
 	update_labels()
-	round_counter.label.text = "Round %s" % g.round_number
+	round_counter.label.text = (
+		"Round %s/%s" % [g.round_number, Arena.rounds.size()]
+	)
 
 
 func _process(_delta: float) -> void:

@@ -249,7 +249,9 @@ func _ready() -> void:
 
 		add_child(vehicle)
 
-	round_counter.label.text = "Round %s" % g.round_number
+	round_counter.label.text = (
+		"Round %s/%s" % [g.round_number, Arena.rounds.size()]
+	)
 	for vehicle: Vehicle in get_tree().get_nodes_in_group("vehicles"):
 		vehicle.destroyed.connect(on_vehicle_destroyed)
 

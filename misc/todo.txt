@@ -1,6 +1,8 @@
 Essential:
 
-- Show round max counter
+- Shader precomp
+- Prevent placing things on sides of guns
+- Prevent placing things on wheels
 - Lag on web export last level - make gib count depend on graphics setting and
   OS?
 - Export
@@ -20,9 +22,6 @@ Essential:
     - Chrome
     - Edge
     - Firefox
-- Shader precomp
-- Prevent placing things on sides of guns
-- Prevent placing things on wheels
 - Get someone to test alpha of my game
 - Submit game to jam
 
