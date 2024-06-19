@@ -1,6 +1,5 @@
 Essential:
 
-- Fix issue where mouse sensitivity depends on viewport size
 - Prevent placing things on sides of guns
 - Prevent placing things on wheels
 - Lag on web export last level - make gib count depend on graphics setting and
@@ -27,6 +26,7 @@ Essential:
 
 Really want:
 
+- Fix bug where user can interact with parts in garage when pause menu is open
 - Make garage -> start round button primary style
 - Fix bug where tracers don't get cleaned up
 - Sound
@@ -134,6 +134,7 @@ After game jam:
   - Theme variants
   - Heightmap
   - Shader compilation
+  - Camera control
 
 Ideas:
 

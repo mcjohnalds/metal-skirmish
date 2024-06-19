@@ -3,7 +3,7 @@ extends Node3D
 
 const MOUSE_ORBIT_SPEED := 0.004
 const PAN_ORBIT_SPEED := MOUSE_ORBIT_SPEED * 5.0
-const MOUSE_SENSITIVITY_MULTIPLIER := 0.001
+const MOUSE_SENSITIVITY_MULTIPLIER := 0.002
 @onready var camera: Camera3D = $Camera
 @onready var aim: RayCast3D = $Camera/Aim
 var fight_mode := false
@@ -12,14 +12,16 @@ var fight_mode := false
 var view_pitch := 0.0:
 	set(value):
 		view_pitch = value
-		if fight_mode:
-			rotation.x = view_pitch / 2.0
-			camera.rotation.x = -view_pitch / 2.0
-		else:
-			rotation.x = view_pitch
-			camera.rotation.x = 0.0
 		var max_pitch := TAU / 4.0
 		view_pitch = clampf(view_pitch, -max_pitch, max_pitch)
+		var s := get_viewport().get_visible_rect().size
+		var aspect_ratio := s.x / s.y
+		if fight_mode:
+			rotation.x = view_pitch / 2.0 * aspect_ratio
+			camera.rotation.x = -view_pitch / 4.0
+		else:
+			rotation.x = view_pitch * aspect_ratio
+			camera.rotation.x = 0.0
 
 
 var view_yaw := 0.0:
