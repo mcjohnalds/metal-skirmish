@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://4fui5v13ebcj"]
+[gd_scene load_steps=25 format=3 uid="uid://4fui5v13ebcj"]
 
 [ext_resource type="Script" path="res://scripts/gun_part.gd" id="1_c3nxo"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="4_d6d68"]
 [ext_resource type="Texture2D" uid="uid://dgj64ghpvhlx0" path="res://addons/kenney_particle_pack/magic_05.png" id="4_t440h"]
 [ext_resource type="Texture2D" uid="uid://c45vajf0x38oe" path="res://addons/kenney_particle_pack/smoke_08.png" id="5_01fvb"]
+
+[sub_resource type="Curve" id="Curve_0tjkh"]
+_data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.273171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1f5bd"]
 material = ExtResource("2_fnslv")
@@ -19,43 +23,29 @@ material = ExtResource("2_fnslv")
 radius = 0.15
 height = 0.3
 
-[sub_resource type="Curve" id="Curve_0tjkh"]
-_data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.273171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_wne8b"]
-curve = SubResource("Curve_0tjkh")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gmnm"]
-direction = Vector3(2.08165e-12, 1, 2.08165e-12)
-gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-alpha_curve = SubResource("CurveTexture_wne8b")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb81q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t0av"]
+resource_local_to_scene = true
 transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.615813)
 albedo_texture = ExtResource("3_grapf")
 
-[sub_resource type="QuadMesh" id="QuadMesh_5qcoc"]
-material = SubResource("StandardMaterial3D_wb81q")
-size = Vector2(2, 3)
+[sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
+size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83vri"]
+resource_local_to_scene = true
 transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.615813)
 albedo_texture = ExtResource("4_t440h")
 
-[sub_resource type="QuadMesh" id="QuadMesh_ij2uc"]
-material = SubResource("StandardMaterial3D_83vri")
-size = Vector2(2, 2)
+[sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]
+size = Vector2(1, 1)
 
 [sub_resource type="Curve" id="Curve_6ipiw"]
 _data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.536585, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -117,6 +107,7 @@ size = Vector3(0.3, 0.5, 0.3)
 
 [node name="GunPart" type="Node3D"]
 script = ExtResource("1_c3nxo")
+alpha_curve = SubResource("Curve_0tjkh")
 
 [node name="Barrel" type="Node3D" parent="."]
 
@@ -133,38 +124,20 @@ skeleton = NodePath("../..")
 [node name="End" type="Node3D" parent="Barrel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="MuzzleFlash1" type="GPUParticles3D" parent="Barrel/End"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00117433, 0.0328035, 1.24138)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_8gmnm")
-draw_pass_1 = SubResource("QuadMesh_5qcoc")
+[node name="MuzzleFlash1" type="MeshInstance3D" parent="Barrel/End"]
+transform = Transform3D(-1.7369, 0, -2.08388e-07, 0, 1, 0, 1.51845e-07, 0, -2.38368, 0, 0, 1.07107)
+material_override = SubResource("StandardMaterial3D_6t0av")
+mesh = SubResource("PlaneMesh_561fx")
 
-[node name="MuzzleFlash2" type="GPUParticles3D" parent="Barrel/End"]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, 1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, -0.00117433, 0.0328035, 1.24138)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_8gmnm")
-draw_pass_1 = SubResource("QuadMesh_5qcoc")
+[node name="MuzzleFlash2" type="MeshInstance3D" parent="Barrel/End"]
+transform = Transform3D(7.59223e-08, -1, 1.18584e-14, -1.7369, -4.37114e-08, -2.08388e-07, 1.51845e-07, 0, -2.38368, 0, 0, 1.07107)
+material_override = SubResource("StandardMaterial3D_6t0av")
+mesh = SubResource("PlaneMesh_561fx")
 
-[node name="MuzzleFlash3" type="GPUParticles3D" parent="Barrel/End"]
-transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.349562)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_8gmnm")
-draw_pass_1 = SubResource("QuadMesh_ij2uc")
+[node name="MuzzleFlash3" type="MeshInstance3D" parent="Barrel/End"]
+transform = Transform3D(1.13549, 0, 0, 0, -4.96341e-08, -1.13549, 0, 1.13549, -4.96341e-08, 0, 0, 0.337349)
+material_override = SubResource("StandardMaterial3D_83vri")
+mesh = SubResource("PlaneMesh_apjhr")
 
 [node name="Smoke" type="GPUParticles3D" parent="Barrel/End"]
 transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.00320232)

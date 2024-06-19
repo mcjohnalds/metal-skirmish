@@ -2,11 +2,12 @@
 class_name GunPart
 extends Node3D
 
+@export var alpha_curve: Curve
 @onready var barrel: Node3D = $Barrel
 @onready var barrel_end: Node3D = $Barrel/End
 @onready var base: MeshInstance3D = $Base
 @onready var frame: Node3D = $Frame
-@onready var muzzle_flashes: Array[GPUParticles3D] = [
+@onready var muzzle_flashes: Array[MeshInstance3D] = [
 	$Barrel/End/MuzzleFlash1,
 	$Barrel/End/MuzzleFlash2,
 	$Barrel/End/MuzzleFlash3
@@ -22,14 +23,16 @@ func _process(_delta: float) -> void:
 		if firing and can_fire():
 			fire()
 	smoke.emitting = Global.get_ticks_sec() - last_fired_at < 0.05
+	for mesh in muzzle_flashes:
+		var material: StandardMaterial3D = mesh.material_override
+		var lifetime := 0.1
+		var t := Global.get_ticks_sec()
+		var d := t - last_fired_at
+		material.albedo_color.a = alpha_curve.sample_baked(d / lifetime)
 
 
 func fire() -> void:
 	last_fired_at = Global.get_ticks_sec()
-	for m: GPUParticles3D in muzzle_flashes:
-		m.restart()
-		m.one_shot = true
-		m.emitting = true
 
 
 func can_fire() -> bool:

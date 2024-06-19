@@ -1,6 +1,5 @@
 Essential:
 
-- Speed up tracers
 - Double gib count on desktop
 - Export
   - Set to maximize window mode
@@ -135,9 +134,12 @@ After game jam:
   - Heightmap
   - Shader compilation
   - Camera control
+  - Muzzle flash
+  - Object pool
 
 Ideas:
 
+- Speed up dirt hit effect using a mesh instead of particles
 - Kill enemy if they manage to leave level bounds
 - Kill enemy if they are immobile for too long
 - AO in browser using a shader

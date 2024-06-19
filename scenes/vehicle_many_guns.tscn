@@ -1,0 +1,536 @@
+[gd_scene load_steps=7 format=3 uid="uid://2maoy7forss2"]
+
+[ext_resource type="PackedScene" uid="uid://snnaytk25wxo" path="res://scenes/vehicle_base.tscn" id="1_8d3pd"]
+[ext_resource type="PackedScene" uid="uid://cxwv3sxpc8d4n" path="res://scenes/cockpit_part.tscn" id="2_4fkes"]
+[ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="3_3587a"]
+[ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="4_jhxll"]
+[ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="5_5i44w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4q23m"]
+radius = 15.0
+
+[node name="Vehicle" instance=ExtResource("1_8d3pd")]
+
+[node name="CockpitPart" parent="." index="0" instance=ExtResource("2_4fkes")]
+
+[node name="ArmorPart4" parent="." index="1" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="ArmorPart7" parent="." index="2" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="ArmorPart6" parent="." index="3" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 1)
+
+[node name="ArmorPart9" parent="." index="4" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 3)
+
+[node name="ArmorPart11" parent="." index="5" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 2)
+
+[node name="ArmorPart12" parent="." index="6" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 4)
+
+[node name="WheelPart1" parent="." index="7" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="WheelPart2" parent="." index="8" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="WheelPart3" parent="." index="9" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="WheelPart4" parent="." index="10" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="WheelPart5" parent="." index="11" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="WheelPart6" parent="." index="12" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+
+[node name="WheelPart7" parent="." index="13" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="WheelPart8" parent="." index="14" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="WheelPart9" parent="." index="15" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="WheelPart10" parent="." index="16" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="WheelPart11" parent="." index="17" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="WheelPart12" parent="." index="18" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+
+[node name="WheelPart13" parent="." index="19" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+
+[node name="WheelPart14" parent="." index="20" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
+
+[node name="WheelPart15" parent="." index="21" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8)
+
+[node name="WheelPart16" parent="." index="22" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="WheelPart17" parent="." index="23" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+
+[node name="WheelPart18" parent="." index="24" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10)
+
+[node name="WheelPart19" parent="." index="25" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+
+[node name="WheelPart20" parent="." index="26" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 9)
+
+[node name="WheelPart21" parent="." index="27" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8)
+
+[node name="WheelPart22" parent="." index="28" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="WheelPart23" parent="." index="29" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+
+[node name="WheelPart24" parent="." index="30" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
+
+[node name="GunPart2" parent="." index="31" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+
+[node name="ArmorPart8" parent="." index="32" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="GunPart3" parent="." index="33" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ArmorPart10" parent="." index="34" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="GunPart4" parent="." index="35" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+
+[node name="ArmorPart13" parent="." index="36" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+
+[node name="GunPart5" parent="." index="37" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+
+[node name="ArmorPart14" parent="." index="38" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+
+[node name="GunPart6" parent="." index="39" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+
+[node name="ArmorPart15" parent="." index="40" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="GunPart7" parent="." index="41" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+
+[node name="ArmorPart16" parent="." index="42" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+
+[node name="GunPart8" parent="." index="43" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="ArmorPart17" parent="." index="44" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="GunPart9" parent="." index="45" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+
+[node name="ArmorPart18" parent="." index="46" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+
+[node name="GunPart10" parent="." index="47" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
+
+[node name="ArmorPart19" parent="." index="48" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+
+[node name="GunPart11" parent="." index="49" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+
+[node name="ArmorPart20" parent="." index="50" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
+
+[node name="GunPart12" parent="." index="51" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9)
+
+[node name="ArmorPart21" parent="." index="52" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+
+[node name="ArmorPart29" parent="." index="53" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11)
+
+[node name="GunPart13" parent="." index="54" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+
+[node name="WheelPart25" parent="." index="55" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 13)
+
+[node name="WheelPart26" parent="." index="56" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 12)
+
+[node name="WheelPart27" parent="." index="57" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
+
+[node name="WheelPart28" parent="." index="58" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 14)
+
+[node name="WheelPart29" parent="." index="59" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 13)
+
+[node name="WheelPart30" parent="." index="60" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 12)
+
+[node name="WheelPart31" parent="." index="61" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
+
+[node name="WheelPart32" parent="." index="62" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 14)
+
+[node name="GunPart14" parent="." index="63" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 11)
+
+[node name="ArmorPart22" parent="." index="64" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
+
+[node name="GunPart15" parent="." index="65" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
+
+[node name="ArmorPart23" parent="." index="66" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 13)
+
+[node name="GunPart16" parent="." index="67" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 13)
+
+[node name="ArmorPart24" parent="." index="68" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14)
+
+[node name="ArmorPart28" parent="." index="69" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 15)
+
+[node name="GunPart17" parent="." index="70" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14)
+
+[node name="WheelPart33" parent="." index="71" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 17)
+
+[node name="WheelPart34" parent="." index="72" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 16)
+
+[node name="WheelPart35" parent="." index="73" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 15)
+
+[node name="WheelPart36" parent="." index="74" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 18)
+
+[node name="WheelPart37" parent="." index="75" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 17)
+
+[node name="WheelPart38" parent="." index="76" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 16)
+
+[node name="WheelPart39" parent="." index="77" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 15)
+
+[node name="WheelPart40" parent="." index="78" instance=ExtResource("4_jhxll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 18)
+
+[node name="GunPart18" parent="." index="79" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 15)
+
+[node name="ArmorPart25" parent="." index="80" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
+
+[node name="GunPart19" parent="." index="81" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
+
+[node name="ArmorPart26" parent="." index="82" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17)
+
+[node name="GunPart20" parent="." index="83" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17)
+
+[node name="ArmorPart27" parent="." index="84" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 18)
+
+[node name="GunPart21" parent="." index="85" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18)
+
+[node name="GunPart22" parent="." index="86" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+
+[node name="GunPart23" parent="." index="87" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="GunPart24" parent="." index="88" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="GunPart25" parent="." index="89" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+
+[node name="GunPart26" parent="." index="90" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 3)
+
+[node name="GunPart27" parent="." index="91" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
+
+[node name="GunPart28" parent="." index="92" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 5)
+
+[node name="GunPart29" parent="." index="93" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 6)
+
+[node name="GunPart30" parent="." index="94" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 7)
+
+[node name="GunPart31" parent="." index="95" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
+
+[node name="GunPart32" parent="." index="96" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 9)
+
+[node name="GunPart33" parent="." index="97" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 10)
+
+[node name="GunPart34" parent="." index="98" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 11)
+
+[node name="GunPart35" parent="." index="99" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 12)
+
+[node name="GunPart36" parent="." index="100" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 13)
+
+[node name="GunPart37" parent="." index="101" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 14)
+
+[node name="GunPart38" parent="." index="102" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 15)
+
+[node name="GunPart39" parent="." index="103" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 16)
+
+[node name="GunPart40" parent="." index="104" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 17)
+
+[node name="GunPart41" parent="." index="105" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 18)
+
+[node name="ArmorPart30" parent="." index="106" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
+
+[node name="ArmorPart31" parent="." index="107" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+
+[node name="ArmorPart32" parent="." index="108" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
+
+[node name="ArmorPart33" parent="." index="109" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
+
+[node name="ArmorPart34" parent="." index="110" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 3)
+
+[node name="ArmorPart35" parent="." index="111" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 4)
+
+[node name="ArmorPart36" parent="." index="112" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
+
+[node name="ArmorPart37" parent="." index="113" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 6)
+
+[node name="ArmorPart38" parent="." index="114" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 7)
+
+[node name="ArmorPart39" parent="." index="115" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
+
+[node name="ArmorPart40" parent="." index="116" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 9)
+
+[node name="ArmorPart41" parent="." index="117" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10)
+
+[node name="ArmorPart42" parent="." index="118" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 11)
+
+[node name="ArmorPart43" parent="." index="119" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 12)
+
+[node name="ArmorPart44" parent="." index="120" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 13)
+
+[node name="ArmorPart45" parent="." index="121" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 14)
+
+[node name="ArmorPart46" parent="." index="122" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 15)
+
+[node name="ArmorPart47" parent="." index="123" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 16)
+
+[node name="ArmorPart48" parent="." index="124" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 17)
+
+[node name="ArmorPart49" parent="." index="125" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 18)
+
+[node name="GunPart62" parent="." index="126" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
+
+[node name="GunPart63" parent="." index="127" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17)
+
+[node name="GunPart64" parent="." index="128" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 18)
+
+[node name="ArmorPart50" parent="." index="129" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -1)
+
+[node name="ArmorPart51" parent="." index="130" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+
+[node name="ArmorPart52" parent="." index="131" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 1)
+
+[node name="ArmorPart53" parent="." index="132" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 2)
+
+[node name="ArmorPart54" parent="." index="133" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
+
+[node name="ArmorPart55" parent="." index="134" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 4)
+
+[node name="ArmorPart56" parent="." index="135" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 5)
+
+[node name="ArmorPart57" parent="." index="136" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 6)
+
+[node name="ArmorPart58" parent="." index="137" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 7)
+
+[node name="ArmorPart59" parent="." index="138" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 8)
+
+[node name="ArmorPart60" parent="." index="139" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 9)
+
+[node name="ArmorPart61" parent="." index="140" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 10)
+
+[node name="ArmorPart62" parent="." index="141" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 11)
+
+[node name="ArmorPart63" parent="." index="142" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 12)
+
+[node name="ArmorPart64" parent="." index="143" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 13)
+
+[node name="ArmorPart65" parent="." index="144" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 14)
+
+[node name="ArmorPart66" parent="." index="145" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 15)
+
+[node name="ArmorPart67" parent="." index="146" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 16)
+
+[node name="ArmorPart68" parent="." index="147" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 17)
+
+[node name="ArmorPart69" parent="." index="148" instance=ExtResource("3_3587a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 18)
+
+[node name="GunPart65" parent="." index="149" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
+
+[node name="GunPart66" parent="." index="150" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17)
+
+[node name="GunPart67" parent="." index="151" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18)
+
+[node name="GunPart42" parent="." index="152" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -1)
+
+[node name="GunPart43" parent="." index="153" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 0)
+
+[node name="GunPart44" parent="." index="154" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 1)
+
+[node name="GunPart45" parent="." index="155" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 2)
+
+[node name="GunPart46" parent="." index="156" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 3)
+
+[node name="GunPart47" parent="." index="157" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 4)
+
+[node name="GunPart48" parent="." index="158" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 5)
+
+[node name="GunPart49" parent="." index="159" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 6)
+
+[node name="GunPart50" parent="." index="160" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 7)
+
+[node name="GunPart51" parent="." index="161" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 8)
+
+[node name="GunPart52" parent="." index="162" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 9)
+
+[node name="GunPart53" parent="." index="163" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 10)
+
+[node name="GunPart54" parent="." index="164" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 11)
+
+[node name="GunPart55" parent="." index="165" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 12)
+
+[node name="GunPart56" parent="." index="166" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 13)
+
+[node name="GunPart57" parent="." index="167" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 14)
+
+[node name="GunPart58" parent="." index="168" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 15)
+
+[node name="GunPart59" parent="." index="169" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 16)
+
+[node name="GunPart60" parent="." index="170" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 17)
+
+[node name="GunPart61" parent="." index="171" instance=ExtResource("5_5i44w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 18)
+
+[node name="VehicleDetector" type="Area3D" parent="." index="172"]
+transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 28.542)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleDetector" index="0"]
+transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 0, 0, 5.76094)
+shape = SubResource("SphereShape3D_4q23m")
