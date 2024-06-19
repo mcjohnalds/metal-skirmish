@@ -3,9 +3,9 @@ extends Node3D
 
 signal next_round
 
-const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
-const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
-const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
+static var armor_part_scene: PackedScene = load("res://scenes/armor_part.tscn")
+static var wheel_part_scene: PackedScene = load("res://scenes/wheel_part.tscn")
+static var gun_part_scene: PackedScene = load("res://scenes/gun_part.tscn")
 @onready var body: StaticBody3D = $StaticBody3D
 @onready var parts: Node3D = $Parts
 @onready var armor_part_button: PartButton = (

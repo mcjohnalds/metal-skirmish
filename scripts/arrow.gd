@@ -35,6 +35,5 @@ var material: StandardMaterial3D:
 
 
 func _ready() -> void:
-	pass
 	color = color
 	vector = vector

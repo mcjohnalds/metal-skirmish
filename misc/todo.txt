@@ -1,6 +1,7 @@
 Essential:
 
 - Speed up tracers
+- Double gib count on desktop
 - Export
   - Set to maximize window mode
   - Mac

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://4hfl8w6up7bg"]
 
 [ext_resource type="Texture2D" uid="uid://k53trbvkhr1s" path="res://addons/kenney_particle_pack/trace_07.png" id="1_mlscu"]
-[ext_resource type="Script" path="res://scripts/auto_cleanup_one_shot_particles.gd" id="2_nix4h"]
+[ext_resource type="Script" path="res://scripts/my_particles.gd" id="2_mhl40"]
 
 [sub_resource type="Curve" id="Curve_knub3"]
 _data = [Vector2(0, 1), 0.0, -0.254027, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -51,4 +51,4 @@ explosiveness = 0.99
 randomness = 0.9
 process_material = SubResource("ParticleProcessMaterial_f1e56")
 draw_pass_1 = SubResource("QuadMesh_kpa8b")
-script = ExtResource("2_nix4h")
+script = ExtResource("2_mhl40")

@@ -1,13 +1,13 @@
 class_name Main
 extends Node3D
 
-# const start_vehicle_scene := preload("res://scenes/vehicle_tinny_bopper.tscn")
-const start_vehicle_scene := preload("res://scenes/vehicle_train.tscn")
-@onready var arena_scene := preload("res://scenes/arena.tscn")
-@onready var garage_scene := preload("res://scenes/garage.tscn")
+var start_vehicle_scene := load("res://scenes/vehicle_tinny_bopper.tscn")
+var arena_scene := load("res://scenes/arena.tscn")
+var garage_scene := load("res://scenes/garage.tscn")
 @onready var start: Menu = $Start
 @onready var settings: Menu = $Settings
 @onready var level_container: Node3D = $LevelContainer
+@onready var fps_counter: Label = $FPSCounter
 var level: Node
 var transitioning := false
 var paused := false
@@ -27,6 +27,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	fps_counter.text = "%s FPS" % Engine.get_frames_per_second()
 	# Deal with the bullshit that can happen when the browser takes away the
 	# game's pointer lock
 	if (

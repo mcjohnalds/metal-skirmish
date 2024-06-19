@@ -12,18 +12,18 @@ const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
 # Tire mass only affects friction
-const wheel_friction_front: Curve = preload("res://curves/wheel_friction_front.tres")
-const wheel_friction_back: Curve = preload("res://curves/wheel_friction_back.tres")
-const throttle_forward: Curve = preload("res://curves/throttle_forward.tres")
-const throttle_reverse: Curve = preload("res://curves/throttle_reverse.tres")
-const tracer_scene: PackedScene = preload("res://scenes/tracer.tscn")
-const camera_pivot_scene := preload("res://scenes/camera_pivot.tscn")
-const vehicle_base_scene := preload("res://scenes/vehicle_base.tscn")
-const dirt_hit_scene: PackedScene = preload("res://scenes/dirt_hit.tscn")
-const metal_hit_scene: PackedScene = preload("res://scenes/metal_hit.tscn")
-const part_giblet_scene: PackedScene = preload("res://scenes/part_giblet.tscn")
-const frame_giblet_scene: PackedScene = preload("res://scenes/frame_giblet.tscn")
-const part_destroyed_scene: PackedScene = preload("res://scenes/part_destroyed.tscn")
+static var wheel_friction_front: Curve = load("res://curves/wheel_friction_front.tres")
+static var wheel_friction_back: Curve = load("res://curves/wheel_friction_back.tres")
+static var throttle_forward: Curve = load("res://curves/throttle_forward.tres")
+static var throttle_reverse: Curve = load("res://curves/throttle_reverse.tres")
+static var tracer_scene: PackedScene = load("res://scenes/tracer.tscn")
+static var camera_pivot_scene := load("res://scenes/camera_pivot.tscn")
+static var vehicle_base_scene := load("res://scenes/vehicle_base.tscn")
+static var dirt_hit_scene: PackedScene = load("res://scenes/dirt_hit.tscn")
+static var metal_hit_scene: PackedScene = load("res://scenes/metal_hit.tscn")
+static var part_giblet_scene: PackedScene = load("res://scenes/part_giblet.tscn")
+static var frame_giblet_scene: PackedScene = load("res://scenes/frame_giblet.tscn")
+static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed.tscn")
 @onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
 var is_player := false
 var cockpit_part: CockpitPart
@@ -383,7 +383,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 
 
 static func from_dictionary(dict: Dictionary) -> Vehicle:
-	var vehicle := vehicle_base_scene.instantiate()
+	var vehicle: Vehicle = vehicle_base_scene.instantiate()
 	for part in Global.dictionary_to_parts(dict):
 		vehicle.add_child(part)
 	return vehicle

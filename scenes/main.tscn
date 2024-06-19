@@ -12,3 +12,14 @@ script = ExtResource("1_ntn48")
 
 [node name="Settings" parent="." instance=ExtResource("2_rolgs")]
 visible = false
+
+[node name="FPSCounter" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_type_variation = &"BodySmall"
+text = "20 FPS"
+horizontal_alignment = 2

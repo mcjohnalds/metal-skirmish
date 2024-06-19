@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://7nghfugqxiqf"]
 
 [ext_resource type="Texture2D" uid="uid://k53trbvkhr1s" path="res://addons/kenney_particle_pack/trace_07.png" id="1_ni03b"]
-[ext_resource type="Script" path="res://scripts/auto_cleanup_one_shot_particles.gd" id="2_tb5v7"]
+[ext_resource type="Script" path="res://scripts/my_particles.gd" id="2_tb5v7"]
 
 [sub_resource type="Curve" id="Curve_w7us3"]
 _data = [Vector2(0, 1), 0.0, -0.254027, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

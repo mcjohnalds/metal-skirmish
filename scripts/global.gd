@@ -16,11 +16,11 @@ const MAX_AIM_RANGE := 70
 const FIRE_RATE := 10.0
 const DEFAULT_PHYSICS_TICKS_PER_SECOND = 60.0
 const DEFAULT_MAX_PHYSICS_STEPS_PER_FRAME = 8.0
-const cockpit_part_scene: PackedScene = preload("res://scenes/cockpit_part.tscn")
-const armor_part_scene: PackedScene = preload("res://scenes/armor_part.tscn")
-const wheel_part_scene: PackedScene = preload("res://scenes/wheel_part.tscn")
-const gun_part_scene: PackedScene = preload("res://scenes/gun_part.tscn")
-var environment: Environment = preload("res://misc/environment.tres")
+static var cockpit_part_scene: PackedScene = load("res://scenes/cockpit_part.tscn")
+static var armor_part_scene: PackedScene = load("res://scenes/armor_part.tscn")
+static var wheel_part_scene: PackedScene = load("res://scenes/wheel_part.tscn")
+static var gun_part_scene: PackedScene = load("res://scenes/gun_part.tscn")
+static var environment: Environment = load("res://misc/environment.tres")
 var armor_part_inventory: int
 var wheel_part_inventory: int
 var gun_part_inventory: int
@@ -117,7 +117,7 @@ func reset_progress() -> void:
 	armor_part_inventory = 0
 	wheel_part_inventory = 0
 	gun_part_inventory = 0
-	round_number = 9
+	round_number = 1
 
 
 static func safe_look_at(node: Node3D, target: Vector3, use_model_front: bool = false) -> void:
