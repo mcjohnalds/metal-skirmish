@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="7_5kapl"]
 [ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="9_eo1ru"]
-[ext_resource type="PackedScene" uid="uid://dumuf1e8lfu48" path="res://scenes/next_button.tscn" id="10_cw7mr"]
+[ext_resource type="Texture2D" uid="uid://bqs7oeib4gnou" path="res://textures/triangle_right_icon.png" id="10_pjh8w"]
 
 [node name="Garage" type="Node3D"]
 script = ExtResource("1_ymf2g")
@@ -83,10 +83,38 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="NextRoundButton" parent="MarginContainer" instance=ExtResource("10_cw7mr")]
+[node name="NextRoundButton" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
-[node name="Label" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
-text = "Start Next Round"
+[node name="Button" type="Button" parent="MarginContainer/NextRoundButton"]
+layout_mode = 2
+focus_mode = 0
 
-[editable path="MarginContainer/NextRoundButton"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NextRoundButton"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"MarginMedium"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NextRoundButton/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyMedium"
+text = "Start Round"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_pjh8w")
+expand_mode = 3

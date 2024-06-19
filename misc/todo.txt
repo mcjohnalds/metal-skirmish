@@ -1,13 +1,13 @@
 Essential:
 
 - Remove restart button
+- Make start round button primary style
 - Experiment with more bullet damage
 - Show round max counter
 - Lag on web export last level - make gib count depend on graphics setting and
   OS?
 - Export
   - Set to maximize window mode
-  - Web
   - Mac
   - Windows
   - Linux

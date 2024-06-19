@@ -22,7 +22,7 @@ func _ready() -> void:
 	settings.start_button.get_parent().visible = false
 	settings.resume_button.button_down.connect(on_resume_button_down)
 	settings.quit_button.button_down.connect(on_quit_button_down)
-	settings.restart_button.button_down.connect(on_restart_button_down)
+	settings.restart_button.button_down.connect(restart)
 
 
 func _process(_delta: float) -> void:
@@ -99,8 +99,7 @@ func go_to_arena() -> void:
 	new_arena.player = player
 	level_container.add_child(new_arena)
 	new_arena.round_complete.connect(on_round_complete)
-	new_arena.restart_button.button_down.connect(on_restart_button_down)
-	new_arena.round_lost.connect(on_round_lost)
+	new_arena.round_lost.connect(restart)
 	level = new_arena
 
 	transitioning = false
@@ -152,12 +151,10 @@ func unpause() -> void:
 	settings.visible = false
 	level.process_mode = Node.PROCESS_MODE_INHERIT
 	if level is Arena:
-		var arena: Arena = level
-		if not arena.is_round_lost:
-			set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func on_restart_button_down() -> void:
+func restart() -> void:
 	if paused:
 		unpause()
 	if g.round_number == 1:
@@ -170,10 +167,6 @@ func on_round_complete() -> void:
 	if g.round_number < Arena.rounds.size():
 		g.round_number += 1
 	go_to_garage()
-
-
-func on_round_lost() -> void:
-	set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func set_mouse_mode(mode: Input.MouseMode) -> void:

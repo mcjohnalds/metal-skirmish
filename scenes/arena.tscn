@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=14 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_qw8ma"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="9_k1rwl"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="13_cprpm"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="14_ar3fi"]
-[ext_resource type="PackedScene" uid="uid://dumuf1e8lfu48" path="res://scenes/next_button.tscn" id="15_tpeo3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cg83"]
 shading_mode = 0
@@ -213,54 +212,3 @@ Left click to shoot
 Scroll/pinch to zoom
 Esc to pause"
 vertical_alignment = 2
-
-[node name="GameOverControl" type="Panel" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -173.0
-offset_top = -115.0
-offset_right = 173.0
-offset_bottom = 115.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="GameOverControl"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -113.5
-offset_top = 32.0
-offset_right = 113.5
-offset_bottom = 90.0
-grow_horizontal = 2
-size_flags_vertical = 1
-theme_type_variation = &"BodyLarge"
-text = "Round Lost"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NextRoundButton" parent="GameOverControl" instance=ExtResource("15_tpeo3")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -101.0
-offset_right = 80.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Label" parent="GameOverControl/NextRoundButton/MarginContainer/HBoxContainer" index="0"]
-text = "Retry	"
-
-[editable path="GameOverControl/NextRoundButton"]

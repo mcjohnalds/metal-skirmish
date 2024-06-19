@@ -221,10 +221,7 @@ static var rounds := [
 @onready var gun_part_button: PartButton = %GunPartButton
 @onready var ground: Ground = $Ground
 @onready var crosshair: Control = $Crosshair
-@onready var game_over_control: Control = $GameOverControl
-@onready var restart_button: Button = $GameOverControl/NextRoundButton/Button
 var player: Vehicle
-var is_round_lost := false
 
 
 func _ready() -> void:
@@ -263,13 +260,12 @@ func _process(_delta: float) -> void:
 
 func on_vehicle_destroyed(is_player: bool) -> void:
 	if is_player:
-		game_over_control.visible = true
+		round_complete_control.visible = true
+		round_complete_label.text = "Round Lost"
 		crosshair.visible = false
-		g.camera_pivot.process_mode = Node.PROCESS_MODE_DISABLED
-		is_round_lost = true
+		await get_tree().create_timer(4.0).timeout
 		round_lost.emit()
-		return
-	if all_enemies_destroyed():
+	elif all_enemies_destroyed():
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
