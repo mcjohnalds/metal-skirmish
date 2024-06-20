@@ -1,14 +1,16 @@
 Essential:
 
-- Double gib count on desktop
+- Explain to user that going fast is good. Maybe tip on death screen?
+- "3D performance and stability sucks on Firefox :(
+  I suggest you either use a different browser or download the game"
+  - Same with Safari
+- Test on all web browsers
 - Export
-  - Set to maximize window mode
   - Mac
   - Windows
   - Linux
 - Balance game for non-optimal strats
 - Create beta trailer
-- Upload to itch
 - Test
   - Mac
     - Chrome
@@ -18,11 +20,17 @@ Essential:
     - Chrome
     - Edge
     - Firefox
+- Create itch page
+  - "Web version has sketchy performance and stability. Download the game for
+    the best experience."
 - Get someone to test alpha of my game
 - Submit game to jam
 
 Really want:
 
+- Fix Safari and Firefox performance
+- Fix Firefox Mac build crashing
+- Double gib count on desktop
 - Prevent placing things on wheels
 - Fix gun placement exploit
 - Fix bug where user can interact with parts in garage when pause menu is open
@@ -74,6 +82,7 @@ Really want:
     - Curiosity?
 - Display vignette fade in/out effect between screens
 - Screen space shaders and settings
+  - Dessert wobble
 - Fix bug where clicking start/resume/next round button triggers shooting
 - Fix issue where restart button can be clicked while in garage if player
   pauses when round is won
@@ -119,6 +128,7 @@ Really want:
 - Boot splash image
 - Disable dynamic lighting when graphics setting is low
 - Blast out gibs randomy when bullets collide with parts
+- Test and run on linux
 
 After game jam:
 
