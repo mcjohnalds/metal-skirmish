@@ -29,6 +29,7 @@ static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed
 @onready var engine_asp: AudioStreamPlayer3D = $EngineASP
 @onready var tire_break_asp: AudioStreamPlayer3D = $TireBreakASP
 @onready var tire_roll_asp: AudioStreamPlayer3D = $TireRollASP
+@onready var vehicle_crash_asp: AudioStreamPlayer3D = $VehicleCrashASP
 var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -110,6 +111,8 @@ func _ready() -> void:
 	center_of_mass.y = center_of_mass.y * 0.5 - 0.5
 	mass = parts.size() * 100.0
 	start_target_select_loop()
+
+	body_entered.connect(on_body_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -464,3 +467,12 @@ func fire_bullet(part: GunPart) -> void:
 				metal_hit.emitting = true
 				get_parent().add_child(metal_hit)
 				damage_part(collider, collision.shape)
+
+
+func on_body_entered(body: Node) -> void:
+	# Crash sound
+	if body is Vehicle:
+		var vehicle := body as Vehicle
+		var dv := vehicle.linear_velocity.distance_to(linear_velocity)
+		vehicle_crash_asp.volume_db = -30.0 + 10.0 * minf(pow(dv / 10.0, 2.0), 1.0)
+		vehicle_crash_asp.play()

@@ -3,8 +3,6 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Dirt hit
-  - Part hit
   - Part destroyed
   - Cockpit destroyed
   - Round won
@@ -71,6 +69,7 @@ Todo:
 
 Really want:
 
+- Vehicle landed in dirt sound effect
 - Fix bug where cursor becomes visible if another application steals focus
 - Player engine sound should be louder
 - Analytics

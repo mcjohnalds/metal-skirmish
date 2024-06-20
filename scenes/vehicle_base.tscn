@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://snnaytk25wxo"]
+[gd_scene load_steps=8 format=3 uid="uid://snnaytk25wxo"]
 
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="1_6oti5"]
 [ext_resource type="AudioStream" uid="uid://gtmw2kca7pl1" path="res://sounds/gun_start.ogg" id="2_me8gt"]
@@ -6,10 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://b60etpkkwqhpf" path="res://sounds/engine.ogg" id="4_tyv0p"]
 [ext_resource type="AudioStream" uid="uid://d0tmq8gky5tt7" path="res://sounds/tire_break.ogg" id="5_jq4yq"]
 [ext_resource type="AudioStream" uid="uid://1juwl5pde3lp" path="res://sounds/tire_on_dirt_road.ogg" id="5_tpb28"]
+[ext_resource type="AudioStream" uid="uid://cum7lbrp2dyfq" path="res://sounds/vehicle_crash.ogg" id="7_lp6gs"]
 
 [node name="VehicleBase" type="RigidBody3D" groups=["vehicles"]]
 collision_mask = 11
 center_of_mass_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_6oti5")
 
 [node name="StartASP" type="AudioStreamPlayer3D" parent="."]
@@ -34,4 +37,9 @@ unit_size = 30.0
 [node name="TireRollASP" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_tpb28")
 unit_size = 30.0
+bus = &"World"
+
+[node name="VehicleCrashASP" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_lp6gs")
+unit_size = 100.0
 bus = &"World"
