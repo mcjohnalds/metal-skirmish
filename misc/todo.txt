@@ -2,7 +2,6 @@ Todo:
 
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Shoot
   - Throttle
     - Matches throttle curve
   - Break

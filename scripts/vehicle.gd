@@ -11,7 +11,6 @@ const ENGINE_TORQUE := 7500.0
 const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
-# Tire mass only affects friction
 static var wheel_friction_front: Curve = load("res://curves/wheel_friction_front.tres")
 static var wheel_friction_back: Curve = load("res://curves/wheel_friction_back.tres")
 static var throttle_forward: Curve = load("res://curves/throttle_forward.tres")
@@ -25,6 +24,8 @@ static var part_giblet_scene: PackedScene = load("res://scenes/part_giblet.tscn"
 static var frame_giblet_scene: PackedScene = load("res://scenes/frame_giblet.tscn")
 static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed.tscn")
 @onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
+@onready var start_asp: AudioStreamPlayer3D = %StartASP
+@onready var shoot_asp: AudioStreamPlayer3D = %ShootASP
 var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -32,6 +33,7 @@ var gun_parts: Array[GunPart] = []
 var parts: Array[Node3D] = []
 var target_index := 0
 var accuracy: float
+var is_shooting := false
 
 
 func _ready() -> void:
@@ -101,8 +103,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	for part: GunPart in gun_parts:
-		_physics_process_gun_part(part)
+	_physics_process_gun_part()
 	for part: WheelPart in wheel_parts:
 		_physics_process_wheel_part(part, delta)
 	if is_player:
@@ -131,116 +132,38 @@ func _physics_process(delta: float) -> void:
 		var fov_error := target_fov - c.camera.fov
 		c.camera.fov += 0.2 * fov_error
 
-func _physics_process_gun_part(part: GunPart) -> void:
-	var is_enabled := (
-		part.health > 0.0
-		and cockpit_part.health > 0.0
-		and (is_player or ENEMY_SHOOTING_ENABLED)
-	)
-	var player_visible := (
-		g.arena.player.cockpit_part.health > 0.0
-		and g.arena.player.global_position.distance_to(part.global_position)
-			<= Global.MAX_AIM_RANGE
-	)
-	if not is_enabled or not player_visible:
-		return
-	var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	if wants_to_shoot and part.can_fire():
-		part.fire()
 
-		var target: Vector3
-		if is_player:
-			if g.camera_pivot.aim.get_collider():
-				target = g.camera_pivot.aim.get_collision_point()
-			else:
-				target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
-		else:
-			if g.arena.player.cockpit_part.health == 0.0:
-				return
-			var living_parts: Array[Node3D] = []
-			for p in g.arena.player.parts:
-				if p.health > 0.0:
-					living_parts.append(p)
-			var target_part := living_parts[target_index % living_parts.size()]
-			target = target_part.global_position
-
-		Global.safe_look_at(part.barrel, target, true)
-
-		var bullet_start := part.barrel_end.global_position
-		var bullet_true_dir := bullet_start.direction_to(target)
-
-		var ap: float
-		var ay: float
-		if is_player:
-			ap = 0.0
-			ay = 0.0
-		else:
-			var m := ENEMY_INACCURACY * TAU
-
-			# Imagine self's computer screen when looking at the player. The
-			# player is moving across the screen at a certain rate. This rate
-			# is affected by the difference in velocities between the player
-			# and self. This rate is reflected in a.
-			var v := linear_velocity - g.arena.player.linear_velocity
-			var d := global_position - g.arena.player.global_position
-			var p := v.project(d)
-			var l := p.distance_to(v)
-			var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
-
-			var s := g.arena.player.linear_velocity.length() / 70.0
-
-			var c := 1.0 - accuracy
-
-			var z := m * (a + s + c)
-			var t := Global.get_ticks_sec() * TAU
-			ap = z * sin(t)
-			ay = z * sin(2.0 * t)
-
-		var rm := BULLET_SPREAD * TAU
-		var rp := randf_range(-rm, rm)
-		var ry := randf_range(-rm, rm)
-
-		var qp := Quaternion(Vector3.LEFT, rp + ap)
-		var qy := Quaternion(Vector3.UP, ry + ay)
-
-		var bullet_rand_dir := qy * (qp * bullet_true_dir)
-
-		var query := PhysicsRayQueryParameters3D.new()
-		query.from = bullet_start
-		query.to = bullet_start + bullet_rand_dir * Global.MAX_AIM_RANGE
-		query.collision_mask = g.camera_pivot.aim.collision_mask
-		var collision := get_world_3d().direct_space_state.intersect_ray(query)
-
-		var bullet_end: Vector3
-		if collision:
-			bullet_end = collision.position
-		else:
-			bullet_end = query.to
-
-		var tracer: Tracer = tracer_scene.instantiate()
-		tracer.start = part.barrel_end.global_position
-		tracer.end = bullet_end
-		part.last_fired_at = Global.get_ticks_sec()
-		get_parent().add_child(tracer)
-
-		if collision:
-			var collider: Node = collision.collider
-			if collider == g.arena.ground:
-				var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
-				dirt_hit.position = bullet_end
-				dirt_hit.one_shot = true
-				dirt_hit.emitting = true
-				get_parent().add_child(dirt_hit)
-			elif collider is Vehicle:
-				var vehicle: Vehicle = collider
-				var is_opposing_team := is_player != vehicle.is_player
-				if is_opposing_team:
-					var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
-					metal_hit.position = bullet_end
-					metal_hit.one_shot = true
-					metal_hit.emitting = true
-					get_parent().add_child(metal_hit)
-					damage_part(collider, collision.shape)
+func _physics_process_gun_part() -> void:
+	var any_part_fired_bullet := false
+	var any_part_wants_to_shoot := false
+	for part: GunPart in gun_parts:
+		var is_enabled := (
+			part.health > 0.0
+			and cockpit_part.health > 0.0
+			and (is_player or ENEMY_SHOOTING_ENABLED)
+		)
+		var player_visible := (
+			g.arena.player.cockpit_part.health > 0.0
+			and g.arena.player.global_position.distance_to(part.global_position)
+				<= Global.MAX_AIM_RANGE
+		)
+		if not is_enabled or not player_visible:
+			continue
+		var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		if wants_to_shoot:
+			any_part_wants_to_shoot = true
+			if part.can_fire():
+				fire_bullet(part)
+				any_part_fired_bullet = true
+	if any_part_wants_to_shoot:
+		if not is_shooting:
+			start_asp.play()
+			print(1)
+			is_shooting = true
+	else:
+		is_shooting = false
+	if any_part_fired_bullet:
+		shoot_asp.play()
 
 
 func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
@@ -417,3 +340,101 @@ func start_target_select_loop() -> void:
 	while true:
 		target_index = randi()
 		await get_tree().create_timer(randf_range(0.5, 3.0)).timeout
+
+
+func fire_bullet(part: GunPart) -> void:
+	part.fire()
+
+	var target: Vector3
+	if is_player:
+		if g.camera_pivot.aim.get_collider():
+			target = g.camera_pivot.aim.get_collision_point()
+		else:
+			target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
+	else:
+		if g.arena.player.cockpit_part.health == 0.0:
+			return
+		var living_parts: Array[Node3D] = []
+		for p in g.arena.player.parts:
+			if p.health > 0.0:
+				living_parts.append(p)
+		var target_part := living_parts[target_index % living_parts.size()]
+		target = target_part.global_position
+
+	Global.safe_look_at(part.barrel, target, true)
+
+	var bullet_start := part.barrel_end.global_position
+	var bullet_true_dir := bullet_start.direction_to(target)
+
+	var ap: float
+	var ay: float
+	if is_player:
+		ap = 0.0
+		ay = 0.0
+	else:
+		var m := ENEMY_INACCURACY * TAU
+
+		# Imagine self's computer screen when looking at the player. The
+		# player is moving across the screen at a certain rate. This rate
+		# is affected by the difference in velocities between the player
+		# and self. This rate is reflected in a.
+		var v := linear_velocity - g.arena.player.linear_velocity
+		var d := global_position - g.arena.player.global_position
+		var p := v.project(d)
+		var l := p.distance_to(v)
+		var a := pow(clampf(l / 50.0, 0.0, 1.0), 2.0)
+
+		var s := g.arena.player.linear_velocity.length() / 70.0
+
+		var c := 1.0 - accuracy
+
+		var z := m * (a + s + c)
+		var t := Global.get_ticks_sec() * TAU
+		ap = z * sin(t)
+		ay = z * sin(2.0 * t)
+
+	var rm := BULLET_SPREAD * TAU
+	var rp := randf_range(-rm, rm)
+	var ry := randf_range(-rm, rm)
+
+	var qp := Quaternion(Vector3.LEFT, rp + ap)
+	var qy := Quaternion(Vector3.UP, ry + ay)
+
+	var bullet_rand_dir := qy * (qp * bullet_true_dir)
+
+	var query := PhysicsRayQueryParameters3D.new()
+	query.from = bullet_start
+	query.to = bullet_start + bullet_rand_dir * Global.MAX_AIM_RANGE
+	query.collision_mask = g.camera_pivot.aim.collision_mask
+	var collision := get_world_3d().direct_space_state.intersect_ray(query)
+
+	var bullet_end: Vector3
+	if collision:
+		bullet_end = collision.position
+	else:
+		bullet_end = query.to
+
+	var tracer: Tracer = tracer_scene.instantiate()
+	tracer.start = part.barrel_end.global_position
+	tracer.end = bullet_end
+	part.last_fired_at = Global.get_ticks_sec()
+	get_parent().add_child(tracer)
+
+	if collision:
+		var collider: Node = collision.collider
+		if collider == g.arena.ground:
+			var dirt_hit: GPUParticles3D = dirt_hit_scene.instantiate()
+			dirt_hit.position = bullet_end
+			dirt_hit.one_shot = true
+			dirt_hit.emitting = true
+			get_parent().add_child(dirt_hit)
+		elif collider is Vehicle:
+			var vehicle: Vehicle = collider
+			var is_opposing_team := is_player != vehicle.is_player
+			if is_opposing_team:
+				var metal_hit: GPUParticles3D = metal_hit_scene.instantiate()
+				metal_hit.position = bullet_end
+				metal_hit.one_shot = true
+				metal_hit.emitting = true
+				get_parent().add_child(metal_hit)
+				damage_part(collider, collision.shape)

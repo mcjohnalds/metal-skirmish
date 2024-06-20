@@ -29,7 +29,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.615813)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
 albedo_texture = ExtResource("3_grapf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
@@ -41,7 +41,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.615813)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
 albedo_texture = ExtResource("4_t440h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]

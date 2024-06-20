@@ -1,0 +1,14 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bnwtonuk8k0uk"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_pw38v"]
+resource_name = "Limiter"
+
+[resource]
+bus/1/name = &"World"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectLimiter_pw38v")
+bus/1/effect/0/enabled = true
