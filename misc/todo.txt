@@ -1,22 +1,13 @@
-Essential:
+Todo:
 
-- Get someone to test alpha of my game
-- Submit game to jam
-
-Really want:
-
-- Fix Safari and Firefox performance
-- Fix Safari esc key bugs
-- Fix Firefox Mac build crashing
-- Double gib count on desktop
-- Add tip to loading screen: "3D performance and stability sucks on Firefox :(
-  I suggest you either use a different browser or download the game"
-  - Same with Safari
-- Prevent placing things on wheels
-- Fix gun placement exploit
-- Fix bug where user can interact with parts in garage when pause menu is open
-- Make garage -> start round button primary style
-- Fix bug where tracers don't get cleaned up
+- Better camera
+  - Inverse zoom scroll
+  - Rotation independent of player
+    - Thank Cookie
+  - Shake
+  - Smoothing
+  - Vehicle speed affects FOV
+- Ask streamer what graphics card and browser they use
 - Sound
   - Shoot
   - Throttle
@@ -33,6 +24,79 @@ Really want:
   - Part removed
   - Error when attempted part placement/removal invalid
   - Music
+  - Hitmarker sound and UI
+  - Vehicle collision sound
+  - Vehicle landed on dirt sound
+- Sound and music settings
+- Better 3D graphics
+  - Sensible color scheme
+  - Armor part
+  - Wheel part
+  - Gun part
+  - Cockpit part
+  - Frame
+    - Make it better and smaller
+  - Ground
+  - Sky
+  - Fog
+  - Blast out gibs randomy when bullets collide with parts
+  - Fade walls based on distance to player
+  - Kick up dirt when driving
+  - Leave trails in dirt
+    - Don't do this if it's desktop only
+  - Display damage texture on damaged parts
+  - Gun frames should look different
+- Better UI
+  - Overall control style
+    - Make garage -> start round button primary style. Same with start button on
+      main menu.
+  - Custom font
+  - Display vignette fade in/out effect between screens
+  - Better start page
+    - The start page should carefuly set the player's feelings and expectations
+      - Wonder?
+      - Curiosity?
+  - Better win screen (fade out to black)
+  - Custom cursor
+  - Boot splash image
+- Screen space shaders and settings
+  - Heat haze
+  - Film grain
+  - Vignette
+  - Bloom
+  - Color Grading
+  - Lens Flares
+  - Chromatic Aberration
+  - Pixelation
+  - Radial Blur when speeding
+  - Anamorphic Lens Flare
+  - Fish Eye/barrel lens distortion
+- Make gun impart small force on shooter and target
+- Paint mode
+- Better itch page
+  - Cover
+  - Screenshots
+  - Credits
+  - Trailer
+
+Really want:
+
+- Analytics
+- Fix weird camera bug that happens when only cockpit part is left. Maybe
+  happens becaues COM is below ground. Maybe recalculate COM.
+- Destroyed parts still collide with vehicles
+- Preserve camera zoom in global state
+- Balance game for non-optimal strats
+- Some way of knowing where the front of the vehicle is in the garage and in
+  the arena. Maybe style the cockpit or add a debug arrow.
+- Make face hint flash red when trying to remove bridge
+- Better enemy AI
+  - Circle enemy AI type that tries to flank the player
+  - Ram
+  - When enemy has no guns, it tries to ram player
+- Make it clear that after the game ends, the player may keep repeating the
+  last round
+- Different ground/fog/sky for each round e.g grass
 - Add advanced info tooltips when hovering over part buttons
   - Guns
     - All problems can be solve with more dakka
@@ -46,76 +110,36 @@ Really want:
     - Going fast makes you hard to hit
   - Armor
     - Blocks bullets
-- Sound and music settings
-- Make frame less imposing
-- Better win screen
-- Custom cursor
-- Custom font
-- Vary particle count based on graphics preset
+- Disable dynamic lighting when graphics setting is low
+- Make face hint red when placement is not possible
 - Set vehicle zoom based on size
-- Give first enemy a crappy gun
-- Preserve camera zoom in global state
-- Pause menu with settings and exit button
-- Balance game for non-optimal strats
-- Make ending more satisfying (maybe fade to black?)
-- Better start page
-  - The start page should carefuly set the player's feelings and expectations
-    - Wonder?
-    - Curiosity?
-- Display vignette fade in/out effect between screens
-- Screen space shaders and settings
-  - Dessert wobble
+- Test and run on linux
+- Fix Safari and Firefox performance
+- Fix Safari esc key bugs
+- Fix Firefox Mac build crashing
+- Fix gun placement exploit
+- Fix bug where user can interact with parts in garage when pause menu is open
+- Fix bug where tracers don't get cleaned up
 - Fix bug where clicking start/resume/next round button triggers shooting
 - Fix issue where restart button can be clicked while in garage if player
   pauses when round is won
-- Camera shake
-- Some way of knowing where the front of the vehicle is in the garage and in
-  the arena. Maybe style the cockpit or add a debug arrow.
-- Smooth camera movement
-- Improve itch page
-- Make gun impart small force on shooter and target
+- Double gib count on desktop
+- Add tip to loading screen: "3D performance and stability sucks on Firefox :(
+  I suggest you either use a different browser or download the game"
+  - Same with Safari
+- Prevent placing things on wheels
 - Fix issue where enemies facing each other deadlock
-- Kick up dirt when driving
-- Leave trails in dirt
-- Sky texture
-- Better meshes and textures
 - In garage, show a little picture that displays your next enemy
-- Sensible colors
-- Hitmarker sound and UI
-- Display damage texture on damaged parts
-- Make game work with touchpad
 - At end of each round, let player pick up new parts in a satisfying way
-- Paint mode
-- Make face hint flash red when trying to remove bridge
-- Part health is preseved between rounds
-- Destroyed parts still collide with vehicles
-- Circle enemy AI type that tries to flank the player
-- Ran enemy AI
-- Gun frames should look different
-- Make it clear that after the game ends, the player may keep repeating the
-  last round
-- When enemy has no guns, it tries to ram player
-- Trailer
-- Vehicle collision sound
-- Vehicle landed on dirt sound
-- Fix weird camera bug that happens when only cockpit part is left. Maybe
-  happens becaues COM is below ground. Maybe recalculate COM.
-- Make face hint red when hovering over gun
-- Different ground/fog/sky for each round e.g grass
-- Fade walls based on distance to player
-- Let player chose reward after each level
-- Analytics
 - Gamma setting
-- Restart should take user back to first level, not main menu
-- Boot splash image
-- Disable dynamic lighting when graphics setting is low
-- Blast out gibs randomy when bullets collide with parts
-- Test and run on linux
+- Better loading screens
 
 After game jam:
 
+- Let player chose reward after each level
 - Create generic assets
   - Settings menu
+    - add gamma settings
   - Pause/unpause/start
   - Car
   - Tracer
@@ -131,6 +155,7 @@ After game jam:
 
 Ideas:
 
+- Part health is preseved between rounds
 - Speed up dirt hit effect using a mesh instead of particles
 - Kill enemy if they manage to leave level bounds
 - Kill enemy if they are immobile for too long
