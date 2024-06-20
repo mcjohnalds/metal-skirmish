@@ -2,6 +2,8 @@ class_name Main
 extends Node3D
 
 var start_vehicle_scene := load("res://scenes/vehicle_tinny_bopper.tscn")
+# var start_vehicle_scene := load("res://scenes/vehicle_many_guns.tscn")
+# var start_vehicle_scene := load("res://scenes/vehicle_tall_boy.tscn")
 var arena_scene := load("res://scenes/arena.tscn")
 var garage_scene := load("res://scenes/garage.tscn")
 @onready var start: Menu = $Start
@@ -124,7 +126,7 @@ func go_to_garage() -> void:
 	level_container.add_child(garage)
 	for part in Global.dictionary_to_parts(dict):
 		garage.add_part(part)
-	g.camera_pivot.view_pitch = TAU / 8.0
+	g.camera_pivot.view_pitch = TAU / 16.0
 	g.camera_pivot.view_yaw = 3.0 * TAU / 8.0
 	garage.next_round.connect(go_to_arena)
 	level = garage

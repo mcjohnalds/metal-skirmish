@@ -16,7 +16,9 @@ func _ready() -> void:
 	performance_preset_option_button.add_item("Low")
 	performance_preset_option_button.add_item("Medium")
 	performance_preset_option_button.add_item("High")
-	if not Global.is_compatibility_renderer():
+	if Global.is_compatibility_renderer():
+		vsync_option_button.get_parent().visible = false
+	else:
 		performance_preset_option_button.add_item("Insane")
 	mouse_sensitivity_slider.drag_ended.connect(
 		on_mouse_sensitivity_slider_drag_ended

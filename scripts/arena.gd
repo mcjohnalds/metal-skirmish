@@ -221,6 +221,7 @@ static var rounds := [
 @onready var gun_part_button: PartButton = %GunPartButton
 @onready var ground: Ground = $Ground
 @onready var crosshair: Control = $Crosshair
+@onready var death_tip: Control = $DeathTip
 var player: Vehicle
 
 
@@ -265,6 +266,8 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		round_complete_control.visible = true
 		round_complete_label.text = "Round Lost"
 		crosshair.visible = false
+		await get_tree().create_timer(2.0).timeout
+		death_tip.visible = true
 		await get_tree().create_timer(4.0).timeout
 		round_lost.emit()
 	elif all_enemies_destroyed():
@@ -280,7 +283,7 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		armor_part_button.label.text = str(armor_parts_earned)
 		wheel_part_button.label.text = str(wheel_parts_earned)
 		gun_part_button.label.text = str(gun_parts_earned)
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		g.armor_part_inventory += armor_parts_earned
 		g.wheel_part_inventory += wheel_parts_earned
 		g.gun_part_inventory += gun_parts_earned

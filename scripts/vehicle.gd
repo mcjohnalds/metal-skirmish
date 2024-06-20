@@ -90,7 +90,7 @@ func _ready() -> void:
 	if is_player:
 		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
 		camera_pivot.fight_mode = true
-		camera_pivot.position.y = part_max_y * 2.0
+		camera_pivot.position.y = part_max_y * 1.5 + 2.0
 		add_child(camera_pivot)
 		camera_pivot.aim.add_exception(self)
 

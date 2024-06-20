@@ -100,6 +100,32 @@ theme_type_variation = &"BodyLarge"
 text = "Round Complete"
 horizontal_alignment = 2
 
+[node name="DeathTip" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.5
+offset_top = 94.0
+offset_right = 281.5
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DeathTip"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"MarginMedium"
+
+[node name="Label" type="Label" parent="DeathTip/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyMedium"
+text = "Tip: go fast to avoid getting shot"
+horizontal_alignment = 2
+
 [node name="PartsEarned" type="Control" parent="."]
 visible = false
 custom_minimum_size = Vector2(490, 170)
