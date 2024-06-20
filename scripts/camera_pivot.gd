@@ -7,6 +7,8 @@ const MOUSE_SENSITIVITY_MULTIPLIER := 0.002
 @onready var camera: Camera3D = $Camera
 @onready var aim: RayCast3D = $Camera/Aim
 var fight_mode := false
+var last_error: Vector3
+var error_integral: Vector3
 
 
 var view_pitch := 0.0:
@@ -42,9 +44,9 @@ func _input(event: InputEvent) -> void:
 		var button := event as InputEventMouseButton
 		var scroll_speed := 1.1
 		if button.button_index == MOUSE_BUTTON_WHEEL_UP:
-			camera.position.z *= scroll_speed
-		elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			camera.position.z /= scroll_speed
+		elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			camera.position.z *= scroll_speed
 
 	if camera.position.z < -100.0:
 		camera.position.z = -100.0

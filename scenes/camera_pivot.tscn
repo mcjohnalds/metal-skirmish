@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/camera_pivot.gd" id="1_yy228"]
 
 [node name="CameraPivot" type="Node3D" groups=["camera pivot"]]
+top_level = true
 script = ExtResource("1_yy228")
 
 [node name="Camera" type="Camera3D" parent="."]

@@ -90,9 +90,9 @@ func _ready() -> void:
 	if is_player:
 		var camera_pivot: CameraPivot = camera_pivot_scene.instantiate()
 		camera_pivot.fight_mode = true
-		camera_pivot.position.y = part_max_y * 1.5 + 2.0
 		add_child(camera_pivot)
 		camera_pivot.aim.add_exception(self)
+		camera_pivot.position = position
 
 	center_of_mass = part_position_sum / parts.size()
 	center_of_mass.y = center_of_mass.y * 0.5 - 0.5
@@ -105,7 +105,31 @@ func _physics_process(delta: float) -> void:
 		_physics_process_gun_part(part)
 	for part: WheelPart in wheel_parts:
 		_physics_process_wheel_part(part, delta)
+	if is_player:
+		var part_max_y := -1000.0
+		for part: Node3D in parts:
+			part_max_y = maxf(part.position.y, part_max_y)
 
+		# Make camera track player using a PID controller
+		var c := g.camera_pivot
+		var target := Vector3(
+			position.x,
+			position.y + part_max_y * 1.5 + 1.0,
+			position.z
+		)
+		var error := target - c.position
+		var p := error * delta
+		var d := (error - c.last_error) * delta
+		c.error_integral += error * delta
+		c.error_integral = c.error_integral.limit_length(10.0)
+		c.position += 10.0 * p + 0.05 * d + 1.0 * c.error_integral 
+		c.last_error = error
+
+		# Make fov affected by speed. Speed determines target FOV. FOV is moved
+		# towards target FOV using a P controller.
+		var target_fov := 50.0 + 10.0 * smoothstep(0.0, 30.0, linear_velocity.length())
+		var fov_error := target_fov - c.camera.fov
+		c.camera.fov += 0.2 * fov_error
 
 func _physics_process_gun_part(part: GunPart) -> void:
 	var is_enabled := (

@@ -1,12 +1,5 @@
 Todo:
 
-- Better camera
-  - Inverse zoom scroll
-  - Rotation independent of player
-    - Thank Cookie
-  - Shake
-  - Smoothing
-  - Vehicle speed affects FOV
 - Ask streamer what graphics card and browser they use
 - Sound
   - Shoot
@@ -81,6 +74,7 @@ Todo:
 
 Really want:
 
+- Fix bug where cursor becomes visible if another application steals focus
 - Analytics
 - Fix weird camera bug that happens when only cockpit part is left. Maybe
   happens becaues COM is below ground. Maybe recalculate COM.
@@ -133,6 +127,10 @@ Really want:
 - At end of each round, let player pick up new parts in a satisfying way
 - Gamma setting
 - Better loading screens
+
+Refactor:
+
+- Move camera pivot to top level in scene then turn off "top level" boolean
 
 After game jam:
 
