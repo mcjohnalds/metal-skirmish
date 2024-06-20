@@ -228,10 +228,13 @@ static var rounds := [
 @onready var ground: Ground = $Ground
 @onready var crosshair: Control = $Crosshair
 @onready var death_tip: Control = $DeathTip
+@onready var engine_ignition_asp: AudioStreamPlayer = $EngineIgnitionASP
 var player: Vehicle
 
 
 func _ready() -> void:
+	engine_ignition_asp.play()
+
 	var min_y := 0.0
 	for c in player.get_children():
 		min_y = minf(min_y, c.position.y)

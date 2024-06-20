@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=15 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_qw8ma"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://eewxycwm7fsg" path="res://scenes/ground.tscn" id="8_cv38k"]
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="8_y2fcv"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="9_k1rwl"]
+[ext_resource type="AudioStream" uid="uid://d3l63q5yxem54" path="res://sounds/engine_ignition.ogg" id="11_uw2kt"]
 [ext_resource type="Texture2D" uid="uid://btykjkru56eb8" path="res://textures/crosshair.svg" id="13_cprpm"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="14_ar3fi"]
 
@@ -238,3 +239,7 @@ Left click to shoot
 Scroll/pinch to zoom
 Esc to pause"
 vertical_alignment = 2
+
+[node name="EngineIgnitionASP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_uw2kt")
+bus = &"World"

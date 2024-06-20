@@ -73,6 +73,7 @@ Todo:
 Really want:
 
 - Fix bug where cursor becomes visible if another application steals focus
+- Player engine sound should be louder
 - Analytics
 - Fix weird camera bug that happens when only cockpit part is left. Maybe
   happens becaues COM is below ground. Maybe recalculate COM.
@@ -150,6 +151,7 @@ After game jam:
   - Muzzle flash
   - Object pool
   - Fix bug: pausing does not affect timing logic
+  - Separate global static from global non-static
 
 Ideas:
 

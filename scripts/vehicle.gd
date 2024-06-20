@@ -38,7 +38,10 @@ var is_shooting := false
 
 
 func _ready() -> void:
-	engine_asp.play()
+	# Pause to account for engine ignition sound
+	get_tree().create_timer(1.0).timeout.connect(func() -> void:
+		engine_asp.play()
+	)
 
 	var part_position_sum := Vector3.ZERO
 
