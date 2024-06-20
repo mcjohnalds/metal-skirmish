@@ -24,8 +24,9 @@ static var part_giblet_scene: PackedScene = load("res://scenes/part_giblet.tscn"
 static var frame_giblet_scene: PackedScene = load("res://scenes/frame_giblet.tscn")
 static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed.tscn")
 @onready var vehicle_detector: Area3D = get_node_or_null("VehicleDetector")
-@onready var start_asp: AudioStreamPlayer3D = %StartASP
-@onready var shoot_asp: AudioStreamPlayer3D = %ShootASP
+@onready var start_asp: AudioStreamPlayer3D = $StartASP
+@onready var shoot_asp: AudioStreamPlayer3D = $ShootASP
+@onready var engine_asp: AudioStreamPlayer3D = $EngineASP
 var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -37,6 +38,8 @@ var is_shooting := false
 
 
 func _ready() -> void:
+	engine_asp.play()
+
 	var part_position_sum := Vector3.ZERO
 
 	var wheel_min_z := 1000.0
@@ -104,8 +107,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_physics_process_gun_part()
-	for part: WheelPart in wheel_parts:
-		_physics_process_wheel_part(part, delta)
+	_physics_process_wheel_parts(delta)
 	if is_player:
 		var part_max_y := -1000.0
 		for part: Node3D in parts:
@@ -158,7 +160,6 @@ func _physics_process_gun_part() -> void:
 	if any_part_wants_to_shoot:
 		if not is_shooting:
 			start_asp.play()
-			print(1)
 			is_shooting = true
 	else:
 		is_shooting = false
@@ -166,83 +167,91 @@ func _physics_process_gun_part() -> void:
 		shoot_asp.play()
 
 
-func _physics_process_wheel_part(part: WheelPart, delta: float) -> void:
-	var collider := part.ray_cast.get_collider()
-	part.wheel.position.y = part.ray_cast.position.y - SPRING_REST_DISTANCE
+func _physics_process_wheel_parts(delta: float) -> void:
+	var input := get_throttle_input()
+	var max_torque := ENGINE_TORQUE * absf(input)
+	var forward_speed := linear_velocity.dot(basis.z)
+	var breaking := false
+	if forward_speed * input < 0.0:
+		breaking = true
+	var max_speed := 30.0
+	# TODO: might need to clamp x to be >= -1.0
+	var x := minf(forward_speed / max_speed, 1.0)
+	var a_curve := throttle_forward if forward_speed > 0.0 else throttle_reverse
+	var s := a_curve.sample_baked(x)
 
-	if collider:
-		var debug_arrow_scale := 0.002
+	# Make engine pitch match speed using a P controller
+	var target_pitch := 0.5 + absf(x)
+	var pitch_error = target_pitch - engine_asp.pitch_scale
+	engine_asp.pitch_scale += 5.0 * pitch_error * delta
 
-		var force_offset := part.wheel.global_position - global_position
+	for part: WheelPart in wheel_parts:
+		var collider := part.ray_cast.get_collider()
+		part.wheel.position.y = part.ray_cast.position.y - SPRING_REST_DISTANCE
 
-		var breaking := false
-		if part.traction and part.health > 0.0 and cockpit_part.health > 0.0:
-			var input := get_throttle_input()
-			var max_torque := ENGINE_TORQUE * absf(input)
-			var forward_speed := linear_velocity.dot(basis.z)
-			if forward_speed * input < 0.0:
-				breaking = true
-			var max_speed := 30.0
-			var x := minf(forward_speed / max_speed, 1.0)
-			var a_curve := throttle_forward if forward_speed > 0.0 else throttle_reverse
-			var s := a_curve.sample(x)
-			apply_force(global_basis.z * s * max_torque * input, force_offset)
+		if collider:
+			var debug_arrow_scale := 0.002
 
-		if part.steering:
-			var steer_speed := (
-				4.0 if part.health > 0.0
-				else 0.5 if can_steer()
-				else 0.0
+			var force_offset := part.wheel.global_position - global_position
+
+			if part.traction and part.health > 0.0 and cockpit_part.health > 0.0:
+				apply_force(global_basis.z * s * max_torque * input, force_offset)
+
+			if part.steering:
+				var steer_speed := (
+					4.0 if part.health > 0.0
+					else 0.5 if can_steer()
+					else 0.0
+				)
+				var input_steering := get_steering_input()
+				var steer_max := TAU * 0.1 * absf(input_steering)
+				var has_input = absf(input_steering) > 0.0
+				var steering_outward := has_input and input_steering * part.wheel.rotation.y >= 0.0
+				if steering_outward:
+					var f := 1.0 - pow(absf(part.wheel.rotation.y / steer_max), 0.4)
+					part.wheel.rotation.y += steer_speed * input_steering * f * delta
+					part.wheel.rotation.y = clampf(part.wheel.rotation.y, -steer_max, steer_max)
+				else:
+					var return_direction := 1.0 if part.wheel.rotation.y < 0.0 else -1.0
+					var old_rot_y := part.wheel.rotation.y
+					part.wheel.rotation.y += steer_speed * return_direction * delta
+					var sign_flipped := not is_equal_approx(signf(old_rot_y), signf(part.wheel.rotation.y))
+					if sign_flipped:
+						part.wheel.rotation.y = 0.0
+
+			var point := part.ray_cast.get_collision_point()
+			var distance := part.ray_cast.global_position.distance_to(point)
+			var spring_length := distance - part.radius
+			var spring_offset := SPRING_REST_DISTANCE - spring_length
+
+			part.wheel.position.y = part.ray_cast.position.y - spring_length
+			var spring_velocity := (part.last_spring_offset - spring_offset) / delta
+			var spring_force := SPRING_STRENGTH * mass / wheel_parts.size() * (
+				spring_offset - spring_velocity * SPRING_DAMPING
 			)
-			var input_steering := get_steering_input()
-			var steer_max := TAU * 0.1 * absf(input_steering)
-			var has_input = absf(input_steering) > 0.0
-			var steering_outward := has_input and input_steering * part.wheel.rotation.y >= 0.0
-			if steering_outward:
-				var f := 1.0 - pow(absf(part.wheel.rotation.y / steer_max), 0.4)
-				part.wheel.rotation.y += steer_speed * input_steering * f * delta
-				part.wheel.rotation.y = clampf(part.wheel.rotation.y, -steer_max, steer_max)
-			else:
-				var return_direction := 1.0 if part.wheel.rotation.y < 0.0 else -1.0
-				var old_rot_y := part.wheel.rotation.y
-				part.wheel.rotation.y += steer_speed * return_direction * delta
-				var sign_flipped := not is_equal_approx(signf(old_rot_y), signf(part.wheel.rotation.y))
-				if sign_flipped:
-					part.wheel.rotation.y = 0.0
+			var spring_force_vector := part.global_basis.y * spring_force
+			apply_force(spring_force_vector, force_offset)
 
-		var point := part.ray_cast.get_collision_point()
-		var distance := part.ray_cast.global_position.distance_to(point)
-		var spring_length := distance - part.radius
-		var spring_offset := SPRING_REST_DISTANCE - spring_length
+			part.debug_arrow_y.global_position = global_position + force_offset
+			part.debug_arrow_y.vector = spring_force_vector * debug_arrow_scale
 
-		part.wheel.position.y = part.ray_cast.position.y - spring_length
-		var spring_velocity := (part.last_spring_offset - spring_offset) / delta
-		var spring_force := SPRING_STRENGTH * mass / wheel_parts.size() * (
-			spring_offset - spring_velocity * SPRING_DAMPING
-		)
-		var spring_force_vector := part.global_basis.y * spring_force
-		apply_force(spring_force_vector, force_offset)
+			var wheel_velocity := Global.get_point_velocity(self, part.wheel.global_position)
+			var forward_friction := 10.0 if breaking else 2.0
+			var wheel_friction_lookup := absf(wheel_velocity.dot(part.wheel.global_basis.x)) / wheel_velocity.length()
+			var curve := wheel_friction_front if part.front else wheel_friction_back
+			var sideways_friction := curve.sample(wheel_friction_lookup) * 200.0
 
-		part.debug_arrow_y.global_position = global_position + force_offset
-		part.debug_arrow_y.vector = spring_force_vector * debug_arrow_scale
+			var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction / delta
+			var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction / delta
 
-		var wheel_velocity := Global.get_point_velocity(self, part.wheel.global_position)
-		var forward_friction := 10.0 if breaking else 2.0
-		var wheel_friction_lookup := absf(wheel_velocity.dot(part.wheel.global_basis.x)) / wheel_velocity.length()
-		var curve := wheel_friction_front if part.front else wheel_friction_back
-		var sideways_friction := curve.sample(wheel_friction_lookup) * 200.0
-
-		var sideways_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.x) * sideways_friction / delta
-		var forward_friction_force_vector := -wheel_velocity.project(part.wheel.global_basis.z) * forward_friction / delta
-
-		apply_force(sideways_friction_force_vector, force_offset)
-		apply_force(forward_friction_force_vector, force_offset)
-		part.debug_arrow_x.global_position = global_position + force_offset
-		# Have to add a tiny offset or it wont render. Don't know why.
-		part.debug_arrow_x.vector = Vector3.ONE * 0.001 + sideways_friction_force_vector * debug_arrow_scale
-		part.debug_arrow_z.global_position = global_position + force_offset
-		part.debug_arrow_z.vector = Vector3.ONE * 0.001 + forward_friction_force_vector * debug_arrow_scale
-		part.last_spring_offset = spring_offset
+			apply_force(sideways_friction_force_vector, force_offset)
+			apply_force(forward_friction_force_vector, force_offset)
+			part.debug_arrow_x.global_position = global_position + force_offset
+			# Have to add a tiny offset or it wont render. Don't know why.
+			part.debug_arrow_x.vector = Vector3.ONE * 0.001 + sideways_friction_force_vector * debug_arrow_scale
+			part.debug_arrow_z.global_position = global_position + force_offset
+			part.debug_arrow_z.vector = Vector3.ONE * 0.001 + forward_friction_force_vector * debug_arrow_scale
+			part.last_spring_offset = spring_offset
 
 
 func get_throttle_input() -> float:

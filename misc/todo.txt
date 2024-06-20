@@ -1,9 +1,8 @@
 Todo:
 
+- Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Throttle
-    - Matches throttle curve
   - Break
   - Dirt hit
   - Part hit
@@ -79,6 +78,7 @@ Really want:
   happens becaues COM is below ground. Maybe recalculate COM.
 - Destroyed parts still collide with vehicles
 - Preserve camera zoom in global state
+- Bigger vehicles should sound louder and deeper
 - Balance game for non-optimal strats
 - Some way of knowing where the front of the vehicle is in the garage and in
   the arena. Maybe style the cockpit or add a debug arrow.
@@ -149,6 +149,7 @@ After game jam:
   - Camera control
   - Muzzle flash
   - Object pool
+  - Fix bug: pausing does not affect timing logic
 
 Ideas:
 
