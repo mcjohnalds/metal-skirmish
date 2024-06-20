@@ -27,6 +27,8 @@ static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed
 @onready var start_asp: AudioStreamPlayer3D = $StartASP
 @onready var shoot_asp: AudioStreamPlayer3D = $ShootASP
 @onready var engine_asp: AudioStreamPlayer3D = $EngineASP
+@onready var tire_break_asp: AudioStreamPlayer3D = $TireBreakASP
+@onready var tire_roll_asp: AudioStreamPlayer3D = $TireRollASP
 var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -42,6 +44,8 @@ func _ready() -> void:
 	get_tree().create_timer(1.0).timeout.connect(func() -> void:
 		engine_asp.play()
 	)
+	tire_break_asp.play()
+	tire_roll_asp.play()
 
 	var part_position_sum := Vector3.ZERO
 
@@ -171,6 +175,7 @@ func _physics_process_gun_part() -> void:
 
 
 func _physics_process_wheel_parts(delta: float) -> void:
+	# Throttle calculations
 	var input := get_throttle_input()
 	var max_torque := ENGINE_TORQUE * absf(input)
 	var forward_speed := linear_velocity.dot(basis.z)
@@ -187,6 +192,15 @@ func _physics_process_wheel_parts(delta: float) -> void:
 	var target_pitch := 0.5 + absf(x)
 	var pitch_error = target_pitch - engine_asp.pitch_scale
 	engine_asp.pitch_scale += 5.0 * pitch_error * delta
+
+	tire_roll_asp.volume_db = -45.0 + 30.0 * minf(absf(forward_speed) / (max_speed / 2.0), 1.0)
+
+	tire_break_asp.volume_db = -50.0 + 30.0 * minf(absf(forward_speed) / (max_speed / 4.0), 1.0)
+	if signf(forward_speed) != signf(input) and input != 0.0:
+		if not tire_break_asp.playing:
+			tire_break_asp.stream_paused = false
+	else:
+		tire_break_asp.stream_paused = true
 
 	for part: WheelPart in wheel_parts:
 		var collider := part.ray_cast.get_collider()

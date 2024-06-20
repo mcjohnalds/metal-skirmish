@@ -3,7 +3,6 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Break
   - Dirt hit
   - Part hit
   - Part destroyed
