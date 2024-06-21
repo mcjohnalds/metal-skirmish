@@ -3,7 +3,6 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Music
   - Hitmarker sound and UI
   - Balance sound volumes/unit size
 - Sound and music settings
@@ -146,6 +145,7 @@ After game jam:
   - Separate global static from global non-static
   - Autoload with globals and music
   - UI kit with hover sounds etc
+  - Music player with queue, switching, and fading
 
 Ideas:
 

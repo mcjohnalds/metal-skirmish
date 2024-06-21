@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://burn6apw80p45"]
+[gd_scene load_steps=3 format=3 uid="uid://burn6apw80p45"]
 
 [ext_resource type="Script" path="res://scripts/autoload.gd" id="1_1vjaf"]
+[ext_resource type="AudioStream" uid="uid://cy1k3smibca75" path="res://sounds/cherry_metal_arthur_vyncke.ogg" id="2_iv5gb"]
 
 [node name="Autoload" type="Node"]
 script = ExtResource("1_1vjaf")
+
+[node name="MusicASP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_iv5gb")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
