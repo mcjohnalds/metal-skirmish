@@ -33,6 +33,7 @@ static var part_destroyed_scene: PackedScene = load("res://scenes/part_destroyed
 @onready var tire_break_asp: AudioStreamPlayer3D = $TireBreakASP
 @onready var tire_roll_asp: AudioStreamPlayer3D = $TireRollASP
 @onready var vehicle_crash_asp: AudioStreamPlayer3D = $VehicleCrashASP
+@onready var hitmarker_asp: AudioStreamPlayer = $HitmarkerASP
 var is_player := false
 var cockpit_part: CockpitPart
 var wheel_parts: Array[WheelPart] = []
@@ -56,14 +57,18 @@ func _ready() -> void:
 	var wheel_min_z := 1000.0
 	var wheel_max_z := -1000.0
 	var part_max_y := -1000.0
-	for child: Node3D in get_children():
+	for child in get_children():
+		if not child is Node3D:
+			continue
 		if child is WheelPart:
 			wheel_min_z = minf(child.position.z, wheel_min_z)
 			wheel_max_z = maxf(child.position.z, wheel_max_z)
 		part_max_y = maxf(child.position.y, part_max_y)
 	var wheel_midpoint_z := (wheel_max_z + wheel_min_z) / 2.0
 
-	for child: Node3D in get_children():
+	for child in get_children():
+		if not child is Node3D:
+			continue
 		var is_part := false
 		if child is ArmorPart:
 			is_part = true
@@ -119,7 +124,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_physics_process_gun_part()
+	_physics_process_gun_parts()
 	_physics_process_wheel_parts(delta)
 	if is_player:
 		var part_max_y := -1000.0
@@ -148,9 +153,10 @@ func _physics_process(delta: float) -> void:
 		c.camera.fov += 0.2 * fov_error
 
 
-func _physics_process_gun_part() -> void:
+func _physics_process_gun_parts() -> void:
 	var any_part_fired_bullet := false
 	var any_part_wants_to_shoot := false
+	var any_bullet_hit := false
 	for part: GunPart in gun_parts:
 		var is_enabled := (
 			part.health > 0.0
@@ -168,7 +174,7 @@ func _physics_process_gun_part() -> void:
 		if wants_to_shoot:
 			any_part_wants_to_shoot = true
 			if part.can_fire():
-				fire_bullet(part)
+				any_bullet_hit = fire_bullet(part)
 				any_part_fired_bullet = true
 	if any_part_wants_to_shoot:
 		if not is_shooting:
@@ -178,6 +184,8 @@ func _physics_process_gun_part() -> void:
 		is_shooting = false
 	if any_part_fired_bullet:
 		shoot_asp.play()
+	if any_bullet_hit and is_player:
+		hitmarker_asp.play()
 
 
 func _physics_process_wheel_parts(delta: float) -> void:
@@ -378,7 +386,7 @@ func start_target_select_loop() -> void:
 		await get_tree().create_timer(randf_range(0.5, 3.0)).timeout
 
 
-func fire_bullet(part: GunPart) -> void:
+func fire_bullet(part: GunPart) -> bool:
 	part.fire()
 
 	var target: Vector3
@@ -389,7 +397,7 @@ func fire_bullet(part: GunPart) -> void:
 			target = g.camera_pivot.aim.global_transform * g.camera_pivot.aim.target_position
 	else:
 		if g.arena.player.cockpit_part.health == 0.0:
-			return
+			return false
 		var living_parts: Array[Node3D] = []
 		for p in g.arena.player.parts:
 			if p.health > 0.0:
@@ -474,6 +482,8 @@ func fire_bullet(part: GunPart) -> void:
 				metal_hit.emitting = true
 				get_parent().add_child(metal_hit)
 				damage_part(collider, collision.shape)
+				return true
+	return false
 
 
 func on_body_entered(body: Node) -> void:

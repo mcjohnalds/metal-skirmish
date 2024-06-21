@@ -241,7 +241,8 @@ func _ready() -> void:
 
 	var min_y := 0.0
 	for c in player.get_children():
-		min_y = minf(min_y, c.position.y)
+		if c is Node3D:
+			min_y = minf(min_y, c.position.y)
 	player.position = player_spawn_point.position - Vector3.UP * min_y
 	add_child(player)
 
@@ -329,6 +330,7 @@ func play_round_won_sound() -> void:
 	asp.autoplay = true
 	asp.volume_db = -0.0
 	add_child(asp)
+	asp.finished.connect(asp.queue_free)
 
 
 func play_round_lost_sound() -> void:
@@ -337,6 +339,7 @@ func play_round_lost_sound() -> void:
 	asp.autoplay = true
 	asp.volume_db = -0.0
 	add_child(asp)
+	asp.finished.connect(asp.queue_free)
 
 
 func play_parts_earned_sound() -> void:
@@ -345,3 +348,4 @@ func play_parts_earned_sound() -> void:
 	asp.autoplay = true
 	asp.volume_db = -0.0
 	add_child(asp)
+	asp.finished.connect(asp.queue_free)

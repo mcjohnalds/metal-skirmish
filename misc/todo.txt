@@ -1,9 +1,7 @@
 Todo:
 
 - Fix bug where gun shoots when round starts due to clicking
-- Ask streamer what graphics card and browser they use
 - Sound
-  - Hitmarker sound and UI
   - Balance sound volumes/unit size
 - Sound and music settings
   - Make sure no sound uses master bus
@@ -27,6 +25,7 @@ Todo:
   - Display damage texture on damaged parts
   - Gun frames should look different
 - Better UI
+  - Hitmarker
   - Overall control style
     - Make garage -> start round button primary style. Same with start button on
       main menu.
@@ -59,6 +58,7 @@ Todo:
   - Credits
   - Trailer
   - Give message to streamers about having to load the app in the foreground.
+- Some sounds, e.g part hit, should be parented to a node
 
 Really want:
 
