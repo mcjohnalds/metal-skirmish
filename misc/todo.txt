@@ -5,10 +5,9 @@ Todo:
 - Sound
   - Music
   - Hitmarker sound and UI
-  - Scroll sound
-  - Orbit sound
   - Balance sound volumes/unit size
 - Sound and music settings
+  - Make sure no sound uses master bus
 - Better 3D graphics
   - Sensible color scheme
   - Armor part

@@ -47,6 +47,7 @@ func _input(event: InputEvent) -> void:
 			camera.position.z /= scroll_speed
 		elif button.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			camera.position.z *= scroll_speed
+		autoload.play_scroll_sound()
 
 	if camera.position.z < -100.0:
 		camera.position.z = -100.0
