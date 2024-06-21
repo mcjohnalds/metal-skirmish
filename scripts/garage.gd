@@ -20,6 +20,8 @@ static var gun_part_scene: PackedScene = load("res://scenes/gun_part.tscn")
 @onready var block_face_indicator: Node3D = $BlockFaceIndicator
 @onready var round_counter: RoundCounter = $MarginContainer/RoundCounter
 @onready var next_round_button: Button = $MarginContainer/NextRoundButton/Button
+@onready var part_placed_asp: AudioStreamPlayer = $PartPlacedASP
+@onready var part_removed_asp: AudioStreamPlayer = $PartRemovedASP
 var selected_button: PartButton
 
 
@@ -28,7 +30,7 @@ func _ready() -> void:
 	wheel_part_button.button.button_down.connect(on_wheel_button_down)
 	gun_part_button.button.button_down.connect(on_gun_button_down)
 	next_round_button.button_down.connect(on_next_round_button_down)
-	on_armor_button_down()
+	on_armor_button_down(true)
 	update_labels()
 	round_counter.label.text = (
 		"Round %s/%s" % [g.round_number, Arena.rounds.size()]
@@ -102,6 +104,8 @@ func _input(event):
 			new_part.position = Global.vector_3_floorf(new_part.position)
 			add_part(new_part)
 
+			part_placed_asp.play()
+
 			if selected_button == armor_part_button:
 				g.armor_part_inventory -= 1
 			elif selected_button == wheel_part_button:
@@ -113,6 +117,9 @@ func _input(event):
 				return
 			parts.remove_child(picked_part)
 			body.remove_child(body.get_child(shape_index))
+
+			part_removed_asp.play()
+
 			if picked_part is ArmorPart:
 				g.armor_part_inventory += 1
 			if picked_part is WheelPart:
@@ -141,7 +148,9 @@ func get_mouse_ray_collision() -> Dictionary:
 	return get_world_3d().direct_space_state.intersect_ray(query)
 
 
-func on_armor_button_down() -> void:
+func on_armor_button_down(mute_sound := false) -> void:
+	if not mute_sound:
+		autoload.play_button_click_sound()
 	armor_part_button.border.visible = true
 	wheel_part_button.border.visible = false
 	gun_part_button.border.visible = false
@@ -149,6 +158,7 @@ func on_armor_button_down() -> void:
 
 
 func on_wheel_button_down() -> void:
+	autoload.play_button_click_sound()
 	armor_part_button.border.visible = false
 	wheel_part_button.border.visible = true
 	gun_part_button.border.visible = false
@@ -156,6 +166,7 @@ func on_wheel_button_down() -> void:
 
 
 func on_gun_button_down() -> void:
+	autoload.play_button_click_sound()
 	armor_part_button.border.visible = false
 	wheel_part_button.border.visible = false
 	gun_part_button.border.visible = true

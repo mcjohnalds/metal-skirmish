@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7t625mkknres"]
+[gd_scene load_steps=13 format=3 uid="uid://c7t625mkknres"]
 
 [ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_7hvwk"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="9_eo1ru"]
 [ext_resource type="Texture2D" uid="uid://bqs7oeib4gnou" path="res://textures/triangle_right_icon.png" id="10_pjh8w"]
+[ext_resource type="AudioStream" uid="uid://ir7fkjt6mp0j" path="res://sounds/part_placed.ogg" id="11_rw84i"]
+[ext_resource type="AudioStream" uid="uid://l5kw0bayjvas" path="res://sounds/part_removed.ogg" id="12_2x7sc"]
 
 [node name="Garage" type="Node3D"]
 script = ExtResource("1_ymf2g")
@@ -118,3 +120,9 @@ layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("10_pjh8w")
 expand_mode = 3
+
+[node name="PartPlacedASP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rw84i")
+
+[node name="PartRemovedASP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2x7sc")
