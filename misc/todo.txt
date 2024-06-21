@@ -3,8 +3,6 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Part destroyed
-  - Cockpit destroyed
   - Round won
   - Game over
   - Button press
@@ -15,6 +13,7 @@ Todo:
   - Hitmarker sound and UI
   - Vehicle collision sound
   - Vehicle landed on dirt sound
+  - Balance sound volumes/unit size
 - Sound and music settings
 - Better 3D graphics
   - Sensible color scheme
@@ -66,6 +65,7 @@ Todo:
   - Screenshots
   - Credits
   - Trailer
+  - Give message to streamers about having to load the app in the foreground.
 
 Really want:
 

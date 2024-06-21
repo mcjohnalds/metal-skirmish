@@ -11,6 +11,9 @@ const ENGINE_TORQUE := 7500.0
 const SPRING_STRENGTH := 100.0
 const SPRING_DAMPING := 0.15
 const SPRING_REST_DISTANCE := 0.6
+const part_hit_stream: AudioStream = preload("res://sounds/part_hit.ogg")
+const part_destroyed_stream: AudioStream = preload("res://sounds/part_destroyed.ogg")
+const cockpit_destroyed_stream: AudioStream = preload("res://sounds/cockpit_destroyed.ogg")
 static var wheel_friction_front: Curve = load("res://curves/wheel_friction_front.tres")
 static var wheel_friction_back: Curve = load("res://curves/wheel_friction_back.tres")
 static var throttle_forward: Curve = load("res://curves/throttle_forward.tres")
@@ -314,7 +317,9 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 	if hit_part.health == 0.0:
 		return
 	hit_part.health -= BULLET_DAMAGE
-	if hit_part.health <= 0.0:
+	if hit_part.health > 0.0:
+		play_part_hit_sound(hit_part.global_position)
+	else:
 		if hit_part is ArmorPart:
 			hit_part.armor.visible = false
 		if hit_part is GunPart:
@@ -348,8 +353,10 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 			if vehicle.is_player:
 				g.camera_pivot.reparent(get_parent())
 			destroyed.emit(vehicle.is_player)
+			play_cockpit_destroyed_sound(hit_part.global_position)
 		else:
 			vehicle.shape_owner_set_disabled(shape_index, true)
+			play_part_destroyed_sound(hit_part.global_position)
 
 		var particles: GPUParticles3D = part_destroyed_scene.instantiate()
 		particles.position = hit_part.global_position
@@ -476,3 +483,36 @@ func on_body_entered(body: Node) -> void:
 		var dv := vehicle.linear_velocity.distance_to(linear_velocity)
 		vehicle_crash_asp.volume_db = -30.0 + 10.0 * minf(pow(dv / 10.0, 2.0), 1.0)
 		vehicle_crash_asp.play()
+
+
+func play_part_hit_sound(point: Vector3) -> void:
+	var asp := AudioStreamPlayer3D.new()
+	asp.position = point
+	asp.stream = part_hit_stream
+	asp.autoplay = true
+	asp.unit_size = 200.0
+	asp.volume_db = -25.0
+	asp.finished.connect(asp.queue_free)
+	get_parent().add_child(asp)
+
+
+func play_part_destroyed_sound(point: Vector3) -> void:
+	var asp := AudioStreamPlayer3D.new()
+	asp.position = point
+	asp.stream = part_destroyed_stream
+	asp.autoplay = true
+	asp.unit_size = 200.0
+	asp.volume_db = -12.0
+	asp.finished.connect(asp.queue_free)
+	get_parent().add_child(asp)
+
+
+func play_cockpit_destroyed_sound(point: Vector3) -> void:
+	var asp := AudioStreamPlayer3D.new()
+	asp.position = point
+	asp.stream = cockpit_destroyed_stream
+	asp.autoplay = true
+	asp.unit_size = 200.0
+	asp.volume_db = -18.0
+	asp.finished.connect(asp.queue_free)
+	get_parent().add_child(asp)
