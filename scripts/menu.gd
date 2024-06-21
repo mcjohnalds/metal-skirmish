@@ -48,16 +48,20 @@ func read_settings_from_environment() -> void:
 func on_mouse_sensitivity_slider_drag_ended(
 	_value_changed: bool
 ) -> void:
+	autoload.play_button_click_sound()
 	g.mouse_sensitivity = mouse_sensitivity_slider.value
 
 
 func on_invert_mouse_item_selected(index: int) -> void:
+	autoload.play_button_click_sound()
 	g.invert_mouse = bool(index)
 
 
 func on_vsync_item_selected(index: int) -> void:
+	autoload.play_button_click_sound()
 	DisplayServer.window_set_vsync_mode(index)
 
 
 func on_performance_preset_item_selected(index: int) -> void:
+	autoload.play_button_click_sound()
 	g.graphics_preset = index as Global.GraphicsPreset

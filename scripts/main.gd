@@ -25,7 +25,7 @@ func _ready() -> void:
 	settings.start_button.get_parent().visible = false
 	settings.resume_button.button_down.connect(on_resume_button_down)
 	settings.quit_button.button_down.connect(on_quit_button_down)
-	settings.restart_button.button_down.connect(restart)
+	settings.restart_button.button_down.connect(on_restart_button_down)
 
 
 func _process(_delta: float) -> void:
@@ -68,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func on_start_button_down() -> void:
+	autoload.play_button_click_sound()
 	autoload.play_ambient_wind_sound()
 	start.visible = false
 	go_to_arena()
@@ -140,10 +141,12 @@ func go_to_garage() -> void:
 
 
 func on_quit_button_down() -> void:
+	autoload.play_button_click_sound()
 	get_tree().quit()
 
 
 func on_resume_button_down() -> void:
+	autoload.play_button_click_sound()
 	unpause()
 
 
@@ -181,3 +184,8 @@ func on_round_complete() -> void:
 func set_mouse_mode(mode: Input.MouseMode) -> void:
 	desired_mouse_mode = mode
 	Input.mouse_mode = mode
+
+
+func on_restart_button_down() -> void:
+	autoload.play_button_click_sound()
+	restart()
