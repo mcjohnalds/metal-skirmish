@@ -30,10 +30,12 @@ bus = &"Guns"
 [node name="EngineASP" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_tyv0p")
 unit_size = 30.0
+bus = &"World"
 
 [node name="TireBreakASP" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_jq4yq")
 unit_size = 30.0
+bus = &"World"
 
 [node name="TireRollASP" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_tpb28")

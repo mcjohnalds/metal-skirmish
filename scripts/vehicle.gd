@@ -503,6 +503,7 @@ func on_body_entered(body: Node) -> void:
 
 func play_part_hit_sound(point: Vector3) -> void:
 	var asp := AudioStreamPlayer3D.new()
+	asp.bus = "World"
 	asp.position = point
 	asp.stream = part_hit_stream
 	asp.autoplay = true
@@ -514,6 +515,7 @@ func play_part_hit_sound(point: Vector3) -> void:
 
 func play_part_destroyed_sound(point: Vector3) -> void:
 	var asp := AudioStreamPlayer3D.new()
+	asp.bus = "World"
 	asp.position = point
 	asp.stream = part_destroyed_stream
 	asp.autoplay = true
@@ -525,6 +527,7 @@ func play_part_destroyed_sound(point: Vector3) -> void:
 
 func play_cockpit_destroyed_sound(point: Vector3) -> void:
 	var asp := AudioStreamPlayer3D.new()
+	asp.bus = "World"
 	asp.position = point
 	asp.stream = cockpit_destroyed_stream
 	asp.autoplay = true

@@ -124,9 +124,12 @@ expand_mode = 3
 
 [node name="PartPlacedASP" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_rw84i")
+bus = &"World"
 
 [node name="PartRemovedASP" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_2x7sc")
+bus = &"World"
 
 [node name="ErrorASP" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_b0nt6")
+bus = &"World"

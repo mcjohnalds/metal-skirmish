@@ -9,6 +9,7 @@ const scroll_stream: AudioStream = preload("res://sounds/scroll.ogg")
 
 func play_scene_transition_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = scene_transition_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
@@ -18,6 +19,7 @@ func play_scene_transition_sound() -> void:
 
 func play_ambient_wind_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = ambient_wind_stream
 	asp.autoplay = true
 	asp.volume_db = -10.0
@@ -27,6 +29,7 @@ func play_ambient_wind_sound() -> void:
 
 func play_button_click_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = button_click_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
@@ -36,6 +39,7 @@ func play_button_click_sound() -> void:
 
 func play_scroll_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = scroll_stream
 	asp.autoplay = true
 	asp.volume_db = -10.0

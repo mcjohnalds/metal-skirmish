@@ -1,7 +1,5 @@
 Todo:
 
-- Sound and music settings
-  - Make sure no sound uses master bus
 - Better 3D graphics
   - Sensible color scheme
   - Armor part
@@ -142,7 +140,8 @@ After game jam:
   - Separate global static from global non-static
   - Autoload with globals and music
   - UI kit with hover sounds etc
-  - Music player with queue, switching, and fading
+  - Music player with queue, switching, and fading, sound control
+  - Make UI slider react instantly rather than on release
 
 Ideas:
 

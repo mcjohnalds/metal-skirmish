@@ -327,6 +327,7 @@ func all_enemies_destroyed() -> bool:
 
 func play_round_won_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = round_won_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
@@ -336,6 +337,7 @@ func play_round_won_sound() -> void:
 
 func play_round_lost_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = round_lost_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
@@ -345,6 +347,7 @@ func play_round_lost_sound() -> void:
 
 func play_parts_earned_sound() -> void:
 	var asp := AudioStreamPlayer.new()
+	asp.bus = "World"
 	asp.stream = parts_earned_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
