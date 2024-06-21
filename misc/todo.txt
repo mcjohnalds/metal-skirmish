@@ -1,6 +1,5 @@
 Todo:
 
-- Fix bug where gun shoots when round starts due to clicking
 - Sound
   - Balance sound volumes/unit size
 - Sound and music settings

@@ -42,9 +42,12 @@ var parts: Array[Node3D] = []
 var target_index := 0
 var accuracy: float
 var is_shooting := false
+var entered_tree_at: float
 
 
 func _ready() -> void:
+	entered_tree_at = Global.get_ticks_sec()
+
 	# Pause to account for engine ignition sound
 	get_tree().create_timer(1.0).timeout.connect(func() -> void:
 		engine_asp.play()
@@ -170,7 +173,10 @@ func _physics_process_gun_parts() -> void:
 		)
 		if not is_enabled or not player_visible:
 			continue
-		var wants_to_shoot := not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		var wants_to_shoot := (
+			(not is_player or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))
+			and Global.get_ticks_sec() - entered_tree_at > 0.4
+		)
 		if wants_to_shoot:
 			any_part_wants_to_shoot = true
 			if part.can_fire():
