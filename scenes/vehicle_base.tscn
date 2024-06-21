@@ -47,4 +47,5 @@ bus = &"World"
 
 [node name="HitmarkerASP" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_galv4")
+volume_db = -5.0
 bus = &"World"

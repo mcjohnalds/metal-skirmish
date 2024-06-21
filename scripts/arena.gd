@@ -294,6 +294,7 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
+			await get_tree().create_timer(1.0).timeout
 		await get_tree().create_timer(0.7).timeout
 		play_parts_earned_sound()
 		parts_earned.visible = true
