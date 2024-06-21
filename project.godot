@@ -15,9 +15,14 @@ run/main_scene="res://scenes/init.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://textures/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://misc/default_bus_layout.tres"
+
 [autoload]
 
 g="*res://scripts/global.gd"
+autoload="*res://scenes/autoload.tscn"
 
 [debug]
 

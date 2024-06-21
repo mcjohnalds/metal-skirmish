@@ -77,6 +77,8 @@ func go_to_arena() -> void:
 		return
 	transitioning = true
 
+	autoload.play_scene_transition_sound()
+
 	set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	var player: Vehicle
@@ -113,6 +115,8 @@ func go_to_garage() -> void:
 	if transitioning:
 		return
 	transitioning = true
+
+	autoload.play_scene_transition_sound()
 
 	set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

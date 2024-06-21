@@ -3,8 +3,8 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Scene transition
   - Game over
+  - Ambient
   - Button press
   - Part placed
   - Part removed
@@ -150,6 +150,7 @@ After game jam:
   - Object pool
   - Fix bug: pausing does not affect timing logic
   - Separate global static from global non-static
+  - Autoload with globals and music
 
 Ideas:
 
