@@ -22,6 +22,7 @@ static var gun_part_scene: PackedScene = load("res://scenes/gun_part.tscn")
 @onready var next_round_button: Button = $MarginContainer/NextRoundButton/Button
 @onready var part_placed_asp: AudioStreamPlayer = $PartPlacedASP
 @onready var part_removed_asp: AudioStreamPlayer = $PartRemovedASP
+@onready var error_asp: AudioStreamPlayer = $ErrorASP
 var selected_button: PartButton
 
 
@@ -73,19 +74,23 @@ func _input(event):
 			if selected_button == armor_part_button:
 				part_scene = armor_part_scene
 				if g.armor_part_inventory == 0:
+					error_asp.play()
 					return
 			elif selected_button == wheel_part_button:
 				part_scene = wheel_part_scene
 				if g.wheel_part_inventory == 0:
+					error_asp.play()
 					return
 			elif selected_button == gun_part_button:
 				part_scene = gun_part_scene
 				if g.gun_part_inventory == 0:
+					error_asp.play()
 					return
 
 			# TODO: this validation logic is exploitable, need to do a proper
 			# solution where i have a is_vehicle_valid(parts) -> bool function
 			if picked_part is GunPart:
+				error_asp.play()
 				return
 
 			var normal: Vector3 = collision.normal
@@ -94,6 +99,7 @@ func _input(event):
 			if (
 				selected_button == gun_part_button and normali != Vector3i.UP
 			):
+				error_asp.play()
 				return
 
 			var new_part_position := picked_part.position + normal
@@ -114,6 +120,7 @@ func _input(event):
 				g.gun_part_inventory -= 1
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if picked_part is CockpitPart or is_part_bridge(picked_part):
+				error_asp.play()
 				return
 			parts.remove_child(picked_part)
 			body.remove_child(body.get_child(shape_index))
@@ -128,6 +135,7 @@ func _input(event):
 				g.gun_part_inventory += 1
 		update_labels()
 	if event.is_action_pressed("recenter"):
+		autoload.play_button_click_sound()
 		var collision := get_mouse_ray_collision()
 		if collision:
 			var shape_index: int = collision.shape

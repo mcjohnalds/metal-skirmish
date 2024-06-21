@@ -3,11 +3,10 @@ Todo:
 - Fix bug where gun shoots when round starts due to clicking
 - Ask streamer what graphics card and browser they use
 - Sound
-  - Error when attempted part placement/removal invalid
   - Music
   - Hitmarker sound and UI
-  - Vehicle collision sound
-  - Vehicle landed on dirt sound
+  - Scroll sound
+  - Orbit sound
   - Balance sound volumes/unit size
 - Sound and music settings
 - Better 3D graphics
