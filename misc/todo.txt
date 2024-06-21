@@ -1,24 +1,19 @@
 Todo:
 
 - Better 3D graphics
-  - Sensible color scheme
   - Armor part
   - Wheel part
   - Gun part
   - Cockpit part
   - Frame
     - Make it better and smaller
-  - Ground
-  - Sky
-    - Make sure it looks the same in web and desktop
-  - Fog
   - Blast out gibs randomy when bullets collide with parts
-  - Fade walls based on distance to player
   - Kick up dirt when driving
   - Leave trails in dirt
     - Don't do this if it's desktop only
   - Display damage texture on damaged parts
   - Gun frames should look different
+  - Better particles/effects
 - Better UI
   - Hitmarker
   - Overall control style
@@ -113,6 +108,7 @@ Really want:
 - At end of each round, let player pick up new parts in a satisfying way
 - Gamma setting
 - Better loading screens
+- Fade walls based on distance to player
 
 Refactor:
 

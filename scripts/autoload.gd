@@ -5,6 +5,12 @@ const scene_transition_stream: AudioStream = preload("res://sounds/scene_transit
 const ambient_wind_stream: AudioStream = preload("res://sounds/ambient_wind.ogg")
 const button_click_stream: AudioStream = preload("res://sounds/button_click.ogg")
 const scroll_stream: AudioStream = preload("res://sounds/scroll.ogg")
+@onready var music_asp: AudioStreamPlayer = $MusicASP
+
+
+func _ready() -> void:
+	if OS.is_debug_build():
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80.0)
 
 
 func play_scene_transition_sound() -> void:

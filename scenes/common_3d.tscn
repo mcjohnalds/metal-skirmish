@@ -4,6 +4,7 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xynlq"]
 auto_exposure_enabled = true
+auto_exposure_speed = 1.0
 
 [node name="Common3D" type="Node3D"]
 script = ExtResource("1_3kpmt")
