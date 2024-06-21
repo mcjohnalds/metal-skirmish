@@ -68,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func on_start_button_down() -> void:
+	autoload.play_ambient_wind_sound()
 	start.visible = false
 	go_to_arena()
 

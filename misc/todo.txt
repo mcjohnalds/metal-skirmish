@@ -4,7 +4,6 @@ Todo:
 - Ask streamer what graphics card and browser they use
 - Sound
   - Game over
-  - Ambient
   - Button press
   - Part placed
   - Part removed
@@ -25,6 +24,7 @@ Todo:
     - Make it better and smaller
   - Ground
   - Sky
+    - Make sure it looks the same in web and desktop
   - Fog
   - Blast out gibs randomy when bullets collide with parts
   - Fade walls based on distance to player
