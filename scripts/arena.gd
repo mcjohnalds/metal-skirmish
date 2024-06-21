@@ -5,6 +5,7 @@ signal round_complete
 signal round_lost
 
 const round_won_stream: AudioStream = preload("res://sounds/round_won.ogg")
+const round_lost_stream: AudioStream = preload("res://sounds/round_lost.ogg")
 const parts_earned_stream: AudioStream = preload("res://sounds/parts_earned.ogg")
 
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
@@ -275,22 +276,24 @@ func _process(_delta: float) -> void:
 
 func on_vehicle_destroyed(is_player: bool) -> void:
 	if is_player:
+		await get_tree().create_timer(1.2).timeout
+		play_round_lost_sound()
 		round_complete_control.visible = true
 		round_complete_label.text = "Round Lost"
 		crosshair.visible = false
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.7).timeout
 		death_tip.visible = true
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		round_lost.emit()
 	elif all_enemies_destroyed():
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.2).timeout
 		play_round_won_sound()
 		# Wait a moment for the round won sound to reach its crescendo
 		await get_tree().create_timer(0.28).timeout
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.7).timeout
 		play_parts_earned_sound()
 		parts_earned.visible = true
 		var round_data: Dictionary = rounds[g.round_number - 1]
@@ -323,6 +326,14 @@ func all_enemies_destroyed() -> bool:
 func play_round_won_sound() -> void:
 	var asp := AudioStreamPlayer.new()
 	asp.stream = round_won_stream
+	asp.autoplay = true
+	asp.volume_db = -0.0
+	add_child(asp)
+
+
+func play_round_lost_sound() -> void:
+	var asp := AudioStreamPlayer.new()
+	asp.stream = round_lost_stream
 	asp.autoplay = true
 	asp.volume_db = -0.0
 	add_child(asp)

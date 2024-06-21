@@ -513,6 +513,6 @@ func play_cockpit_destroyed_sound(point: Vector3) -> void:
 	asp.stream = cockpit_destroyed_stream
 	asp.autoplay = true
 	asp.unit_size = 200.0
-	asp.volume_db = -18.0
+	asp.volume_db = -20.0
 	asp.finished.connect(asp.queue_free)
 	get_parent().add_child(asp)
