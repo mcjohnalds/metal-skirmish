@@ -4,6 +4,9 @@ extends Node3D
 signal round_complete
 signal round_lost
 
+const round_won_stream: AudioStream = preload("res://sounds/round_won.ogg")
+const parts_earned_stream: AudioStream = preload("res://sounds/parts_earned.ogg")
+
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
 static var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
 static var vehicle_tall_boy := load("res://scenes/vehicle_tall_boy.tscn")
@@ -280,10 +283,15 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		await get_tree().create_timer(4.0).timeout
 		round_lost.emit()
 	elif all_enemies_destroyed():
+		await get_tree().create_timer(1.5).timeout
+		play_round_won_sound()
+		# Wait a moment for the round won sound to reach its crescendo
+		await get_tree().create_timer(0.28).timeout
 		round_complete_control.visible = true
 		if g.round_number == rounds.size():
 			round_complete_label.text = "Game Won - Thanks For Playing"
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.5).timeout
+		play_parts_earned_sound()
 		parts_earned.visible = true
 		var round_data: Dictionary = rounds[g.round_number - 1]
 		var armor_parts_earned: int = round_data["armor_parts_earned"]
@@ -292,7 +300,7 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		armor_part_button.label.text = str(armor_parts_earned)
 		wheel_part_button.label.text = str(wheel_parts_earned)
 		gun_part_button.label.text = str(gun_parts_earned)
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		g.armor_part_inventory += armor_parts_earned
 		g.wheel_part_inventory += wheel_parts_earned
 		g.gun_part_inventory += gun_parts_earned
@@ -310,3 +318,19 @@ func all_enemies_destroyed() -> bool:
 		if not vehicle.is_player and vehicle.cockpit_part.health > 0.0:
 			return false
 	return true
+
+
+func play_round_won_sound() -> void:
+	var asp := AudioStreamPlayer.new()
+	asp.stream = round_won_stream
+	asp.autoplay = true
+	asp.volume_db = -0.0
+	add_child(asp)
+
+
+func play_parts_earned_sound() -> void:
+	var asp := AudioStreamPlayer.new()
+	asp.stream = parts_earned_stream
+	asp.autoplay = true
+	asp.volume_db = -0.0
+	add_child(asp)
