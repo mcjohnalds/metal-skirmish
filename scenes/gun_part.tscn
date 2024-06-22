@@ -19,7 +19,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.249071)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.851159)
 albedo_texture = ExtResource("3_grapf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
@@ -31,7 +31,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.249071)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.851159)
 albedo_texture = ExtResource("4_t440h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]
@@ -104,29 +104,26 @@ visible = false
 [node name="Cylinder_002" parent="Model" index="0"]
 material_override = ExtResource("4_v08iu")
 
-[node name="Cylinder_001" parent="Model" index="1"]
-material_override = ExtResource("4_v08iu")
-
-[node name="Cylinder_005" parent="Model" index="2"]
+[node name="Cylinder_005" parent="Model" index="1"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_019" parent="Model" index="3"]
+[node name="Cylinder_019" parent="Model" index="2"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_020" parent="Model" index="4"]
+[node name="Cylinder_020" parent="Model" index="3"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_021" parent="Model" index="5"]
+[node name="Cylinder_021" parent="Model" index="4"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Arm1" parent="Model" index="6"]
+[node name="Arm1" parent="Model" index="5"]
 transform = Transform3D(0.999975, 0, 0.000811173, 0, 0.999984, 0, -0.000811173, 0, 0.999975, -0.00804615, -0.390792, 0.0810948)
 top_level = true
 
 [node name="Cylinder_006" parent="Model/Arm1" index="1"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Arm2" parent="Model" index="8"]
+[node name="Arm2" parent="Model" index="7"]
 transform = Transform3D(0.999976, 2.14758e-06, 0.000846052, 0, 0.999962, -0.00253827, -0.00084606, 0.00253826, 0.999966, -0.00821687, 0.0246437, -0.129366)
 top_level = true
 
@@ -134,33 +131,26 @@ top_level = true
 transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
 material_override = ExtResource("4_v08iu")
 
-[node name="Cylinder_004" parent="Model/Arm2/Arm2Child" index="1"]
+[node name="Cylinder_007" parent="Model/Arm2/Arm2Child" index="1"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_009" parent="Model/Arm2/Arm2Child" index="2"]
 transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
 material_override = ExtResource("4_v08iu")
 
-[node name="Cylinder_007" parent="Model/Arm2/Arm2Child" index="2"]
+[node name="Cylinder_010" parent="Model/Arm2/Arm2Child" index="3"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_008" parent="Model/Arm2/Arm2Child" index="3"]
-material_override = ExtResource("2_fnslv")
-
-[node name="Cylinder_009" parent="Model/Arm2/Arm2Child" index="4"]
-transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
+[node name="Cylinder_011" parent="Model/Arm2/Arm2Child" index="4"]
 material_override = ExtResource("4_v08iu")
 
-[node name="Cylinder_010" parent="Model/Arm2/Arm2Child" index="5"]
+[node name="Cylinder_012" parent="Model/Arm2/Arm2Child" index="5"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_011" parent="Model/Arm2/Arm2Child" index="6"]
-material_override = ExtResource("4_v08iu")
-
-[node name="Cylinder_012" parent="Model/Arm2/Arm2Child" index="7"]
+[node name="Cylinder_013" parent="Model/Arm2/Arm2Child" index="6"]
 material_override = ExtResource("2_fnslv")
 
-[node name="Cylinder_013" parent="Model/Arm2/Arm2Child" index="8"]
-material_override = ExtResource("2_fnslv")
-
-[node name="Cylinder_014" parent="Model/Arm2/Arm2Child" index="9"]
+[node name="Cylinder_014" parent="Model/Arm2/Arm2Child" index="7"]
 material_override = ExtResource("2_fnslv")
 
 [node name="End" type="Node3D" parent="Model/Arm2" index="1"]

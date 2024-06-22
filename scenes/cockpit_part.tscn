@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxwv3sxpc8d4n"]
+[gd_scene load_steps=6 format=3 uid="uid://cxwv3sxpc8d4n"]
 
 [ext_resource type="Script" path="res://scripts/cockpit_part.gd" id="1_xq0u5"]
 [ext_resource type="PackedScene" uid="uid://dyjma2rawg826" path="res://meshes/cockpit.glb" id="2_2ngob"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="3_3pccn"]
-[ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="3_8jqic"]
 [ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="3_uwvll"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpnj"]
@@ -32,9 +31,6 @@ material_override = SubResource("StandardMaterial3D_ixpnj")
 
 [node name="Frame" parent="." instance=ExtResource("3_3pccn")]
 visible = false
-
-[node name="Frame" parent="Frame" index="0"]
-material_override = ExtResource("3_8jqic")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 omni_range = 3.548
