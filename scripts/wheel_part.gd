@@ -18,6 +18,7 @@ extends Node3D
 @onready var debug_arrow_z: Arrow = $DebugArrowZ
 @onready var armor: Node3D = $Armor
 @onready var frame: Node3D = $Frame
+@onready var dirt_effect: GPUParticles3D = %DirtEffect
 var radius := 0.6
 var last_spring_offset: float
 var traction := false

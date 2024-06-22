@@ -1,12 +1,6 @@
 Todo:
 
-- Better 3D graphics
-  - Kick up dirt when driving
-  - Leave trails in dirt
-    - Don't do this if it's desktop only
-  - Display damage texture on damaged parts
-  - Gun frames should look different
-  - Better particles/effects
+- Optimize dirt effect
 - Better UI
   - Hitmarker
   - Overall control style
@@ -40,9 +34,13 @@ Todo:
   - Credits
   - Trailer
   - Give message to streamers about having to load the app in the foreground.
+- Display damage texture on damaged parts
+- Better particles/effects
 
 Really want:
 
+- Leave trails in dirt
+  - Don't do this if it's desktop only
 - Some sounds, e.g part hit, should be parented to a node
 - Make gun impart small force on shooter and target
 - Vehicle landed in dirt sound effect

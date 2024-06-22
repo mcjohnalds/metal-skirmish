@@ -1,6 +1,8 @@
 class_name MyParticles
 extends GPUParticles3D
 
+@export var auto_clean_up := true
+
 
 func _init() -> void:
 	if g.graphics_preset == Global.GraphicsPreset.LOW:
@@ -8,5 +10,6 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+	if one_shot:
+		await get_tree().create_timer(lifetime).timeout
+		queue_free()

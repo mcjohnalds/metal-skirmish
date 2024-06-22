@@ -27,7 +27,7 @@ func _ready() -> void:
 		var scene := load(file_path)
 		var node: Node = scene.instantiate()
 		node.set_script(null)
-		for child: Node in get_all_children(node):
+		for child: Node in Global.get_all_children(node, true):
 			child.set_script(null)
 			if child is GPUParticles3D:
 				child.one_shot = true
@@ -35,14 +35,3 @@ func _ready() -> void:
 		container.add_child(node)
 		await get_tree().process_frame
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-
-func get_all_children(node: Node) -> Array[Node]:
-	var nodes: Array[Node] = []
-	for N in node.get_children():
-		if N.get_child_count() > 0:
-			nodes.append(N)
-			nodes.append_array(get_all_children(N))
-		else:
-			nodes.append(N)
-	return nodes

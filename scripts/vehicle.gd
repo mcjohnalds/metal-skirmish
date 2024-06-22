@@ -294,6 +294,11 @@ func _physics_process_wheel_parts(delta: float) -> void:
 				wheel_velocity.dot(part.wheel.global_basis.z) / part.radius
 			)
 
+			part.dirt_effect.emitting = true
+			part.dirt_effect.amount_ratio = minf(wheel_velocity.length() / 20.0, 1.0)
+		else:
+			part.dirt_effect.emitting = false
+
 
 func get_throttle_input() -> float:
 	if is_player:
@@ -337,7 +342,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 	hit_part.health -= BULLET_DAMAGE
 	if hit_part.health > 0.0:
 		play_part_hit_sound(hit_part.global_position)
-		if randf() < 0.2:
+		if randf() < 0.5:
 			spawn_part_giblet(vehicle, hit_part)
 	else:
 		if hit_part is ArmorPart:
@@ -346,11 +351,14 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 			hit_part.model.visible = false
 		if hit_part is WheelPart:
 			hit_part.armor.visible = false
+			hit_part.wheel_model.visible = false
 		if hit_part is CockpitPart:
 			hit_part.cockpit.visible = false
 		hit_part.health = 0.0
 		for i in 4:
 			spawn_part_giblet(vehicle, hit_part)
+			var hit_part_frame: Frame = hit_part.frame
+			hit_part_frame.visible = true
 		if hit_part is CockpitPart:
 			vehicle.process_mode = Node.PROCESS_MODE_DISABLED
 			vehicle.visible = false
@@ -542,5 +550,4 @@ func spawn_part_giblet(vehicle: Vehicle, part: Node3D) -> void:
 	giblet.linear_velocity += Global.get_point_velocity(vehicle, part.global_position)
 	giblet.global_position = part.global_position
 	var hit_part_frame: Frame = part.frame
-	hit_part_frame.visible = true
 	giblet.mesh.material_override = hit_part_frame.mesh.material_override
