@@ -1,27 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://4fui5v13ebcj"]
+[gd_scene load_steps=23 format=3 uid="uid://4fui5v13ebcj"]
 
 [ext_resource type="Script" path="res://scripts/gun_part.gd" id="1_c3nxo"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
 [ext_resource type="Texture2D" uid="uid://2mv8p2468pr1" path="res://addons/kenney_particle_pack/muzzle_02.png" id="3_grapf"]
-[ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="3_h56yo"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="4_d6d68"]
 [ext_resource type="Texture2D" uid="uid://dgj64ghpvhlx0" path="res://addons/kenney_particle_pack/magic_05.png" id="4_t440h"]
+[ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="4_v08iu"]
 [ext_resource type="Texture2D" uid="uid://c45vajf0x38oe" path="res://addons/kenney_particle_pack/smoke_08.png" id="5_01fvb"]
+[ext_resource type="PackedScene" uid="uid://cnu58auby6hvr" path="res://meshes/turret.glb" id="8_5oxty"]
 
 [sub_resource type="Curve" id="Curve_0tjkh"]
 _data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.273171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_1f5bd"]
-material = ExtResource("2_fnslv")
-top_radius = 0.1
-bottom_radius = 0.15
-height = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_jmg8q"]
-material = ExtResource("2_fnslv")
-radius = 0.15
-height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t0av"]
 resource_local_to_scene = true
@@ -29,7 +19,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.249071)
 albedo_texture = ExtResource("3_grapf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
@@ -41,7 +31,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0.249071)
 albedo_texture = ExtResource("4_t440h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]
@@ -101,47 +91,99 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_k3mb8")
 size = Vector2(1.5, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_kai1l"]
-material = ExtResource("3_h56yo")
-size = Vector3(0.3, 0.5, 0.3)
-
 [node name="GunPart" type="Node3D"]
 script = ExtResource("1_c3nxo")
 alpha_curve = SubResource("Curve_0tjkh")
+bone_target = Vector3(2.08165e-12, 2.08165e-12, 10)
 
-[node name="Barrel" type="Node3D" parent="."]
+[node name="Frame" parent="." instance=ExtResource("4_d6d68")]
+visible = false
 
-[node name="Cylinder" type="MeshInstance3D" parent="Barrel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
-mesh = SubResource("CylinderMesh_1f5bd")
-skeleton = NodePath("../..")
+[node name="Model" parent="." instance=ExtResource("8_5oxty")]
 
-[node name="Sphere" type="MeshInstance3D" parent="Barrel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("SphereMesh_jmg8q")
-skeleton = NodePath("../..")
+[node name="Cylinder_002" parent="Model" index="0"]
+material_override = ExtResource("4_v08iu")
 
-[node name="End" type="Node3D" parent="Barrel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="Cylinder_001" parent="Model" index="1"]
+material_override = ExtResource("4_v08iu")
 
-[node name="MuzzleFlash1" type="MeshInstance3D" parent="Barrel/End"]
+[node name="Cylinder_005" parent="Model" index="2"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_019" parent="Model" index="3"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_020" parent="Model" index="4"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_021" parent="Model" index="5"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Arm1" parent="Model" index="6"]
+transform = Transform3D(0.999975, 0, 0.000811173, 0, 0.999984, 0, -0.000811173, 0, 0.999975, -0.00804615, -0.390792, 0.0810948)
+top_level = true
+
+[node name="Cylinder_006" parent="Model/Arm1" index="1"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Arm2" parent="Model" index="8"]
+transform = Transform3D(0.999976, 2.14758e-06, 0.000846052, 0, 0.999962, -0.00253827, -0.00084606, 0.00253826, 0.999966, -0.00821687, 0.0246437, -0.129366)
+top_level = true
+
+[node name="Cylinder_003" parent="Model/Arm2/Arm2Child" index="0"]
+transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
+material_override = ExtResource("4_v08iu")
+
+[node name="Cylinder_004" parent="Model/Arm2/Arm2Child" index="1"]
+transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
+material_override = ExtResource("4_v08iu")
+
+[node name="Cylinder_007" parent="Model/Arm2/Arm2Child" index="2"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_008" parent="Model/Arm2/Arm2Child" index="3"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_009" parent="Model/Arm2/Arm2Child" index="4"]
+transform = Transform3D(0.218267, -2.5542e-11, 5.87462e-12, 8.60725e-11, 0.218267, -4.40059e-14, -1.42919e-11, -1.99825e-14, 0.218267, 0.137418, -0.509221, -2.79397e-09)
+material_override = ExtResource("4_v08iu")
+
+[node name="Cylinder_010" parent="Model/Arm2/Arm2Child" index="5"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_011" parent="Model/Arm2/Arm2Child" index="6"]
+material_override = ExtResource("4_v08iu")
+
+[node name="Cylinder_012" parent="Model/Arm2/Arm2Child" index="7"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_013" parent="Model/Arm2/Arm2Child" index="8"]
+material_override = ExtResource("2_fnslv")
+
+[node name="Cylinder_014" parent="Model/Arm2/Arm2Child" index="9"]
+material_override = ExtResource("2_fnslv")
+
+[node name="End" type="Node3D" parent="Model/Arm2" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1.00002, 6.32023e-13, -0.000846101, 2.14773e-06, 1.00003, 0.00253844, 0.000846104, -0.00253843, 1.00003, 0.0071062, 0.324947, 1.31216)
+
+[node name="MuzzleFlash1" type="MeshInstance3D" parent="Model/Arm2/End"]
 transform = Transform3D(-1.7369, 0, -2.08388e-07, 0, 1, 0, 1.51845e-07, 0, -2.38368, 0, 0, 1.07107)
 material_override = SubResource("StandardMaterial3D_6t0av")
 mesh = SubResource("PlaneMesh_561fx")
 
-[node name="MuzzleFlash2" type="MeshInstance3D" parent="Barrel/End"]
+[node name="MuzzleFlash2" type="MeshInstance3D" parent="Model/Arm2/End"]
 transform = Transform3D(7.59223e-08, -1, 1.18584e-14, -1.7369, -4.37114e-08, -2.08388e-07, 1.51845e-07, 0, -2.38368, 0, 0, 1.07107)
 material_override = SubResource("StandardMaterial3D_6t0av")
 mesh = SubResource("PlaneMesh_561fx")
 
-[node name="MuzzleFlash3" type="MeshInstance3D" parent="Barrel/End"]
+[node name="MuzzleFlash3" type="MeshInstance3D" parent="Model/Arm2/End"]
 transform = Transform3D(1.13549, 0, 0, 0, -4.96341e-08, -1.13549, 0, 1.13549, -4.96341e-08, 0, 0, 0.337349)
 material_override = SubResource("StandardMaterial3D_83vri")
 mesh = SubResource("PlaneMesh_apjhr")
 
-[node name="Smoke" type="GPUParticles3D" parent="Barrel/End"]
+[node name="Smoke" type="GPUParticles3D" parent="Model/Arm2/End"]
 transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.00320232)
-emitting = false
 lifetime = 3.0
 randomness = 0.2
 fixed_fps = 60
@@ -150,9 +192,4 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h12wm")
 draw_pass_1 = SubResource("QuadMesh_iv4c8")
 
-[node name="Base" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("BoxMesh_kai1l")
-
-[node name="Frame" parent="." instance=ExtResource("4_d6d68")]
-visible = false
+[editable path="Model"]

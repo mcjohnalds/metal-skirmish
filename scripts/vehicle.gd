@@ -341,8 +341,7 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 		if hit_part is ArmorPart:
 			hit_part.armor.visible = false
 		if hit_part is GunPart:
-			hit_part.barrel.visible = false
-			hit_part.base.visible = false
+			hit_part.model.visible = false
 		if hit_part is WheelPart:
 			hit_part.armor.visible = false
 		if hit_part is CockpitPart:
@@ -415,7 +414,7 @@ func fire_bullet(part: GunPart) -> bool:
 		var target_part := living_parts[target_index % living_parts.size()]
 		target = target_part.global_position
 
-	Global.safe_look_at(part.barrel, target, true)
+	part.bone_target = target
 
 	var bullet_start := part.barrel_end.global_position
 	var bullet_true_dir := bullet_start.direction_to(target)

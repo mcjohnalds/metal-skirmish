@@ -1,6 +1,15 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://6t6mp7vv7frs"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://6t6mp7vv7frs"]
+
+[ext_resource type="Texture2D" uid="uid://b2ojbshgqr82x" path="res://textures/Metal041A_2K-PNG/Metal041A_2K-PNG_Color.png" id="1_3fq8r"]
+[ext_resource type="Texture2D" uid="uid://bbylrpoktfxyb" path="res://textures/Metal041A_2K-PNG/Metal041A_2K-PNG_Metalness.png" id="2_y4t28"]
+[ext_resource type="Texture2D" uid="uid://ds107ydwgvfap" path="res://textures/Metal041A_2K-PNG/Metal041A_2K-PNG_NormalGL.png" id="3_q6ms8"]
+[ext_resource type="Texture2D" uid="uid://cdjpjpttvxb2q" path="res://textures/Metal041A_2K-PNG/Metal041A_2K-PNG_Roughness.png" id="4_jfgt2"]
 
 [resource]
-albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
-metallic = 0.99
-roughness = 0.5
+albedo_texture = ExtResource("1_3fq8r")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_y4t28")
+roughness_texture = ExtResource("4_jfgt2")
+normal_enabled = true
+normal_texture = ExtResource("3_q6ms8")

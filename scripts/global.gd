@@ -235,3 +235,28 @@ static func is_compatibility_renderer() -> bool:
 		ProjectSettings["rendering/renderer/rendering_method"]
 	)
 	return rendering_method == "gl_compatibility"
+
+
+static func direction_to_rotation(direction: Vector3) -> Vector3:
+	var forward = Vector3(0, 0, -1)
+	var dot = forward.dot(direction)
+	var cross = forward.cross(direction).normalized()
+	var angle = acos(dot)
+
+	if angle == 0:
+		return Vector3(0, 0, 0)
+
+	var q = Quaternion(cross, angle)
+	var rot = q.get_euler()
+	return rot
+
+
+static func get_all_children(
+	node: Node, include_internal := false
+) -> Array[Node]:
+	var nodes: Array[Node] = []
+	for child in node.get_children(include_internal):
+		nodes.append(child)
+		if child.get_child_count(include_internal) > 0:
+			nodes.append_array(get_all_children(child, include_internal))
+	return nodes
