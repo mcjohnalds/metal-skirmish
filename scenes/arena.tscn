@@ -244,3 +244,5 @@ vertical_alignment = 2
 stream = ExtResource("11_uw2kt")
 volume_db = 10.0
 bus = &"World"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]

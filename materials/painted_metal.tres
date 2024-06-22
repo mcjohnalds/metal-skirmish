@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dcmxks4c7gnih"]
+
+[ext_resource type="Shader" path="res://scripts/painted_metal.gdshader" id="1_yxuv8"]
+[ext_resource type="Texture2D" uid="uid://c1u36ba16lrsj" path="res://textures/PaintedMetal004_2K-PNG/PaintedMetal004_2K-PNG_Color.png" id="2_bpk8a"]
+[ext_resource type="Texture2D" uid="uid://dk7xnm4wfra0g" path="res://textures/PaintedMetal004_2K-PNG/PaintedMetal004_2K-PNG_Roughness.png" id="3_pmos8"]
+[ext_resource type="Texture2D" uid="uid://djxhnvo6dfv2e" path="res://textures/PaintedMetal004_2K-PNG/PaintedMetal004_2K-PNG_Metalness.png" id="4_mtcsp"]
+[ext_resource type="Texture2D" uid="uid://ct115eiji4imv" path="res://textures/PaintedMetal004_2K-PNG/PaintedMetal004_2K-PNG_NormalGL.png" id="5_13nl6"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_yxuv8")
+shader_parameter/original_paint_color = Color(1, 0.0862745, 0.0470588, 1)
+shader_parameter/new_paint_color = Color(0, 0, 0, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 1.0
+shader_parameter/normal_scale = 0.700001
+shader_parameter/rim = 0.2
+shader_parameter/rim_tint = 0.5
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("2_bpk8a")
+shader_parameter/texture_metallic = ExtResource("4_mtcsp")
+shader_parameter/texture_roughness = ExtResource("3_pmos8")
+shader_parameter/texture_normal = ExtResource("5_13nl6")
+shader_parameter/texture_clearcoat = ExtResource("3_pmos8")

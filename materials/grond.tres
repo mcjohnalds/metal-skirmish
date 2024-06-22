@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bkhsiof71i3ng"]
+
+[ext_resource type="Shader" path="res://scripts/terrain.gdshader" id="1_usihl"]
+[ext_resource type="Texture2D" uid="uid://cu1cj4yrwsdwk" path="res://textures/terrain_texture.tres" id="2_cmvmp"]
+[ext_resource type="Texture2D" uid="uid://bbtqr2hm207xu" path="res://textures/terrain_height_map.tres" id="3_lx0qm"]
+[ext_resource type="Texture2D" uid="uid://7cgcov13neb2" path="res://textures/terrain_normal_map.tres" id="4_gblrv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_usihl")
+shader_parameter/height_scale = 0.01
+shader_parameter/albedo_color = Color(0.647059, 0.439216, 0.321569, 1)
+shader_parameter/albedo_texture_scale = 10.0
+shader_parameter/normal_texture_scale = 10.0
+shader_parameter/height_map = ExtResource("3_lx0qm")
+shader_parameter/albedo_texture = ExtResource("2_cmvmp")
+shader_parameter/normal_map = ExtResource("4_gblrv")

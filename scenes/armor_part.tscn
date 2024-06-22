@@ -1,17 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq4gywwo6nthu"]
 
 [ext_resource type="Script" path="res://scripts/armor_part.gd" id="1_vwkb6"]
-[ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_262j4"]
+[ext_resource type="PackedScene" uid="uid://cj46y3f1xxp5q" path="res://meshes/armor.glb" id="2_xh8mp"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="3_qc0l6"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_k5v3w"]
-material = ExtResource("2_262j4")
+[ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="4_kfid6"]
 
 [node name="ArmorPart" type="Node3D"]
 script = ExtResource("1_vwkb6")
 
-[node name="Armor" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_k5v3w")
-
 [node name="Frame" parent="." instance=ExtResource("3_qc0l6")]
 visible = false
+
+[node name="Armor" parent="." instance=ExtResource("2_xh8mp")]
+
+[node name="Armor" parent="Armor" index="0"]
+material_override = ExtResource("4_kfid6")
+
+[editable path="Armor"]

@@ -1,24 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://eewxycwm7fsg"]
+[gd_scene load_steps=5 format=3 uid="uid://eewxycwm7fsg"]
 
 [ext_resource type="Script" path="res://scripts/ground.gd" id="1_lssxc"]
-[ext_resource type="Shader" path="res://scripts/terrain.gdshader" id="2_ekbnf"]
-[ext_resource type="Texture2D" uid="uid://cu1cj4yrwsdwk" path="res://textures/terrain_texture.tres" id="3_ig6e6"]
-[ext_resource type="Texture2D" uid="uid://bbtqr2hm207xu" path="res://textures/terrain_height_map.tres" id="4_2pih5"]
-[ext_resource type="Texture2D" uid="uid://7cgcov13neb2" path="res://textures/terrain_normal_map.tres" id="5_nbikm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbgh0"]
-render_priority = 0
-shader = ExtResource("2_ekbnf")
-shader_parameter/height_scale = 0.01
-shader_parameter/albedo_color = Color(0.647059, 0.439216, 0.321569, 1)
-shader_parameter/albedo_texture_scale = 10.0
-shader_parameter/normal_texture_scale = 10.0
-shader_parameter/height_map = ExtResource("4_2pih5")
-shader_parameter/albedo_texture = ExtResource("3_ig6e6")
-shader_parameter/normal_map = ExtResource("5_nbikm")
+[ext_resource type="Material" uid="uid://bkhsiof71i3ng" path="res://materials/grond.tres" id="2_8impy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7msvy"]
-material = SubResource("ShaderMaterial_gbgh0")
+material = ExtResource("2_8impy")
 size = Vector2(1, 1)
 subdivide_width = 500
 subdivide_depth = 500

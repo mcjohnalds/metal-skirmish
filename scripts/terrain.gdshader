@@ -20,5 +20,4 @@ void fragment() {
 	NORMAL_MAP = texture(normal_map, tex_position * normal_texture_scale).xyz;
 	ALBEDO = texture(albedo_texture, tex_position * albedo_texture_scale).xyz * albedo_color.xyz;
 	SPECULAR = 0.0;
-	ROUGHNESS = 0.98;
 }
