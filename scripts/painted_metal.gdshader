@@ -4,7 +4,7 @@ const float HCY_EPSILON = 1e-10;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec3 original_paint_color : source_color = vec3(1.0, 0.0, 0.0);
 uniform vec3 new_paint_color : source_color = vec3(0.0, 1.0, 0.0);
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap;
 uniform float roughness : hint_range(0.0, 1.0) = 1.0;
 uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
 uniform vec4 metallic_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
@@ -49,7 +49,7 @@ vec3 apply_contrast(vec3 color, float contrast) {
 
 void fragment() {
 	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	vec4 albedo_tex = textureLod(texture_albedo,base_uv, 0.0);
 	float dist = distance(albedo_tex.rgb, original_paint_color);
 	float paint_map = pow(1.0 - dist, 2.0);
 	float metal_map = 1.0 - paint_map;

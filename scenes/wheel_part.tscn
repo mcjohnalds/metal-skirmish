@@ -1,35 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhjl4ne7kf1gk"]
+[gd_scene load_steps=10 format=3 uid="uid://dhjl4ne7kf1gk"]
 
 [ext_resource type="Script" path="res://scripts/wheel_part.gd" id="1_rc5js"]
 [ext_resource type="PackedScene" uid="uid://cww4rrqoq5fmb" path="res://scenes/arrow.tscn" id="2_5re37"]
-[ext_resource type="Material" uid="uid://c5vjyg2tw5l3u" path="res://materials/armor.tres" id="2_rty61"]
-[ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="3_ihea4"]
+[ext_resource type="PackedScene" uid="uid://dunfp0fbrpw0t" path="res://meshes/wheel.glb" id="2_o6xti"]
+[ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="3_bm5dq"]
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="5_7n777"]
+[ext_resource type="PackedScene" uid="uid://de4amkogv0krg" path="res://meshes/tire.glb" id="5_de221"]
+[ext_resource type="Texture2D" uid="uid://dr500ekgoxcpt" path="res://textures/tire.png" id="5_te3g8"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_lpglh"]
-material = ExtResource("2_rty61")
-height = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oq3mo"]
+albedo_texture = ExtResource("5_te3g8")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_cl5m4"]
-material = ExtResource("3_ihea4")
-height = 0.05
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjoc3"]
+cull_mode = 2
+albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
+metallic = 0.99
+roughness = 0.5
 
 [node name="WheelPart" type="Node3D"]
 script = ExtResource("1_rc5js")
 
-[node name="Armor" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_lpglh")
+[node name="Armor" parent="." instance=ExtResource("2_o6xti")]
+
+[node name="Armor" parent="Armor" index="0"]
+material_override = ExtResource("3_bm5dq")
 
 [node name="Wheel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_cl5m4")
-skeleton = NodePath("")
+[node name="Model" parent="Wheel" instance=ExtResource("5_de221")]
+transform = Transform3D(0.688662, 0, 0, 0, 0.688662, 0, 0, 0, 0.688662, 0, 0, 0)
+
+[node name="Tire" parent="Wheel/Model" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oq3mo")
+
+[node name="Hub" parent="Wheel/Model" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cjoc3")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+visible = false
 collision_mask = 3
 
 [node name="DebugArrowX" parent="." instance=ExtResource("2_5re37")]
@@ -49,3 +59,6 @@ color = Color(0, 0, 1, 1)
 
 [node name="Frame" parent="." instance=ExtResource("5_7n777")]
 visible = false
+
+[editable path="Armor"]
+[editable path="Wheel/Model"]

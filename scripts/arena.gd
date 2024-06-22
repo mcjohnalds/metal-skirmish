@@ -18,12 +18,12 @@ static var vehicle_the_block := load("res://scenes/vehicle_the_block.tscn")
 static var vehicle_train := load("res://scenes/vehicle_train.tscn")
 
 static var rounds := [
-	# {
-	# 	"enemies": [],
-	# 	"armor_parts_earned": 2,
-	# 	"wheel_parts_earned": 1,
-	# 	"gun_parts_earned": 1,
-	# },
+	{
+		"enemies": [],
+		"armor_parts_earned": 2,
+		"wheel_parts_earned": 1,
+		"gun_parts_earned": 1,
+	},
 	{
 		"enemies": [
 			{

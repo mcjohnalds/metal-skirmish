@@ -290,6 +290,10 @@ func _physics_process_wheel_parts(delta: float) -> void:
 			part.debug_arrow_z.vector = Vector3.ONE * 0.001 + forward_friction_force_vector * debug_arrow_scale
 			part.last_spring_offset = spring_offset
 
+			part.wheel_speed = (
+				wheel_velocity.dot(part.wheel.global_basis.z) / part.radius
+			)
+
 
 func get_throttle_input() -> float:
 	if is_player:
