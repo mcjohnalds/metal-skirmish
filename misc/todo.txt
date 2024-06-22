@@ -1,7 +1,6 @@
 Todo:
 
 - Better 3D graphics
-  - Blast out gibs randomy when bullets collide with parts
   - Kick up dirt when driving
   - Leave trails in dirt
     - Don't do this if it's desktop only

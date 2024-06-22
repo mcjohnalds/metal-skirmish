@@ -1,22 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://r6dvvvbbq1ft"]
 
 [ext_resource type="Script" path="res://scripts/giblet.gd" id="1_4u0hb"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_427au"]
-size = Vector3(0.1, 0.1, 1)
+[ext_resource type="PackedScene" uid="uid://do16ey84lmfq8" path="res://meshes/part_giblet.glb" id="2_2w8vg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlubv"]
-size = Vector3(0.1, 0.1, 1)
+size = Vector3(0.46, 0.170166, 0.479)
 
 [node name="PartGiblet" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
 collision_layer = 4
 collision_mask = 7
 mass = 0.1
 script = ExtResource("1_4u0hb")
-mesh = NodePath("MeshInstance3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_427au")
+mesh = NodePath("part_giblet/Cube_001")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nlubv")
+
+[node name="part_giblet" parent="." instance=ExtResource("2_2w8vg")]
+
+[editable path="part_giblet"]

@@ -4,7 +4,7 @@ extends GPUParticles3D
 
 func _init() -> void:
 	if g.graphics_preset == Global.GraphicsPreset.LOW:
-		amount /= 2
+		amount = maxi(amount / 2, 1)
 
 
 func _ready() -> void:

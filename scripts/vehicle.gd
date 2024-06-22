@@ -337,6 +337,8 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 	hit_part.health -= BULLET_DAMAGE
 	if hit_part.health > 0.0:
 		play_part_hit_sound(hit_part.global_position)
+		if randf() < 0.2:
+			spawn_part_giblet(vehicle, hit_part)
 	else:
 		if hit_part is ArmorPart:
 			hit_part.armor.visible = false
@@ -347,14 +349,8 @@ func damage_part(vehicle: Vehicle, shape_index: int) -> void:
 		if hit_part is CockpitPart:
 			hit_part.cockpit.visible = false
 		hit_part.health = 0.0
-		for i in 8:
-			var giblet: Giblet = part_giblet_scene.instantiate()
-			get_parent().add_child(giblet)
-			giblet.linear_velocity += Global.get_point_velocity(vehicle, hit_part.global_position)
-			giblet.global_position = hit_part.global_position
-			var hit_part_frame: Frame = hit_part.frame
-			hit_part_frame.visible = true
-			giblet.mesh.material_override = hit_part_frame.mesh.material_override
+		for i in 4:
+			spawn_part_giblet(vehicle, hit_part)
 		if hit_part is CockpitPart:
 			vehicle.process_mode = Node.PROCESS_MODE_DISABLED
 			vehicle.visible = false
@@ -538,3 +534,13 @@ func play_cockpit_destroyed_sound(point: Vector3) -> void:
 	asp.volume_db = -20.0
 	asp.finished.connect(asp.queue_free)
 	get_parent().add_child(asp)
+
+
+func spawn_part_giblet(vehicle: Vehicle, part: Node3D) -> void:
+	var giblet: Giblet = part_giblet_scene.instantiate()
+	get_parent().add_child(giblet)
+	giblet.linear_velocity += Global.get_point_velocity(vehicle, part.global_position)
+	giblet.global_position = part.global_position
+	var hit_part_frame: Frame = part.frame
+	hit_part_frame.visible = true
+	giblet.mesh.material_override = hit_part_frame.mesh.material_override
