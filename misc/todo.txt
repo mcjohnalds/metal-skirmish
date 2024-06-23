@@ -1,12 +1,5 @@
 Todo:
 
-- Better itch page
-  - Cover
-  - Screenshots
-  - Credits
-  - Trailer
-  - Give message to streamers about having to load the app in the foreground.
-- Display damage texture on damaged parts
 - Better particles/effects
   - Add blur PNG on top of wheels when spinning
 - Advanced Screen space shaders and settings
@@ -25,6 +18,7 @@ Todo:
   - Better win screen (fade out to black)
   - Custom cursor
   - Boot splash image
+- Display damage texture on damaged parts
 
 Really want:
 
