@@ -295,7 +295,7 @@ func _physics_process_wheel_parts(delta: float) -> void:
 			)
 
 			part.dirt_effect.emitting = true
-			part.dirt_effect.amount_ratio = minf(wheel_velocity.length() / 20.0, 1.0)
+			part.dirt_effect.amount_ratio = minf(pow(wheel_velocity.length() / 20.0, 2.0), 1.0)
 		else:
 			part.dirt_effect.emitting = false
 

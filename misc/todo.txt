@@ -1,6 +1,5 @@
 Todo:
 
-- Optimize dirt effect
 - Better UI
   - Hitmarker
   - Overall control style
@@ -36,6 +35,7 @@ Todo:
   - Give message to streamers about having to load the app in the foreground.
 - Display damage texture on damaged parts
 - Better particles/effects
+  - Add blur PNG on top of wheels when spinning
 
 Really want:
 

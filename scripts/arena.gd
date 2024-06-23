@@ -270,6 +270,8 @@ func _ready() -> void:
 	for vehicle: Vehicle in get_tree().get_nodes_in_group("vehicles"):
 		vehicle.destroyed.connect(on_vehicle_destroyed)
 
+	g.graphics_preset_changed.connect(on_graphics_preset_changed)
+	on_graphics_preset_changed()
 
 func _process(_delta: float) -> void:
 	g.arena.aim_debug_sphere.global_position = g.camera_pivot.aim.get_collision_point()
@@ -353,3 +355,23 @@ func play_parts_earned_sound() -> void:
 	asp.volume_db = -0.0
 	add_child(asp)
 	asp.finished.connect(asp.queue_free)
+
+
+func on_graphics_preset_changed() -> void:
+	var max_wheel_dirt_effects: int
+	match g.graphics_preset:
+		Global.GraphicsPreset.LOW:
+			max_wheel_dirt_effects = 5
+		Global.GraphicsPreset.MEDIUM:
+			max_wheel_dirt_effects = 20
+		Global.GraphicsPreset.HIGH:
+			max_wheel_dirt_effects = 40
+		Global.GraphicsPreset.INSANE:
+			max_wheel_dirt_effects = 100
+	var wheels = get_tree().get_nodes_in_group("wheel_parts")
+	wheels.shuffle()
+	for i in wheels.size():
+		wheels[i].dirt_effect.process_mode = (
+			Node.PROCESS_MODE_INHERIT if i < max_wheel_dirt_effects
+			else Node.PROCESS_MODE_DISABLED
+		)

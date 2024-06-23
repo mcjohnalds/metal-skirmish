@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://beqwv26ycacot" path="res://scenes/frame.tscn" id="5_7n777"]
 [ext_resource type="PackedScene" uid="uid://de4amkogv0krg" path="res://meshes/tire.glb" id="5_de221"]
 [ext_resource type="Texture2D" uid="uid://dr500ekgoxcpt" path="res://textures/tire.png" id="5_te3g8"]
-[ext_resource type="Texture2D" uid="uid://uvd4206t6c50" path="res://addons/kenney_particle_pack/smoke_03.png" id="6_mvq5b"]
+[ext_resource type="Texture2D" uid="uid://c8pttvn25jqmq" path="res://addons/kenney_particle_pack/smoke_07.png" id="6_ulpo8"]
 [ext_resource type="Script" path="res://scripts/my_particles.gd" id="7_1qkx7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oq3mo"]
@@ -49,12 +49,14 @@ scale_curve = SubResource("CurveTexture_jew7t")
 alpha_curve = SubResource("CurveTexture_d4df5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoexb"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.343
+alpha_antialiasing_mode = 0
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.698039, 0.521569, 0.396078, 1)
-albedo_texture = ExtResource("6_mvq5b")
+albedo_texture = ExtResource("6_ulpo8")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -65,7 +67,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_uoexb")
 size = Vector2(5, 5)
 
-[node name="WheelPart" type="Node3D"]
+[node name="WheelPart" type="Node3D" groups=["wheel_parts"]]
 script = ExtResource("1_rc5js")
 
 [node name="Armor" parent="." instance=ExtResource("2_o6xti")]
@@ -89,7 +91,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cjoc3")
 unique_name_in_owner = true
 transform = Transform3D(1.77989, 0, 0, 0, 1.77989, 0, 0, 0, 1.77989, 0, 0, 0)
 emitting = false
-amount = 120
+amount = 60
 lifetime = 10.0
 randomness = 0.69
 visibility_aabb = AABB(-22.1262, -5.05375, -20.0218, 44.5055, 9.6018, 40.2238)

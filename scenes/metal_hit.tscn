@@ -31,7 +31,9 @@ scale_curve = SubResource("CurveTexture_ppoer")
 alpha_curve = SubResource("CurveTexture_a35uu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkmh8"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.067
+alpha_antialiasing_mode = 0
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0

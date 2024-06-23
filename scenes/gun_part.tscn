@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4fui5v13ebcj"]
+[gd_scene load_steps=24 format=3 uid="uid://4fui5v13ebcj"]
 
 [ext_resource type="Script" path="res://scripts/gun_part.gd" id="1_c3nxo"]
 [ext_resource type="Material" uid="uid://6t6mp7vv7frs" path="res://materials/special_part.tres" id="2_fnslv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="4_v08iu"]
 [ext_resource type="Texture2D" uid="uid://c45vajf0x38oe" path="res://addons/kenney_particle_pack/smoke_08.png" id="5_01fvb"]
 [ext_resource type="PackedScene" uid="uid://cnu58auby6hvr" path="res://meshes/turret.glb" id="8_5oxty"]
+[ext_resource type="Script" path="res://scripts/my_particles.gd" id="9_lfljd"]
 
 [sub_resource type="Curve" id="Curve_0tjkh"]
 _data = [Vector2(0, 0.249071), 0.0, 0.0, 0, 0, Vector2(0.165854, 1), 0.0, 0.0, 0, 0, Vector2(0.273171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -19,7 +20,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.851159)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
 albedo_texture = ExtResource("3_grapf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
@@ -31,7 +32,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 0.851159)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
 albedo_texture = ExtResource("4_t440h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]
@@ -74,7 +75,9 @@ scale_curve = SubResource("CurveTexture_st3no")
 alpha_curve = SubResource("CurveTexture_7yq5w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3mb8"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
@@ -181,5 +184,6 @@ visibility_aabb = AABB(-1.62292, -1.09174, -1.68963, 3.18206, 4.79947, 3.20341)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h12wm")
 draw_pass_1 = SubResource("QuadMesh_iv4c8")
+script = ExtResource("9_lfljd")
 
 [editable path="Model"]
