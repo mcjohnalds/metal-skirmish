@@ -13,846 +13,1127 @@ radius = 18.0
 
 [node name="CockpitPart" parent="." index="0" instance=ExtResource("2_1v5j0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart9" parent="." index="1" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart10" parent="." index="2" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart11" parent="." index="3" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart12" parent="." index="4" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart13" parent="." index="5" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart14" parent="." index="6" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart15" parent="." index="7" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart16" parent="." index="8" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart18" parent="." index="9" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart19" parent="." index="10" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart20" parent="." index="11" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart25" parent="." index="12" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart22" parent="." index="13" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart23" parent="." index="14" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart24" parent="." index="15" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart26" parent="." index="16" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart27" parent="." index="17" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart28" parent="." index="18" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart37" parent="." index="19" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart38" parent="." index="20" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart39" parent="." index="21" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart40" parent="." index="22" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart61" parent="." index="23" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart82" parent="." index="24" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart93" parent="." index="25" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart92" parent="." index="26" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart115" parent="." index="27" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart91" parent="." index="28" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart62" parent="." index="29" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart63" parent="." index="30" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart64" parent="." index="31" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart65" parent="." index="32" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart66" parent="." index="33" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart67" parent="." index="34" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart29" parent="." index="35" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart30" parent="." index="36" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart31" parent="." index="37" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart41" parent="." index="38" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart42" parent="." index="39" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart43" parent="." index="40" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart44" parent="." index="41" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart32" parent="." index="42" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart33" parent="." index="43" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart34" parent="." index="44" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart45" parent="." index="45" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart46" parent="." index="46" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart47" parent="." index="47" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart48" parent="." index="48" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart68" parent="." index="49" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart69" parent="." index="50" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart70" parent="." index="51" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart71" parent="." index="52" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart72" parent="." index="53" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart73" parent="." index="54" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart74" parent="." index="55" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart124" parent="." index="56" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart134" parent="." index="57" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart125" parent="." index="58" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart129" parent="." index="59" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart127" parent="." index="60" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart133" parent="." index="61" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart35" parent="." index="62" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart36" parent="." index="63" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart49" parent="." index="64" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart50" parent="." index="65" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart51" parent="." index="66" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart52" parent="." index="67" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart53" parent="." index="68" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart54" parent="." index="69" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart75" parent="." index="70" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart76" parent="." index="71" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart78" parent="." index="72" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart79" parent="." index="73" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart80" parent="." index="74" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart83" parent="." index="75" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart84" parent="." index="76" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart86" parent="." index="77" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart119" parent="." index="78" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart88" parent="." index="79" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart85" parent="." index="80" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart87" parent="." index="81" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart89" parent="." index="82" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart139" parent="." index="83" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart140" parent="." index="84" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart141" parent="." index="85" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart142" parent="." index="86" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart130" parent="." index="87" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart131" parent="." index="88" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 0)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart135" parent="." index="89" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart136" parent="." index="90" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart137" parent="." index="91" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart138" parent="." index="92" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -4)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart132" parent="." index="93" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart55" parent="." index="94" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart56" parent="." index="95" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart57" parent="." index="96" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart58" parent="." index="97" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart59" parent="." index="98" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart60" parent="." index="99" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart94" parent="." index="100" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart95" parent="." index="101" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart96" parent="." index="102" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart110" parent="." index="103" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart111" parent="." index="104" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart112" parent="." index="105" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart113" parent="." index="106" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart97" parent="." index="107" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart98" parent="." index="108" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart99" parent="." index="109" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart100" parent="." index="110" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart108" parent="." index="111" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart109" parent="." index="112" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart101" parent="." index="113" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart102" parent="." index="114" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart103" parent="." index="115" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart104" parent="." index="116" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart105" parent="." index="117" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart198" parent="." index="118" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart259" parent="." index="119" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart260" parent="." index="120" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart261" parent="." index="121" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 1)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart262" parent="." index="122" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart263" parent="." index="123" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart106" parent="." index="124" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart107" parent="." index="125" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart21" parent="." index="126" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart116" parent="." index="127" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart117" parent="." index="128" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart118" parent="." index="129" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 3)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart120" parent="." index="130" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart121" parent="." index="131" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart122" parent="." index="132" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart123" parent="." index="133" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart126" parent="." index="134" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart128" parent="." index="135" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="WheelPart2" parent="." index="136" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart4" parent="." index="137" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart3" parent="." index="138" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart5" parent="." index="139" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart6" parent="." index="140" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart7" parent="." index="141" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart6" parent="." index="142" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 3)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart7" parent="." index="143" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 3)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart3" parent="." index="144" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 2)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="GunPart4" parent="." index="145" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 0)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart5" parent="." index="146" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -2)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart8" parent="." index="147" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 2)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart9" parent="." index="148" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart10" parent="." index="149" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -2)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="ArmorPart17" parent="." index="150" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart77" parent="." index="151" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart81" parent="." index="152" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart90" parent="." index="153" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart114" parent="." index="154" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart143" parent="." index="155" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart144" parent="." index="156" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart145" parent="." index="157" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart146" parent="." index="158" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart147" parent="." index="159" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart148" parent="." index="160" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart149" parent="." index="161" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart150" parent="." index="162" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart151" parent="." index="163" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart152" parent="." index="164" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart153" parent="." index="165" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart154" parent="." index="166" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart155" parent="." index="167" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart156" parent="." index="168" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart157" parent="." index="169" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart158" parent="." index="170" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart159" parent="." index="171" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart160" parent="." index="172" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart161" parent="." index="173" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart162" parent="." index="174" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart163" parent="." index="175" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart164" parent="." index="176" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart165" parent="." index="177" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart166" parent="." index="178" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart167" parent="." index="179" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart168" parent="." index="180" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart169" parent="." index="181" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart170" parent="." index="182" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart171" parent="." index="183" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart172" parent="." index="184" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart173" parent="." index="185" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart174" parent="." index="186" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart175" parent="." index="187" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart176" parent="." index="188" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart177" parent="." index="189" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart178" parent="." index="190" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart193" parent="." index="191" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart194" parent="." index="192" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart195" parent="." index="193" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart196" parent="." index="194" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart197" parent="." index="195" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart179" parent="." index="196" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart180" parent="." index="197" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart181" parent="." index="198" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart182" parent="." index="199" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart183" parent="." index="200" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart184" parent="." index="201" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart185" parent="." index="202" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart186" parent="." index="203" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart187" parent="." index="204" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart188" parent="." index="205" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart189" parent="." index="206" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart190" parent="." index="207" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart191" parent="." index="208" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart192" parent="." index="209" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart199" parent="." index="210" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart200" parent="." index="211" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart201" parent="." index="212" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart202" parent="." index="213" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart203" parent="." index="214" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart204" parent="." index="215" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart205" parent="." index="216" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart206" parent="." index="217" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart207" parent="." index="218" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart208" parent="." index="219" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart209" parent="." index="220" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart210" parent="." index="221" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart211" parent="." index="222" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart212" parent="." index="223" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart213" parent="." index="224" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart214" parent="." index="225" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart215" parent="." index="226" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart216" parent="." index="227" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart217" parent="." index="228" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart218" parent="." index="229" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart219" parent="." index="230" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart220" parent="." index="231" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart221" parent="." index="232" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart222" parent="." index="233" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart223" parent="." index="234" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart224" parent="." index="235" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -11)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart225" parent="." index="236" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -9)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart226" parent="." index="237" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -8)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart227" parent="." index="238" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -10)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart228" parent="." index="239" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -12)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart229" parent="." index="240" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -13)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart230" parent="." index="241" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -7)
+color = Color(0.1961, 0.1529, 0.6275, 1)
 
 [node name="ArmorPart231" parent="." index="242" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart232" parent="." index="243" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart233" parent="." index="244" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart234" parent="." index="245" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart235" parent="." index="246" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart236" parent="." index="247" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart237" parent="." index="248" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart238" parent="." index="249" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart239" parent="." index="250" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart240" parent="." index="251" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart241" parent="." index="252" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart242" parent="." index="253" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart243" parent="." index="254" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart244" parent="." index="255" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart245" parent="." index="256" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart246" parent="." index="257" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart247" parent="." index="258" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart248" parent="." index="259" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart249" parent="." index="260" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart257" parent="." index="261" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="ArmorPart258" parent="." index="262" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -6)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="ArmorPart250" parent="." index="263" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart251" parent="." index="264" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart252" parent="." index="265" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart253" parent="." index="266" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart254" parent="." index="267" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart255" parent="." index="268" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="ArmorPart256" parent="." index="269" instance=ExtResource("3_fkvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+color = Color(0.8431, 0.8039, 0.1569, 1)
 
 [node name="WheelPart8" parent="." index="270" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart9" parent="." index="271" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -13)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart10" parent="." index="272" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart11" parent="." index="273" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart12" parent="." index="274" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -13)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="WheelPart13" parent="." index="275" instance=ExtResource("4_pg1ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart15" parent="." index="276" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -11)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart16" parent="." index="277" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -9)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart17" parent="." index="278" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -9)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart19" parent="." index="279" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -7)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="GunPart18" parent="." index="280" instance=ExtResource("5_hblyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -11)
+color = Color(0.1412, 0.1412, 0.1412, 1)
 
 [node name="VehicleDetector" type="Area3D" parent="." index="281"]
 transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 12)

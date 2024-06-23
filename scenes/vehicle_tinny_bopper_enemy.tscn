@@ -12,27 +12,35 @@ radius = 15.0
 [node name="Vehicle" instance=ExtResource("1_q2sgf")]
 
 [node name="CockpitPart" parent="." index="0" instance=ExtResource("2_ejekq")]
+color = Color(0.6039, 0.5255, 0.8941, 1)
 
 [node name="ArmorPart4" parent="." index="1" instance=ExtResource("3_7x6o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+color = Color(0.6039, 0.5255, 0.8941, 1)
 
 [node name="ArmorPart7" parent="." index="2" instance=ExtResource("3_7x6o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+color = Color(0.6039, 0.5255, 0.8941, 1)
 
 [node name="ArmorPart6" parent="." index="3" instance=ExtResource("3_7x6o0")]
 transform = Transform3D(1, -1.61213e-08, -4.07376e-09, 2.03753e-08, 1, -1.41932e-08, -1.01877e-08, 1.24534e-08, 1, 0, 0, 1)
+color = Color(0.6039, 0.5255, 0.8941, 1)
 
 [node name="WheelPart1" parent="." index="4" instance=ExtResource("4_vgl8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+color = Color(0.5412, 0.8314, 0.3255, 1)
 
 [node name="WheelPart2" parent="." index="5" instance=ExtResource("4_vgl8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+color = Color(0.5412, 0.8314, 0.3255, 1)
 
 [node name="WheelPart3" parent="." index="6" instance=ExtResource("4_vgl8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+color = Color(0.5412, 0.8314, 0.3255, 1)
 
 [node name="GunPart2" parent="." index="7" instance=ExtResource("5_nh2be")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+color = Color(0.5412, 0.8314, 0.3255, 1)
 
 [node name="VehicleDetector" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, -5.06299e-09, 0, 1, 0, -7.43555e-09, 0, 1, 2.08165e-12, 2.08165e-12, 13)

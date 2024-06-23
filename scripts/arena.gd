@@ -9,7 +9,7 @@ const round_lost_stream: AudioStream = preload("res://sounds/round_lost.ogg")
 const parts_earned_stream: AudioStream = preload("res://sounds/parts_earned.ogg")
 
 # Using load instead of preload to fix https://github.com/godotengine/godot/issues/79545
-static var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper.tscn")
+static var vehicle_tinny_bopper := load("res://scenes/vehicle_tinny_bopper_enemy.tscn")
 static var vehicle_tall_boy := load("res://scenes/vehicle_tall_boy.tscn")
 static var vehicle_broadside := load("res://scenes/vehicle_broadside.tscn")
 static var vehicle_prick := load("res://scenes/vehicle_prick.tscn")

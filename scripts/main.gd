@@ -1,7 +1,7 @@
 class_name Main
 extends Node3D
 
-var start_vehicle_scene := load("res://scenes/vehicle_tinny_bopper.tscn")
+var start_vehicle_scene := load("res://scenes/vehicle_tinny_bopper_player.tscn")
 # var start_vehicle_scene := load("res://scenes/vehicle_many_guns.tscn")
 # var start_vehicle_scene := load("res://scenes/vehicle_tall_boy.tscn")
 var arena_scene := load("res://scenes/arena.tscn")
