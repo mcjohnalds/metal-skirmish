@@ -1,16 +1,7 @@
 Todo:
 
 - Better UI
-  - Hitmarker
-  - Overall control style
-    - Make garage -> start round button primary style. Same with start button on
-      main menu.
-  - Custom font
   - Display vignette fade in/out effect between screens
-  - Better start page
-    - The start page should carefuly set the player's feelings and expectations
-      - Wonder?
-      - Curiosity?
   - Better win screen (fade out to black)
   - Custom cursor
   - Boot splash image
@@ -34,6 +25,7 @@ Todo:
   - Radial Blur when speeding
   - Anamorphic Lens Flare
   - Fish Eye/barrel lens distortion
+- Hitmarker
 
 Really want:
 

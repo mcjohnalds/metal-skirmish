@@ -24,7 +24,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_de0qw")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(520, 2.08165e-12)
+custom_minimum_size = Vector2(600, 2.08165e-12)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

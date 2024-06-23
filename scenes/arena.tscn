@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dibolnwtlpcgq"]
+[gd_scene load_steps=17 format=3 uid="uid://dibolnwtlpcgq"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_vu6ok"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_qw8ma"]
 [ext_resource type="PackedScene" uid="uid://ca5c21n3ub847" path="res://scenes/wall.tscn" id="3_3iwxt"]
+[ext_resource type="FontFile" uid="uid://bv0alh76vd02b" path="res://misc/BlackOpsOne-Regular.ttf" id="6_hc55k"]
+[ext_resource type="Material" uid="uid://csawxourd0ta3" path="res://materials/control.tres" id="6_plkel"]
 [ext_resource type="PackedScene" uid="uid://fjdp76g7y1mb" path="res://scenes/part_button.tscn" id="6_u2300"]
 [ext_resource type="PackedScene" uid="uid://cq4gywwo6nthu" path="res://scenes/armor_part.tscn" id="7_egnf0"]
 [ext_resource type="PackedScene" uid="uid://eewxycwm7fsg" path="res://scenes/ground.tscn" id="8_cv38k"]
@@ -48,6 +50,7 @@ transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e
 [node name="Ground" parent="." instance=ExtResource("8_cv38k")]
 
 [node name="Crosshair" type="TextureRect" parent="."]
+material = ExtResource("6_plkel")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -77,6 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0501, 10.831, -241.678)
 
 [node name="RoundCompleteControl" type="PanelContainer" parent="."]
 visible = false
+material = ExtResource("6_plkel")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -96,13 +100,16 @@ size_flags_vertical = 4
 theme_type_variation = &"MarginMedium"
 
 [node name="Label" type="Label" parent="RoundCompleteControl/MarginContainer"]
+material = ExtResource("6_plkel")
 layout_mode = 2
 theme_type_variation = &"BodyLarge"
+theme_override_fonts/font = ExtResource("6_hc55k")
 text = "Round Complete"
 horizontal_alignment = 2
 
 [node name="DeathTip" type="PanelContainer" parent="."]
 visible = false
+material = ExtResource("6_plkel")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -153,6 +160,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tmo8k")
 
 [node name="Label" type="Label" parent="PartsEarned"]
+material = ExtResource("6_plkel")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,6 +225,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+material = ExtResource("6_plkel")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -230,6 +239,7 @@ layout_mode = 2
 theme_type_variation = &"MarginMedium"
 
 [node name="Label" type="Label" parent="MarginContainer/Control/PanelContainer/MarginContainer"]
+material = ExtResource("6_plkel")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -244,5 +254,3 @@ vertical_alignment = 2
 stream = ExtResource("11_uw2kt")
 volume_db = 10.0
 bus = &"World"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]

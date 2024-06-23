@@ -1,11 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://4pqrr6jdb03n"]
+[gd_scene load_steps=8 format=3 uid="uid://4pqrr6jdb03n"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ntn48"]
 [ext_resource type="PackedScene" uid="uid://c8y6d7ysl5nk2" path="res://scenes/menu.tscn" id="2_rolgs"]
+[ext_resource type="PackedScene" uid="uid://oqld8le6x6x" path="res://scenes/vehicle_prick.tscn" id="4_4nrpd"]
 [ext_resource type="PackedScene" uid="uid://hkg37ygpj8wo" path="res://scenes/screen_shader.tscn" id="4_gi434"]
+[ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="4_u4dbv"]
+[ext_resource type="PackedScene" uid="uid://eewxycwm7fsg" path="res://scenes/ground.tscn" id="5_scn4t"]
+[ext_resource type="PackedScene" uid="uid://cn7iuniorum1" path="res://scenes/vehicle_tall_boy.tscn" id="5_vj5h8"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ntn48")
+
+[node name="StartBackground" type="Node3D" parent="."]
+
+[node name="Common3D" parent="StartBackground" instance=ExtResource("4_u4dbv")]
+
+[node name="Ground" parent="StartBackground" instance=ExtResource("5_scn4t")]
+
+[node name="Camera3D" type="Camera3D" parent="StartBackground"]
+transform = Transform3D(-0.985681, 0.0317905, 0.165596, 0.0121311, 0.992891, -0.118404, -0.168183, -0.1147, -0.97906, 16.319, 5.634, -34.078)
+
+[node name="VehicleSmall" parent="StartBackground" instance=ExtResource("4_4nrpd")]
+process_mode = 4
+transform = Transform3D(0.686694, -8.73597e-18, -0.726946, 0.0194478, 0.999642, 0.0183709, 0.726686, -0.0267527, 0.686449, 36.4799, 6.55774, 1.43292)
+
+[node name="Vehicle" parent="StartBackground" instance=ExtResource("5_vj5h8")]
+process_mode = 4
+transform = Transform3D(0.546558, -0.00530696, 0.837404, -0.013443, 0.999796, 0.0151101, -0.837313, -0.0195157, 0.546375, -46.864, 7.56792, 9.14021)
 
 [node name="LevelContainer" type="Node3D" parent="."]
 

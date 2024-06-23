@@ -82,6 +82,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.235294, 0.290196, 0.305882, 1)
 
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.82398, 0.866997, 0.879488, 1)
+
 [node name="ColorRect5" type="ColorRect" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7t625mkknres"]
+[gd_scene load_steps=15 format=3 uid="uid://c7t625mkknres"]
 
 [ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_7hvwk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhjl4ne7kf1gk" path="res://scenes/wheel_part.tscn" id="6_fa7mk"]
 [ext_resource type="PackedScene" uid="uid://4fui5v13ebcj" path="res://scenes/gun_part.tscn" id="7_5kapl"]
 [ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
+[ext_resource type="Material" uid="uid://csawxourd0ta3" path="res://materials/control.tres" id="9_0i41y"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="9_eo1ru"]
 [ext_resource type="Texture2D" uid="uid://bqs7oeib4gnou" path="res://textures/triangle_right_icon.png" id="10_pjh8w"]
 [ext_resource type="AudioStream" uid="uid://ir7fkjt6mp0j" path="res://sounds/part_placed.ogg" id="11_rw84i"]
@@ -57,6 +58,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+material = ExtResource("9_0i41y")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -70,6 +72,7 @@ layout_mode = 2
 theme_type_variation = &"MarginMedium"
 
 [node name="Label" type="Label" parent="MarginContainer/Control/PanelContainer/MarginContainer"]
+material = ExtResource("9_0i41y")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -92,6 +95,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Button" type="Button" parent="MarginContainer/NextRoundButton"]
+material = ExtResource("9_0i41y")
 layout_mode = 2
 focus_mode = 0
 
@@ -105,6 +109,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer"]
+material = ExtResource("9_0i41y")
 layout_mode = 2
 theme_type_variation = &"BodyMedium"
 text = "Start Round"
@@ -117,6 +122,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/NextRoundButton/MarginContainer/HBoxContainer/MarginContainer"]
+material = ExtResource("9_0i41y")
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("10_pjh8w")

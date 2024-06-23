@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8y6d7ysl5nk2"]
+[gd_scene load_steps=5 format=3 uid="uid://c8y6d7ysl5nk2"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_f0puq"]
+[ext_resource type="FontFile" uid="uid://bv0alh76vd02b" path="res://misc/BlackOpsOne-Regular.ttf" id="2_q8kht"]
+[ext_resource type="Material" uid="uid://csawxourd0ta3" path="res://materials/control.tres" id="3_vioiy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl4k8"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 0.819608)
@@ -24,19 +26,22 @@ grow_vertical = 2
 theme_type_variation = &"MarginMedium"
 
 [node name="BoxContainer" type="VBoxContainer" parent="MaginContainer"]
-custom_minimum_size = Vector2(520, 2.08165e-12)
+custom_minimum_size = Vector2(600, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_q8kht")
 text = "Metal Skirmish"
 
 [node name="HSeparator" type="HSeparator" parent="MaginContainer/BoxContainer"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 theme_override_constants/separation = 30
 
@@ -46,6 +51,7 @@ theme_override_constants/margin_top = 15
 
 [node name="StartButton" type="Button" parent="MaginContainer/BoxContainer/MarginContainer1"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 focus_mode = 0
 text = "Start"
@@ -56,6 +62,7 @@ theme_override_constants/margin_top = 15
 
 [node name="ResumeButton" type="Button" parent="MaginContainer/BoxContainer/MarginContainer2"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 focus_mode = 0
 text = "Resume"
@@ -66,6 +73,7 @@ theme_override_constants/margin_top = 15
 
 [node name="RestartButton" type="Button" parent="MaginContainer/BoxContainer/MarginContainer3"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 focus_mode = 0
 text = "Restart Round"
@@ -76,6 +84,7 @@ theme_override_constants/margin_top = 15
 
 [node name="QuitButton" type="Button" parent="MaginContainer/BoxContainer/MarginContainer4"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 focus_mode = 0
 text = "Quit"
@@ -91,6 +100,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/MouseSensitivity"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -98,6 +108,7 @@ text = "Mouse sensitivity"
 
 [node name="MouseSensitivitySlider" type="HSlider" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/MouseSensitivity"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -109,6 +120,7 @@ step = 0.001
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/SoundVolume"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -116,6 +128,7 @@ text = "Sound volume"
 
 [node name="SoundVolumeSlider" type="HSlider" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/SoundVolume"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -127,6 +140,7 @@ step = 0.001
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/MusicVolume"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -134,6 +148,7 @@ text = "Music	 volume"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/MusicVolume"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -145,6 +160,7 @@ step = 0.001
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/InvertMouse"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -152,6 +168,7 @@ text = "Invert mouse"
 
 [node name="InvertMouseOptionButton" type="OptionButton" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/InvertMouse"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -167,6 +184,7 @@ popup/item_1/id = 7
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/Vsync"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -174,6 +192,7 @@ text = "Vsync"
 
 [node name="VsyncOptionButton" type="OptionButton" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/Vsync"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -193,6 +212,7 @@ popup/item_3/id = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/PerformancePreset"]
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BodySmall"
@@ -200,6 +220,7 @@ text = "Graphics	"
 
 [node name="PerformancePresetOptionButton" type="OptionButton" parent="MaginContainer/BoxContainer/MarginContainer5/GridContainer/PerformancePreset"]
 unique_name_in_owner = true
+material = ExtResource("3_vioiy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4

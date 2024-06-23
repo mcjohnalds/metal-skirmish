@@ -43,6 +43,7 @@ import/blender/enabled=false
 [gui]
 
 theme/custom="res://misc/theme.tres"
+theme/custom_font="res://misc/CutiveMono-Regular.ttf"
 
 [input]
 

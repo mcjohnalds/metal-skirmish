@@ -6,6 +6,7 @@ var start_vehicle_scene := load("res://scenes/vehicle_tinny_bopper.tscn")
 # var start_vehicle_scene := load("res://scenes/vehicle_tall_boy.tscn")
 var arena_scene := load("res://scenes/arena.tscn")
 var garage_scene := load("res://scenes/garage.tscn")
+@onready var start_background: Node3D = $StartBackground
 @onready var start: Menu = $Start
 @onready var settings: Menu = $Settings
 @onready var level_container: Node3D = $LevelContainer
@@ -68,6 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func on_start_button_down() -> void:
+	start_background.queue_free()
 	autoload.play_button_click_sound()
 	autoload.play_ambient_wind_sound()
 	start.visible = false

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://csawxourd0ta3"]
+
+[ext_resource type="Shader" path="res://scripts/control.gdshader" id="1_g3ada"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_14bqp"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w6vwt"]
+noise = SubResource("FastNoiseLite_14bqp")
+
+[resource]
+shader = ExtResource("1_g3ada")
+shader_parameter/gradient_texture = SubResource("NoiseTexture2D_w6vwt")
