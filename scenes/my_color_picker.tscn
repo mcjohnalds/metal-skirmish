@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5jd3cgf46pse"]
+
+[ext_resource type="Script" path="res://scripts/my_color_picker.gd" id="1_dysce"]
+
+[node name="MyColorPicker" type="GridContainer"]
+offset_right = 50.0
+offset_bottom = 160.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+script = ExtResource("1_dysce")

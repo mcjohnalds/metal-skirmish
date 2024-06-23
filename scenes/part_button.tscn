@@ -3,14 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://daa0akqjk2ymk" path="res://scenes/part_viewer.tscn" id="1_clpxv"]
 [ext_resource type="Script" path="res://scripts/part_button.gd" id="1_eqi84"]
 [ext_resource type="Material" uid="uid://csawxourd0ta3" path="res://materials/control.tres" id="2_uvmbm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wlgg"]
-draw_center = false
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://djyyd0g03167x" path="res://scenes/button_border.tscn" id="4_bp0k7"]
 
 [node name="PartButton" type="AspectRatioContainer"]
 custom_minimum_size = Vector2(150, 150)
@@ -54,8 +47,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 clip_text = true
 
-[node name="Border" type="Panel" parent="."]
+[node name="Border" parent="." instance=ExtResource("4_bp0k7")]
 visible = false
 layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0wlgg")

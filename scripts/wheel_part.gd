@@ -10,6 +10,16 @@ extends Node3D
 			wheel_model.rotation.x = 0.0
 
 
+@export var color := Color("#5A5A5A"):
+	set(value):
+		color = value
+		if not is_node_ready():
+			return
+		var mesh: MeshInstance3D = armor.get_node("Armor")
+		var mat: ShaderMaterial = mesh.material_override
+		mat.set_shader_parameter("new_paint_color", color)
+
+
 @onready var wheel: Node3D = $Wheel
 @onready var wheel_model: Node3D = $Wheel/Model
 @onready var ray_cast: RayCast3D = $RayCast3D
@@ -28,6 +38,7 @@ var health := 100.0
 
 
 func _ready() -> void:
+	color = color
 	if Engine.is_editor_hint():
 		return
 	var mesh: MeshInstance3D = armor.get_node("Armor")

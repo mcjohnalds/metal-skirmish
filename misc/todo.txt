@@ -1,11 +1,5 @@
 Todo:
 
-- Better UI
-  - Display vignette fade in/out effect between screens
-  - Better win screen (fade out to black)
-  - Custom cursor
-  - Boot splash image
-- Paint mode
 - Better itch page
   - Cover
   - Screenshots
@@ -26,6 +20,11 @@ Todo:
   - Anamorphic Lens Flare
   - Fish Eye/barrel lens distortion
 - Hitmarker
+- Better UI
+  - Display vignette fade in/out effect between screens
+  - Better win screen (fade out to black)
+  - Custom cursor
+  - Boot splash image
 
 Really want:
 

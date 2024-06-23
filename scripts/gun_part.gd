@@ -15,6 +15,19 @@ extends Node3D
 		arm2.look_at(bone_target, Vector3.UP, true)
 
 
+@export var color := Color("#5A5A5A"):
+	set(value):
+		color = value
+		if not is_node_ready():
+			return
+		for child in Global.get_all_children(model):
+			if child is MeshInstance3D:
+				var mesh: MeshInstance3D = child
+				if mesh.material_override is ShaderMaterial:
+					var mat: ShaderMaterial = mesh.material_override
+					mat.set_shader_parameter("new_paint_color", color)
+
+
 @onready var barrel_end: Node3D = %End
 @onready var frame: Node3D = $Frame
 @onready var muzzle_flashes: Array[MeshInstance3D] = [
@@ -33,6 +46,7 @@ var health := 100.0
 
 
 func _ready() -> void:
+	color = color
 	if Engine.is_editor_hint():
 		return
 	for child in Global.get_all_children(model):

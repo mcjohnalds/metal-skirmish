@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7t625mkknres"]
+[gd_scene load_steps=18 format=3 uid="uid://c7t625mkknres"]
 
 [ext_resource type="Script" path="res://scripts/garage.gd" id="1_ymf2g"]
 [ext_resource type="PackedScene" uid="uid://7k5xltg2hw8" path="res://scenes/common_3d.tscn" id="2_7hvwk"]
@@ -10,10 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://dpxap1qdqn84w" path="res://scenes/block_face_indicator.tscn" id="8_anrx1"]
 [ext_resource type="Material" uid="uid://csawxourd0ta3" path="res://materials/control.tres" id="9_0i41y"]
 [ext_resource type="PackedScene" uid="uid://270hj1ge6dxn" path="res://scenes/round_counter.tscn" id="9_eo1ru"]
+[ext_resource type="PackedScene" uid="uid://b5jd3cgf46pse" path="res://scenes/my_color_picker.tscn" id="9_vn0y0"]
 [ext_resource type="Texture2D" uid="uid://bqs7oeib4gnou" path="res://textures/triangle_right_icon.png" id="10_pjh8w"]
 [ext_resource type="AudioStream" uid="uid://ir7fkjt6mp0j" path="res://sounds/part_placed.ogg" id="11_rw84i"]
 [ext_resource type="AudioStream" uid="uid://l5kw0bayjvas" path="res://sounds/part_removed.ogg" id="12_2x7sc"]
 [ext_resource type="AudioStream" uid="uid://cp44aefrnt1ka" path="res://sounds/error.ogg" id="13_b0nt6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvddk"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.223529, 0.223529, 0.223529, 0.772549)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0kjdx"]
+material = SubResource("StandardMaterial3D_pvddk")
+radius = 500.0
+height = 1000.0
 
 [node name="Garage" type="Node3D"]
 script = ExtResource("1_ymf2g")
@@ -38,20 +50,30 @@ theme_type_variation = &"MarginMedium"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ArmorPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+[node name="ArmorPartButton" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+unique_name_in_owner = true
 layout_mode = 2
 part = ExtResource("4_g3fkt")
 
-[node name="WheelPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+[node name="WheelPartButton" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+unique_name_in_owner = true
 layout_mode = 2
 part = ExtResource("6_fa7mk")
 
-[node name="GunPartButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+[node name="GunPartButton" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("4_pdkw2")]
+unique_name_in_owner = true
 layout_mode = 2
 part = ExtResource("7_5kapl")
+
+[node name="MyColorPicker" parent="MarginContainer/VBoxContainer" instance=ExtResource("9_vn0y0")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
@@ -139,3 +161,6 @@ bus = &"World"
 [node name="ErrorASP" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_b0nt6")
 bus = &"World"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0kjdx")

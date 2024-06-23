@@ -213,9 +213,9 @@ static var rounds := [
 				"accuracy": 1.0,
 			},
 		],
-		"armor_parts_earned": 50,
-		"wheel_parts_earned": 50,
-		"gun_parts_earned": 50,
+		"armor_parts_earned": 100,
+		"wheel_parts_earned": 100,
+		"gun_parts_earned": 100,
 	},
 ]
 
@@ -311,12 +311,12 @@ func on_vehicle_destroyed(is_player: bool) -> void:
 		g.armor_part_inventory += armor_parts_earned
 		g.wheel_part_inventory += wheel_parts_earned
 		g.gun_part_inventory += gun_parts_earned
-		if g.armor_part_inventory > 50:
-			g.armor_part_inventory = 50
-		if g.wheel_part_inventory > 50:
-			g.wheel_part_inventory = 50
-		if g.gun_part_inventory > 50:
-			g.gun_part_inventory = 50
+		if g.armor_part_inventory > 100:
+			g.armor_part_inventory = 100
+		if g.wheel_part_inventory > 100:
+			g.wheel_part_inventory = 100
+		if g.gun_part_inventory > 100:
+			g.gun_part_inventory = 100
 		round_complete.emit()
 
 

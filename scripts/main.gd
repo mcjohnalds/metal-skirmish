@@ -59,9 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		and event.is_action_pressed("switch_scene")
 		and level
 	):
-		g.armor_part_inventory = 50
-		g.wheel_part_inventory = 50
-		g.gun_part_inventory = 50
+		g.armor_part_inventory = 100
+		g.wheel_part_inventory = 100
+		g.gun_part_inventory = 100
 		if level is Arena:
 			go_to_garage()
 		else:

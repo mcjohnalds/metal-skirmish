@@ -20,7 +20,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
 albedo_texture = ExtResource("3_grapf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_561fx"]
@@ -32,7 +32,7 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1.96863, 1.84314, 1.41176, 1)
+albedo_color = Color(1.96863, 1.84314, 1.41176, 0)
 albedo_texture = ExtResource("4_t440h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_apjhr"]
@@ -177,6 +177,7 @@ mesh = SubResource("PlaneMesh_apjhr")
 
 [node name="Smoke" type="GPUParticles3D" parent="Model/Arm2/End"]
 transform = Transform3D(0.63709, 0, 0, 0, 0.63709, 0, 0, 0, 0.63709, 0.00673735, 0.0328035, 0.00320232)
+emitting = false
 lifetime = 3.0
 randomness = 0.2
 fixed_fps = 60

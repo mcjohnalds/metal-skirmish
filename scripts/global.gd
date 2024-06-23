@@ -28,6 +28,89 @@ var round_number: int
 var mouse_sensitivity := 0.25
 var invert_mouse := false
 
+const color_palette: Array[Color] = [
+	Color("#843343"),
+	Color("#dc365f"),
+	Color("#be525d"),
+	Color("#ea7a7a"),
+	Color("#de3540"),
+	Color("#ae3737"),
+	Color("#a4655c"),
+	Color("#612721"),
+	Color("#e2a79d"),
+	Color("#e7422d"),
+	Color("#b6411f"),
+	Color("#7d2c14"),
+	Color("#eb5921"),
+	Color("#c06f49"),
+	Color("#eb996c"),
+	Color("#da752e"),
+	Color("#8f531c"),
+	Color("#7d6552"),
+	Color("#eb8d1e"),
+	Color("#44311e"),
+	Color("#c2872e"),
+	Color("#d4b58c"),
+	Color("#edad37"),
+	Color("#9c7b42"),
+	Color("#d8bd6c"),
+	Color("#605427"),
+	Color("#d7bd3e"),
+	Color("#9f8f2b"),
+	Color("#99947c"),
+	Color("#d7cd28"),
+	Color("#6e762e"),
+	Color("#b2cc5f"),
+	Color("#819d37"),
+	Color("#a2d629"),
+	Color("#b2c28c"),
+	Color("#2a3a12"),
+	Color("#8ad453"),
+	Color("#5de82a"),
+	Color("#3a7526"),
+	Color("#4da532"),
+	Color("#6a8d64"),
+	Color("#2f5b2d"),
+	Color("#8bd18c"),
+	Color("#2c442f"),
+	Color("#53d77a"),
+	Color("#459d5d"),
+	Color("#bdccc5"),
+	Color("#4edaaa"),
+	Color("#84ceb7"),
+	Color("#429782"),
+	Color("#204241"),
+	Color("#5fd0da"),
+	Color("#45727d"),
+	Color("#85a2aa"),
+	Color("#63b3d9"),
+	Color("#4d6b98"),
+	Color("#5790de"),
+	Color("#9eb0dd"),
+	Color("#2d3b59"),
+	Color("#3e529d"),
+	Color("#6064db"),
+	Color("#9a86e4"),
+	Color("#3227a0"),
+	Color("#5537d3"),
+	Color("#5924ea"),
+	Color("#907aae"),
+	Color("#472578"),
+	Color("#4f2c60"),
+	Color("#d43be3"),
+	Color("#da72d8"),
+	Color("#d8b8d1"),
+	Color("#876b7c"),
+	Color("#4e3343"),
+	Color("#611e40"),
+	Color("#c08799"),
+	Color("#FBFBFB"),
+	Color("#C5C5C5"),
+	Color("#909090"),
+	Color("#5A5A5A"),
+	Color("#242424"),
+];
+
 
 var graphics_preset := GraphicsPreset.MEDIUM:
 	set(value):
@@ -164,7 +247,7 @@ static func dictionary_to_vector_3(d: Dictionary) -> Vector3:
 static func parts_to_dictionary(parts: Array[Node3D]) -> Dictionary:
 	var ps: Array[Dictionary] = []
 	for p in parts:
-		var d: Dictionary = { "position": p.position }
+		var d: Dictionary = { "position": p.position, "color": p.color }
 		if p is CockpitPart:
 			d["type"] = "cockpit"
 		elif p is ArmorPart:
@@ -196,6 +279,7 @@ static func dictionary_to_parts(dict: Dictionary) -> Array[Node3D]:
 				push_error("Impossible state")
 		var part: Node3D = scene.instantiate()
 		part.position = p["position"]
+		part.color = p["color"]
 		parts.append(part)
 	return parts
 

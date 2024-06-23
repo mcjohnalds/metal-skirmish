@@ -6,9 +6,10 @@
 [ext_resource type="Material" uid="uid://dcmxks4c7gnih" path="res://materials/painted_metal.tres" id="3_uwvll"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpnj"]
+resource_local_to_scene = true
 transparency = 1
 specular_mode = 2
-albedo_color = Color(2, 2, 2, 0.329412)
+albedo_color = Color(1, 1, 1, 0.329412)
 metallic_specular = 1.0
 roughness = 0.0
 emission_enabled = true
@@ -32,7 +33,7 @@ material_override = SubResource("StandardMaterial3D_ixpnj")
 [node name="Frame" parent="." instance=ExtResource("3_3pccn")]
 visible = false
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 omni_range = 3.548
 
 [editable path="Cockpit"]
