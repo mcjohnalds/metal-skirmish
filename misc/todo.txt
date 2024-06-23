@@ -14,18 +14,6 @@ Todo:
   - Better win screen (fade out to black)
   - Custom cursor
   - Boot splash image
-- Screen space shaders and settings
-  - Heat haze
-  - Film grain
-  - Vignette
-  - Bloom
-  - Color Grading
-  - Lens Flares
-  - Chromatic Aberration
-  - Pixelation
-  - Radial Blur when speeding
-  - Anamorphic Lens Flare
-  - Fish Eye/barrel lens distortion
 - Paint mode
 - Better itch page
   - Cover
@@ -36,6 +24,16 @@ Todo:
 - Display damage texture on damaged parts
 - Better particles/effects
   - Add blur PNG on top of wheels when spinning
+- Advanced Screen space shaders and settings
+  - Heat haze
+  - Bloom
+  - Color Grading
+  - Lens Flares
+  - Chromatic Aberration
+  - Pixelation
+  - Radial Blur when speeding
+  - Anamorphic Lens Flare
+  - Fish Eye/barrel lens distortion
 
 Really want:
 

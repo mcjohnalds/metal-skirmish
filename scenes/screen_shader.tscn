@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://hkg37ygpj8wo"]
+
+[ext_resource type="Shader" path="res://scripts/screen.gdshader" id="1_qt313"]
+[ext_resource type="Script" path="res://scripts/screen_shader.gd" id="2_f35ex"]
+
+[sub_resource type="Gradient" id="Gradient_8uahh"]
+colors = PackedColorArray(0, 0, 0, 0, 0.0165517, 0.0165517, 0.0165517, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l40ol"]
+frequency = 0.0338
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fon5g"]
+color_ramp = SubResource("Gradient_8uahh")
+noise = SubResource("FastNoiseLite_l40ol")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsp04"]
+shader = ExtResource("1_qt313")
+shader_parameter/dirt_texture = SubResource("NoiseTexture2D_fon5g")
+
+[node name="ScreenShader" type="ColorRect"]
+material = SubResource("ShaderMaterial_nsp04")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_f35ex")

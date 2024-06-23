@@ -24,8 +24,8 @@ sky_cover = SubResource("NoiseTexture2D_e2hnj")
 ground_bottom_color = Color(0.54902, 0.270588, 0.168627, 1)
 ground_horizon_color = Color(0.647059, 0.439216, 0.321569, 1)
 ground_curve = 0.0649802
-sun_angle_max = 89.53
-sun_curve = 0.424265
+sun_angle_max = 98.03
+sun_curve = 0.0861527
 
 [sub_resource type="Sky" id="Sky_e8ibn"]
 sky_material = SubResource("ProceduralSkyMaterial_dgp01")
