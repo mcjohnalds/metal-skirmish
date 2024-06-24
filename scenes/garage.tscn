@@ -20,7 +20,8 @@
 transparency = 1
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(0.223529, 0.223529, 0.223529, 0.772549)
+albedo_color = Color(0.541176, 0.541176, 0.541176, 0.352941)
+disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_0kjdx"]
 material = SubResource("StandardMaterial3D_pvddk")
@@ -163,4 +164,6 @@ stream = ExtResource("13_b0nt6")
 bus = &"World"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 0
 mesh = SubResource("SphereMesh_0kjdx")

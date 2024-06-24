@@ -1,17 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://7k5xltg2hw8"]
+[gd_scene load_steps=2 format=3 uid="uid://7k5xltg2hw8"]
 
 [ext_resource type="Script" path="res://scripts/common_3d.gd" id="1_3kpmt"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xynlq"]
-auto_exposure_enabled = true
-auto_exposure_speed = 1.0
 
 [node name="Common3D" type="Node3D"]
 script = ExtResource("1_3kpmt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-camera_attributes = SubResource("CameraAttributesPractical_xynlq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433012, 0, 0, 0)
 layers = 3
+light_energy = 2.0
